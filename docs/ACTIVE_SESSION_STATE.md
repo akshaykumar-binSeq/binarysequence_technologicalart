@@ -40,6 +40,9 @@
 
 ## 3. Persistent Navigation Index
 
+### Master Navigation & Documentation Reference
+* [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) — Master human-facing guide to the project documentation system, 6-level hierarchy, AI retrieval flow, and repository navigation.
+
 ### Level 1: Foundational Strategy & Identity (Immutable)
 * [`initial thought and plan.md`](file:///G:/binarysequence_techart/initial%20thought%20and%20plan.md) — Raw founder intent & thesis.
 * [`foundational identity, founder website vision & strategic playbook - version 1.0.0.md`](file:///G:/binarysequence_techart/foundational%20identity,%20founder%20website%20vision%20&%20strategic%20playbook%20-%20version%201.0.0.md) — Studio identity & proposition.
@@ -85,14 +88,15 @@
 
 ## 5. Active Task Log & Handoff Summary
 
-* **Active Phase:** Phase 3.1: Minimal Governance Refinement and Fresh-Session Test.
-* **Task Objective:** Applied unique alphanumeric step ID requirement (`REQ-xx`) and 6-status lifecycle vocabulary (`NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `AWAITING_APPROVAL`, `COMPLETED`, `VERIFIED`) to the Long-Prompt Execution Protocol. Established the 6-point Fresh-Session Persistence Verification Procedure (Section 4.10) in `DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`.
+* **Active Phase:** Phase 3.2: Human-Friendly Document Reference & AI Flow Architecture.
+* **Task Objective:** Authored and registered `docs/DOCUMENT_REFERENCE.md` explaining the documentation system, the 6-level precedence hierarchy, the dual Markdown/TOML model, document catalogue with 9 structured fields per document, AI retrieval flow (with Mermaid diagram), change propagation handling, and repository quick lookup.
 * **Change Classification:** `COMMON` + `CLARIFICATION`
-* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0 & Layout Contract Final, Level 4 DDD Guidelines, Phase 3 Validation Report.
-* **Files Created:** **None.** (Zero permanent files created, respecting the No-Unnecessary-Documents rule).
+* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0 & Layout Contract Final, Level 4 DDD Guidelines, Level 5 Contracts & Schemas.
+* **Files Created:**
+  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) (64.5 KB master documentation reference guide with 12 complete sections).
 * **Files Updated:**
-  * [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) (Refined Section 11 with unique step IDs and 6-status vocabulary; size verified at 15.5 KB).
-  * [`docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) (Synchronized Section 4.8 and added Section 4.10 Fresh-Session Verification Procedure).
+  * [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) (Registered `DOCUMENT_REFERENCE.md` in Section 4 retrieval sequence; size verified at 15.6 KB).
+  * [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) (Added Section 4 linking to `DOCUMENT_REFERENCE.md`).
   * [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (Updated in place).
-* **Verification Evidence:** All files inspected, size constraints confirmed (< 24 KB), diffs reviewed, and working tree verified clean after commit.
-* **Next Recommended Action:** Founder execution of the manual 6-point Fresh-Session Verification Procedure upon starting a new chat window; review of framework decision (`DR-03` / `EDR-001`).
+* **Verification Evidence:** All 36 markdown links in `docs/DOCUMENT_REFERENCE.md` verified with 0 broken links; file size constraints confirmed (`GEMINI.md` 15.6 KB < 24 KB); git diff reviewed; zero application code modified.
+* **Next Recommended Action:** Founder review of `docs/DOCUMENT_REFERENCE.md` and resolution of open readiness checklist items (`DR-02`, `DR-03`, `DR-04`, `DR-08`).

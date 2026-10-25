@@ -101,7 +101,7 @@ Implementation Evidence & Tests (Level 6)
 ### Retrieval Steps
 1. **Read Root Governance:** Read this `GEMINI.md` to load active operational constraints.
 2. **Read Session State:** Read [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) to inspect the current phase, active task, recent commits, and handoff notes.
-3. **Consult Index:** Read [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) to locate the governing parent document.
+3. **Consult Index & Reference Guide:** Read [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) (comprehensive document reference and navigation guide) or [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) to locate the governing parent document.
 4. **Consult AI-Readable Reference:** Read the compact reference card in `docs/references/` (e.g. `REF-01` through `REF-04`) to evaluate constraints and token-dense requirements without loading massive prose files.
 5. **Inspect Authoritative Source:** When precise phrasing, trade-offs, or exact verbatim copy matters, read the specific sections of the authoritative Level 1–4 document.
 6. **Retrieve Bounded Contracts:** Follow explicit references to load only relevant common and feature-specific contracts (`FEATURE_SPEC.toml`, `UI_UX_WIREFRAME.toml`). Never load contracts of unrelated features.

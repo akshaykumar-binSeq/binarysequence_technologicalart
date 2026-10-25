@@ -222,3 +222,12 @@ To optimize AI agent context retrieval and prevent token exhaustion, the governi
 | [`REF-04`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) | `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md` | Level 4 Architecture | 4 clean architecture layers, public gateway boundaries (zero internal cross-feature imports), shared kernel discipline, 8-sprint feature lifecycle. |
 
 * **Retrieval Protocol:** Agents read the reference card first. When verbatim text, editorial nuance, or legal phrasing is required, the agent consults the primary source document. Reference cards are synchronized whenever primary sources change.
+
+---
+
+## 4. Human-Facing Documentation Reference Guide
+
+For a human-friendly narrative explanation of the documentation system, the 6-level precedence hierarchy, the dual Markdown/TOML model, document catalogue with 9 fields per primary document, AI retrieval flow (with Mermaid flowchart), change propagation handling, and repository quick lookup:
+
+* [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) — Master explanatory guide and navigation aid for founders, engineers, and AI coding agents. Subordinate to primary specifications.
+
