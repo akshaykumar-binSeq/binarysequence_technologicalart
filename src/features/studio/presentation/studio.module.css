@@ -1,0 +1,846 @@
+/* ==========================================================================
+   Studio Feature Presentation Styles
+   Authority: Level 2 Audience-Facing Content Spec v1.1 (Screen 02)
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§38)
+   Governing Rule: DEC-009 Mandatory Design Tokens & Constants Centralization
+   ========================================================================== */
+
+.studioContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding-block-end: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Section Common Layout
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§2, §38)
+   -------------------------------------------------------------------------- */
+.section {
+  padding-block-start: var(--space-12);
+  padding-block-end: var(--space-12);
+  border-block-end: 1px solid var(--border-subtle);
+  scroll-margin-top: var(--scroll-anchor-clearance);
+}
+
+@media (min-width: 1025px) {
+  .section {
+    padding-block-start: var(--space-16);
+    padding-block-end: var(--space-16);
+  }
+}
+
+.section:last-of-type {
+  border-block-end: none;
+  padding-block-end: var(--space-12);
+}
+
+@media (min-width: 1025px) {
+  .section:last-of-type {
+    padding-block-end: var(--space-16);
+  }
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 65ch;
+}
+
+.badge {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+  display: inline-block;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast);
+}
+
+.subHeadline {
+  font-family: var(--font-structural);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.leadText {
+  font-family: var(--font-editorial);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  max-width: 65ch;
+}
+
+.bodyText {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+/* --------------------------------------------------------------------------
+   1. Studio Header Section
+   -------------------------------------------------------------------------- */
+.headerSection {
+  padding-block-start: var(--space-16);
+  padding-block-end: var(--space-16);
+  border-block-end: 1px solid var(--border-structural);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(217, 119, 6, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 75ch;
+}
+
+.headerNarrative {
+  font-family: var(--font-editorial);
+  font-size: clamp(1.125rem, 2vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--color-warm-alabaster);
+  max-width: 65ch;
+}
+
+.capabilitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-2);
+}
+
+.capabilityPill {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: rgba(18, 21, 27, 0.6);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+}
+
+.founderBox {
+  margin-block-start: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: rgba(18, 21, 27, 0.4);
+  border-left: 2px solid var(--color-signal-amber);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-width: 65ch;
+}
+
+.founderLabel {
+  font-family: var(--font-technical);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.founderBio {
+  font-family: var(--font-editorial);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   2. Etymology Section (Binary → Sequence → Technology → Art)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   2. Etymology Section (Binary → Sequence → Technology → Art)
+   -------------------------------------------------------------------------- */
+.transformationTrack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  position: relative;
+  width: 100%;
+}
+
+/* Mobile vertical continuous architectural spine */
+@media (max-width: 639px) {
+  .transformationTrack::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: 30px;
+    left: 15px;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      var(--color-signal-amber) 0%,
+      rgba(217, 119, 6, 0.4) 60%,
+      var(--border-structural) 100%
+    );
+    z-index: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .transformationTrack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1025px) {
+  .transformationTrack {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+  }
+}
+
+.transformationStage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 639px) {
+  .transformationStage {
+    padding-inline-start: var(--space-10);
+  }
+}
+
+/* Architectural Sequence Spine Header */
+.stageSpine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  height: 24px;
+  position: relative;
+}
+
+@media (max-width: 639px) {
+  .stageSpine {
+    position: absolute;
+    left: 6px;
+    top: 12px;
+    width: 19px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-ground);
+    border: 1px solid var(--color-signal-amber);
+    border-radius: var(--radius-full);
+  }
+}
+
+.spineNode {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+  padding-inline-end: var(--space-1);
+}
+
+.spinePip {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-signal-amber);
+  transition: box-shadow var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.spineIndex {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.12em;
+}
+
+@media (max-width: 639px) {
+  .spineIndex {
+    display: none;
+  }
+}
+
+.spineConnector {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 639px) {
+  .spineConnector {
+    display: none;
+  }
+}
+
+.connectorRail {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(217, 119, 6, 0.4) 0%,
+    var(--border-structural) 100%
+  );
+}
+
+.connectorArrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--color-signal-amber);
+  margin-inline-start: var(--space-2);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Stage Card Body */
+.stageCard {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.transformationStage:hover .stageCard {
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.transformationStage:hover .spinePip {
+  box-shadow: 0 0 8px var(--color-signal-amber);
+  transform: scale(1.15);
+}
+
+.stageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  border-block-end: 1px solid var(--border-subtle);
+  padding-block-end: var(--space-3);
+  margin-block-end: var(--space-1);
+}
+
+.conceptGlyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Semantic Concept Glyphs */
+.glyphBinary {
+  font-family: var(--font-technical);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bitZero {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.bitSlash {
+  color: var(--border-structural);
+  margin-inline: 2px;
+}
+
+.bitOne {
+  color: var(--color-signal-amber);
+}
+
+.glyphSequence {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  padding-bottom: 1px;
+}
+
+.seqPip {
+  width: 3px;
+  border-radius: 1px;
+  background: var(--color-signal-amber);
+}
+
+.seqPip:nth-child(1) {
+  height: 5px;
+  opacity: 0.35;
+}
+
+.seqPip:nth-child(2) {
+  height: 8px;
+  opacity: 0.55;
+}
+
+.seqPip:nth-child(3) {
+  height: 12px;
+  opacity: 0.75;
+}
+
+.seqPip:nth-child(4) {
+  height: 16px;
+  opacity: 1;
+}
+
+.glyphTechnology {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.techMatrix {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  transform: rotate(45deg);
+  position: relative;
+}
+
+.techMatrix::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--color-signal-amber);
+  opacity: 0.85;
+}
+
+.glyphArt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.artFocal {
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(217, 119, 6, 0.5);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.artFocal::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: var(--color-signal-amber);
+  box-shadow: 0 0 6px var(--color-signal-amber);
+}
+
+.stageSubtitle {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stageTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+  letter-spacing: -0.01em;
+}
+
+.stageDesc {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-block-start: var(--space-2);
+}
+
+/* Editorial Culmination Moment */
+.culminationSection {
+  margin-block-start: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.culminationRule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-structural) 20%,
+    var(--border-structural) 80%,
+    transparent 100%
+  );
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.culminationPip {
+  width: 7px;
+  height: 7px;
+  background: var(--color-signal-amber);
+  transform: rotate(45deg);
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.4);
+}
+
+.culminationFrame {
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(217, 119, 6, 0.04) 0%,
+    rgba(18, 21, 27, 0.6) 80%,
+    transparent 100%
+  );
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.culminationHeadline {
+  font-family: var(--font-structural);
+  font-size: clamp(1.125rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text-high-contrast);
+  margin: 0;
+}
+
+.culminationDetail {
+  font-family: var(--font-editorial);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-warm-alabaster);
+  max-width: 68ch;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Core Philosophy: Democratization
+   -------------------------------------------------------------------------- */
+.argumentsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .argumentsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.argumentCard {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.argumentTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+}
+
+.argumentBody {
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   4. Seven Pillars of Software Quality
+   -------------------------------------------------------------------------- */
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillarCard {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease,
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pillarCard:hover {
+  border-color: rgba(217, 119, 6, 0.5);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(217, 119, 6, 0.16);
+}
+
+.pillarNumber {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.12em;
+}
+
+.pillarTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+}
+
+.pillarDesc {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   5. Single-Practitioner Operating Model & Continuity Protocol
+   -------------------------------------------------------------------------- */
+.operatingLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1025px) {
+  .operatingLayout {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
+
+.operatingNarrativeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.continuityCard {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 41, 59, 0.3) 0%,
+    rgba(18, 21, 27, 0.7) 100%
+  );
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.continuityBadge {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.continuityTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+}
+
+.continuityDesc {
+  font-family: var(--font-editorial);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 65ch;
+}
+
+.guaranteesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.guaranteeItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-warm-alabaster);
+  font-weight: 500;
+}
+
+.guaranteeIcon {
+  color: var(--color-signal-amber);
+  font-weight: bold;
+  font-size: var(--text-xs);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. Transitions & Action Matrix
+   -------------------------------------------------------------------------- */
+.transitionsCard {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .transitionsCard {
+    padding: var(--space-12);
+  }
+}
+
+.actionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-block-start: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .actionsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.actionCard {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--target-touch-preferred);
+  transition: transform var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.actionCard:hover {
+  border-color: var(--color-signal-amber);
+  transform: translateY(-2px);
+}
+
+.actionCard:focus-visible {
+  outline: 2px solid var(--color-signal-amber);
+  outline-offset: 2px;
+}
+
+.actionLabel {
+  font-family: var(--font-structural);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+}
+
+.actionArrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  color: var(--color-signal-amber);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .pillarCard,
+  :global(html:not([data-motion="standard"])) .etymologyCard,
+  :global(html:not([data-motion="standard"])) .actionCard {
+    transition: none !important;
+    transform: none !important;
+  }
+}

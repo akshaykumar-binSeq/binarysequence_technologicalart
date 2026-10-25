@@ -29,10 +29,12 @@ out/
 .next/
 .nuxt/
 .svelte-kit/
+.firebase/
 .cache/
 .turbo/
 .parcel-cache/
 *.tsbuildinfo
+scratch/
 
 # 5. Runtime & package-manager logs
 *.log

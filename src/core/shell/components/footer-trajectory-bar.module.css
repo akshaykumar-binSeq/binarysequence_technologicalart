@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Footer Trajectory Bar Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§3.3)
+   ========================================================================== */
+
+.trajectoryBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+  padding-block: var(--space-2, 8px);
+  width: 100%;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #94A3B8);
+  text-decoration: none;
+  min-height: 32px;
+  transition: color var(--duration-fast, 150ms) var(--ease-standard, ease),
+              transform var(--duration-fast, 150ms) var(--ease-standard, ease);
+}
+
+.prevLink {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.nextLink {
+  justify-content: flex-end;
+  text-align: right;
+  margin-left: auto;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--color-signal-amber, #EA7419);
+}
+
+.prevLink:hover,
+.prevLink:focus-visible {
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
+
+.nextLink:hover,
+.nextLink:focus-visible {
+  -webkit-transform: translateX(3px);
+  transform: translateX(3px);
+}
+
+.arrow {
+  color: var(--color-signal-amber, #EA7419);
+  font-weight: 700;
+}
+
+.label {
+  color: var(--color-warm-alabaster, #F6F5F0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .prevLink,
+  :global(html:not([data-motion="standard"])) .nextLink {
+    transition: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+}

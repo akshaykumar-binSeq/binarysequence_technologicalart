@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Page Transition — Motion Graphics & Kinetic Spatial Continuity
+   Conveys traversal direction and origin/destination through pure motion graphics
+   Zero text banners or visual clutter
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§24, §25)
+   ========================================================================== */
+
+.pageTransitionWrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   Directional Transit Motion Beam
+   A high-precision luminous signal beam indicating the navigation axis:
+   - Forward: Sweeps horizontally left-to-right
+   - Backward: Sweeps horizontally right-to-left
+   -------------------------------------------------------------------------- */
+
+.motionBeamTrack {
+  position: fixed;
+  top: var(--app-bar-height, 64px);
+  left: 0;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--z-sticky, 100);
+}
+
+.motionBeamForward {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(217, 119, 6, 0.3) 30%,
+    rgba(245, 158, 11, 0.85) 65%,
+    #FFFFFF 90%,
+    rgba(245, 158, 11, 0.9) 96%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.75), 0 0 6px #FFFFFF;
+  -webkit-animation: beamSweepForward 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: beamSweepForward 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.motionBeamBackward {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    rgba(217, 119, 6, 0.3) 30%,
+    rgba(245, 158, 11, 0.85) 65%,
+    #FFFFFF 90%,
+    rgba(245, 158, 11, 0.9) 96%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.75), 0 0 6px #FFFFFF;
+  -webkit-animation: beamSweepBackward 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: beamSweepBackward 550ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@-webkit-keyframes beamSweepForward {
+  0% {
+    -webkit-transform: translateX(-120%);
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(250%);
+    transform: translateX(250%);
+    opacity: 0;
+  }
+}
+
+@keyframes beamSweepForward {
+  0% {
+    -webkit-transform: translateX(-120%);
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(250%);
+    transform: translateX(250%);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes beamSweepBackward {
+  0% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-250%);
+    transform: translateX(-250%);
+    opacity: 0;
+  }
+}
+
+@keyframes beamSweepBackward {
+  0% {
+    -webkit-transform: translateX(120%);
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-250%);
+    transform: translateX(-250%);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Directional Content Change Animations
+   Translates and blossoms content along the navigation trajectory
+   -------------------------------------------------------------------------- */
+
+.transitionForward {
+  -webkit-animation: contentEnterForward 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: contentEnterForward 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.transitionBackward {
+  -webkit-animation: contentEnterBackward 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: contentEnterBackward 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.transitionInitial {
+  -webkit-animation: contentEnterInitial 220ms ease-out both;
+  animation: contentEnterInitial 220ms ease-out both;
+}
+
+@-webkit-keyframes contentEnterForward {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(36px, 0, 0) scale(0.99);
+    transform: translate3d(36px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes contentEnterForward {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(36px, 0, 0) scale(0.99);
+    transform: translate3d(36px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@-webkit-keyframes contentEnterBackward {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-36px, 0, 0) scale(0.99);
+    transform: translate3d(-36px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes contentEnterBackward {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-36px, 0, 0) scale(0.99);
+    transform: translate3d(-36px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@-webkit-keyframes contentEnterInitial {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes contentEnterInitial {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.pageContent {
+  width: 100%;
+  flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Support (Contract §25 & §5.4)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .transitionForward,
+  :global(html:not([data-motion="standard"])) .transitionBackward,
+  :global(html:not([data-motion="standard"])) .transitionInitial {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  :global(html:not([data-motion="standard"])) .motionBeamForward,
+  :global(html:not([data-motion="standard"])) .motionBeamBackward {
+    display: none !important;
+  }
+}

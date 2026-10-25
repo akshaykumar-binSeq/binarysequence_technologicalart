@@ -1,0 +1,103 @@
+.container {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+  background-color: var(--surface-ground);
+  color: var(--text-high-contrast);
+}
+
+.content {
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: 9999px;
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-structural);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast);
+  margin-bottom: var(--space-4);
+}
+
+.narrative {
+  font-family: var(--font-structural);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: var(--space-8);
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-obsidian-carbon);
+  background-color: var(--color-warm-alabaster);
+  border: 1px solid var(--color-warm-alabaster);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: var(--color-signal-amber);
+  border-color: var(--color-signal-amber);
+  color: var(--color-obsidian-carbon);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-high-contrast);
+  background-color: transparent;
+  border: 1px solid var(--border-structural);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  border-color: var(--text-muted);
+  background-color: rgba(246, 245, 240, 0.04);
+}

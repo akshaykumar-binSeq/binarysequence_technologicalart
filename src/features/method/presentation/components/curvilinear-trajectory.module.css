@@ -1,0 +1,448 @@
+/**
+ * Curvilinear Trajectory — Archetype P3 Implementation
+ * Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§24, §25)
+ * Desktop: Widescreen Sinuous SVG Canvas (>= 900px)
+ * Mobile & Tablet: Vertical Progressive Track (< 900px)
+ */
+
+.trajectoryContainer {
+  position: relative;
+  width: 100%;
+  margin: var(--space-6) 0 var(--space-8) 0;
+}
+
+/* --------------------------------------------------------------------------
+   1. Desktop Curvilinear Stage (>= 900px)
+   -------------------------------------------------------------------------- */
+.desktopCanvas {
+  display: none;
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  height: 520px;
+  margin: 0 auto;
+  background: var(--bg-surface, #12141A);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 900px) {
+  .desktopCanvas {
+    display: block;
+  }
+}
+
+.svgLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.trajectoryPath {
+  fill: none;
+  stroke: var(--accent-amber, #D97706);
+  stroke-width: 2.5px;
+  stroke-dasharray: 6 8;
+  stroke-linecap: round;
+  -webkit-filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.6));
+  filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.6));
+  -webkit-animation: trajectoryDashFlow 2.4s linear infinite;
+  animation: trajectoryDashFlow 2.4s linear infinite;
+  will-change: stroke-dashoffset;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+@-webkit-keyframes trajectoryDashFlow {
+  0% {
+    stroke-dashoffset: 28;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes trajectoryDashFlow {
+  0% {
+    stroke-dashoffset: 28;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.stationsLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stationNode {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
+
+/* Non-interactive Display Station Card on Desktop (Zero button functionality) */
+.stationCard {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+  outline: none;
+  transition: transform 250ms var(--ease-standard, ease);
+}
+
+.stationBadge {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: #0B0C0E;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: all 250ms ease;
+}
+
+.stationIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted, #94A3B8);
+  transition: color 250ms ease;
+}
+
+.stationLabel {
+  margin-top: 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stationName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94A3B8);
+  transition: color 250ms ease;
+}
+
+/* Visited Station on Desktop */
+.stationVisited .stationBadge {
+  border-color: rgba(217, 119, 6, 0.5);
+  background: rgba(217, 119, 6, 0.12);
+}
+
+.stationVisited .stationIndex {
+  color: #E2E8F0;
+}
+
+.stationVisited .stationName {
+  color: #E2E8F0;
+}
+
+/* Active Station on Desktop (Radar Pulse + Amber Illumination) */
+.stationActive .stationBadge {
+  border-color: var(--accent-amber, #D97706);
+  background: rgba(217, 119, 6, 0.3);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.6), inset 0 0 8px rgba(217, 119, 6, 0.3);
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);
+  -webkit-animation: stationRadarPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: stationRadarPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@-webkit-keyframes stationRadarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7), 0 0 16px rgba(217, 119, 6, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(217, 119, 6, 0), 0 0 24px rgba(217, 119, 6, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0), 0 0 16px rgba(217, 119, 6, 0.6);
+  }
+}
+
+@keyframes stationRadarPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7), 0 0 16px rgba(217, 119, 6, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(217, 119, 6, 0), 0 0 24px rgba(217, 119, 6, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0), 0 0 16px rgba(217, 119, 6, 0.6);
+  }
+}
+
+.stationActive .stationIndex {
+  color: #FFFFFF;
+}
+
+.stationActive .stationName {
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(217, 119, 6, 0.6);
+}
+
+/* Terminal Origin & Destination Highlights */
+.terminalStation .stationBadge {
+  width: 46px;
+  height: 46px;
+  border-width: 2px;
+  border-color: rgba(217, 119, 6, 0.7);
+}
+
+/* Floating Active Stage Telemetry Strip on Desktop */
+.desktopActivePill {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px 16px;
+  background: rgba(11, 12, 14, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(217, 119, 6, 0.4);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 12px rgba(217, 119, 6, 0.15);
+  z-index: 10;
+  max-width: 580px;
+  pointer-events: none;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desktopActivePip {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: var(--accent-amber, #D97706);
+  color: #000000;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.6);
+}
+
+.desktopActiveText {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.desktopActiveName {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.desktopActiveCategory {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  color: var(--accent-amber, #D97706);
+  letter-spacing: 0.05em;
+}
+
+.desktopActiveSummary {
+  font-size: 0.75rem;
+  color: var(--text-muted, #94A3B8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Mobile & Tablet Vertical Progressive Track (< 900px)
+   -------------------------------------------------------------------------- */
+.mobileTrack {
+  display: block;
+  width: 100%;
+  background: var(--bg-surface, #12141A);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-6) var(--space-4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 900px) {
+  .mobileTrack {
+    display: none;
+  }
+}
+
+.mobileList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+}
+
+.mobileList::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 20px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent-amber, #D97706) 0,
+    var(--accent-amber, #D97706) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  z-index: 1;
+}
+
+.mobileItem {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.mobileCard {
+  width: 100%;
+  min-height: 48px;
+  background: #0B0C0E;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: left;
+  user-select: text;
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobilePip {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #12141A;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted, #94A3B8);
+  flex-shrink: 0;
+  transition: all 250ms ease;
+}
+
+.mobileContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobileTitleRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.mobileName {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-high-contrast, #F8FAFC);
+  transition: color 250ms ease;
+}
+
+.mobileCategory {
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--text-muted, #94A3B8);
+  transition: color 250ms ease;
+}
+
+.mobileSummary {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-dim, #64748B);
+  margin-top: 2px;
+  white-space: normal;
+  transition: color 250ms ease;
+}
+
+/* Active Mobile State: rect.top <= window.innerHeight * 0.65 */
+.mobileActive .mobileCard {
+  border-color: rgba(217, 119, 6, 0.6);
+  background: #14161E;
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.15);
+}
+
+.mobileActive .mobilePip {
+  border-color: var(--accent-amber, #D97706);
+  background: var(--accent-amber, #D97706);
+  color: #000000;
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.6);
+}
+
+.mobileActive .mobileName {
+  color: var(--accent-amber, #D97706);
+}
+
+.mobileActive .mobileCategory {
+  color: #E2E8F0;
+}
+
+.mobileActive .mobileSummary {
+  color: #CBD5E1;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Overrides
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .stationCard,
+  :global(html:not([data-motion="standard"])) .stationBadge,
+  :global(html:not([data-motion="standard"])) .mobileCard,
+  :global(html:not([data-motion="standard"])) .mobilePip {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  :global(html:not([data-motion="standard"])) .stationActive .stationBadge,
+  :global(html:not([data-motion="standard"])) .mobileActive .mobilePip {
+    box-shadow: none !important;
+  }
+}

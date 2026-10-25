@@ -1,0 +1,264 @@
+.page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6) var(--space-24) var(--space-6);
+}
+
+/* 1. Hero Section */
+.hero {
+  padding: var(--space-16) 0 var(--space-12) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.heroInner {
+  max-width: 860px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.binaryTicker {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.headline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-warm-alabaster);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-6);
+}
+
+.lead {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  margin-bottom: var(--space-4);
+  font-weight: 400;
+}
+
+.narrative {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: var(--space-8);
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-signal-amber);
+  color: #0B0C0E;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.primaryCta:hover {
+  background: var(--color-signal-amber-hover);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--color-warm-alabaster);
+  border: 1px solid var(--border-structural);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.secondaryCta:hover {
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+}
+
+/* 2. Standalone Guarantee Banner */
+.guaranteeSection {
+  padding: var(--space-12) 0;
+}
+
+.guaranteeCard {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(18, 21, 27, 0.8) 100%);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+  border-radius: 6px;
+  padding: var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.guaranteeCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-signal-amber);
+}
+
+.guaranteeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: var(--color-signal-amber);
+  background: rgba(217, 119, 6, 0.1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: 2px;
+  margin-bottom: var(--space-4);
+}
+
+.shieldIcon {
+  font-size: 0.875rem;
+}
+
+.guaranteeContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.guaranteeHeadline {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  font-weight: 600;
+  color: var(--color-warm-alabaster);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.guaranteeNarrative {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #CBD5E1;
+  max-width: 800px;
+  margin: 0;
+}
+
+.covenantList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0 0;
+}
+
+.covenantItem {
+  display: flex;
+  gap: var(--space-3);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.covenantItem strong {
+  color: var(--color-warm-alabaster);
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.covenantCheck {
+  color: var(--color-signal-amber);
+  font-weight: bold;
+}
+
+/* 6. Closing / Alternative Pathways */
+.closingSection {
+  padding: var(--space-12) 0 0 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.closingCard {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: 6px;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.closingEyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-signal-amber);
+}
+
+.closingHeadline {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-warm-alabaster);
+  margin: 0;
+}
+
+.closingLead {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.closingLink {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.closingLink:hover {
+  color: var(--color-signal-amber-hover);
+  border-bottom-color: var(--color-signal-amber-hover);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .covenantList {
+    grid-template-columns: 1fr;
+  }
+}

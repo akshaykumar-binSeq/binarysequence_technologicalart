@@ -1,0 +1,132 @@
+.specSection {
+  width: 100%;
+  margin-block-end: clamp(40px, 6vw, 64px);
+}
+
+.specGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: flex-start;
+}
+
+/* Left Column: Spec Table */
+.tableCol {
+  width: 100%;
+}
+
+.specTable {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  padding-block: 14px;
+  border-block-end: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: baseline;
+}
+
+.specRow:first-child {
+  padding-block-start: 4px;
+}
+
+.specLabel {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: #8e8e93;
+}
+
+.specValue {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #f6f5f0;
+  font-weight: 400;
+}
+
+/* Right Column: Narrative Summary & Source CTA */
+.summaryCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.summaryProse {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.35vw, 1.125rem);
+  line-height: 1.7;
+  color: #d1d1d6;
+  letter-spacing: -0.01em;
+}
+
+.sourceBtnWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.sourceBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f6f5f0;
+  color: #07080a;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.sourceBtn:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.sourceBtn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Stacking */
+@media (max-width: 860px) {
+  .specGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .specRow {
+    grid-template-columns: 110px 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .specRow {
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+    padding-block: 12px;
+  }
+
+  .specLabel {
+    font-size: 0.75rem;
+  }
+
+  .specValue {
+    font-size: 0.875rem;
+  }
+
+  .sourceBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

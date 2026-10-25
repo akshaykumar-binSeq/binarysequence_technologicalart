@@ -1,0 +1,502 @@
+/**
+ * Stage Detail Inspector — Pinned Sticky Scrubber & Continuous Stage Stream
+ * Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§24, §25, §37)
+ * Swiss Laboratory / Content Compression Reference Implementation
+ */
+
+.inspectorWrapper {
+  position: relative;
+  width: 100%;
+  margin-top: var(--space-8);
+  scroll-margin-top: 110px;
+}
+
+/* --------------------------------------------------------------------------
+   1. Pinned Sticky "ON THIS METHOD" Navigation Bar
+   Pins to the top while the user reads and scrolls through all stage cards
+   -------------------------------------------------------------------------- */
+.stickyBar {
+  position: sticky;
+  top: 76px; /* Pins beneath site header on mobile */
+  z-index: 35;
+  background: rgba(11, 12, 14, 0.96);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-8);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  transition: border-color 200ms ease;
+}
+
+@media (min-width: 768px) {
+  .stickyBar {
+    top: 88px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .stickyBar {
+    top: 96px;
+  }
+}
+
+.stickyBarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stickyBarTitleGroup {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.stickyBarLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-amber, #D97706);
+}
+
+.stickyBarPosition {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted, #94A3B8);
+}
+
+.stickyStepperControls {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.miniStepperBtn {
+  min-height: 36px;
+  padding: 4px 12px;
+  background: #12141A;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  border-radius: var(--radius-sm, 4px);
+  color: var(--text-high-contrast, #F8FAFC);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.miniStepperBtn:hover:not(:disabled) {
+  border-color: var(--accent-amber, #D97706);
+  background: #181A22;
+}
+
+.miniStepperBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Horizontal Card Scroller Track */
+.scrollerTrack {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium, rgba(255, 255, 255, 0.15)) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.navCardBtn {
+  flex-shrink: 0;
+  min-width: 260px;
+  max-width: 310px;
+  padding: 10px 14px;
+  background: #0B0C0E;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-sm, 6px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.navCardBtn:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.navCardBtn:focus-visible {
+  outline: 2px solid var(--accent-amber, #D97706);
+  outline-offset: 1px;
+}
+
+.navCardTopRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.navCardIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-dim, #64748B);
+  transition: color 200ms ease;
+}
+
+.navCardName {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-muted, #94A3B8);
+  flex: 1;
+  transition: color 200ms ease;
+}
+
+.navCardIndicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-amber, #D97706);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.navCardCategory {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-dim, #64748B);
+  transition: color 200ms ease;
+}
+
+.navCardSummary {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--text-muted, #94A3B8);
+  margin: 2px 0 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 200ms ease;
+}
+
+/* Active Card State (All cards where idx <= activeStage) */
+.navCardActive {
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.35);
+  border-left-color: rgba(217, 119, 6, 0.7);
+}
+
+.navCardActive .navCardIndex {
+  color: var(--accent-amber, #D97706);
+}
+
+.navCardActive .navCardName {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.navCardActive .navCardCategory {
+  color: var(--accent-amber, #D97706);
+}
+
+.navCardActive .navCardSummary {
+  color: #CBD5E1;
+}
+
+.navCardActive .navCardIndicator {
+  opacity: 0.6;
+}
+
+/* Current Focus Card State (idx === activeStage) */
+.navCardCurrent {
+  background: rgba(217, 119, 6, 0.18);
+  border-color: var(--accent-amber, #D97706);
+  border-left: 3px solid var(--accent-amber, #D97706);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.28);
+}
+
+.navCardCurrent .navCardName {
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(217, 119, 6, 0.5);
+}
+
+.navCardCurrent .navCardSummary {
+  color: #F8FAFC;
+}
+
+.navCardCurrent .navCardIndicator {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--accent-amber, #D97706);
+}
+
+/* --------------------------------------------------------------------------
+   2. Continuous Stream of Stage Cards
+   -------------------------------------------------------------------------- */
+.cardsStream {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cardsStream {
+    gap: var(--space-12);
+  }
+}
+
+.stageCard {
+  background: var(--bg-surface, #12141A);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-6);
+  scroll-margin-top: 240px; /* Accounts for header + pinned top bar */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+@media (min-width: 768px) {
+  .stageCard {
+    padding: var(--space-8);
+    scroll-margin-top: 270px;
+  }
+}
+
+.stageCardActive {
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 16px 40px rgba(217, 119, 6, 0.08);
+}
+
+/* Stage Header */
+.detailHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: var(--space-6);
+}
+
+.stageTelemetryRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.stageIndexPill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm, 4px);
+  background: var(--accent-amber, #D97706);
+  color: #000000;
+  letter-spacing: 0.04em;
+}
+
+.stageCategoryBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #94A3B8);
+}
+
+.stageHeading {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: var(--space-1) 0 0 0;
+}
+
+.stageSubHeadline {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--accent-amber, #D97706);
+  margin: 0;
+}
+
+/* Detail Sections Grid */
+.detailSectionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.detailCard {
+  background: #0B0C0E;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.detailCardTitle {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-amber, #D97706);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.signalSummary {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: 0;
+  max-width: var(--measure-max, 68ch);
+}
+
+.detailCardProse {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted, #94A3B8);
+  margin: 0;
+  max-width: var(--measure-max, 68ch);
+}
+
+/* Mechanism Checklist (Level 3) */
+.mechanismList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.mechanismItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm, 4px);
+}
+
+.mechanismNumber {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent-amber, #D97706);
+  min-width: 22px;
+}
+
+.mechanismBody {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted, #94A3B8);
+}
+
+.mechanismVerb {
+  color: var(--text-high-contrast, #F8FAFC);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.mechanismDesc {
+  color: var(--text-muted, #94A3B8);
+}
+
+/* Guiding Questions (Level 4) */
+.guidingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.guidingItem {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted, #94A3B8);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 6px 0;
+}
+
+.guidingBullet {
+  color: var(--accent-amber, #D97706);
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Deliverable Card (Level 5) */
+.outputBadgeCard {
+  background: rgba(217, 119, 6, 0.05);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.outputLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber, #D97706);
+}
+
+.outputText {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Overrides
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .stageCard,
+  .navCardBtn,
+  .miniStepperBtn {
+    transition: none !important;
+  }
+}
+
+:global(html[data-motion="reduced"]) .stageCard,
+:global(html[data-motion="reduced"]) .navCardBtn,
+:global(html[data-motion="reduced"]) .miniStepperBtn {
+  transition: none !important;
+}

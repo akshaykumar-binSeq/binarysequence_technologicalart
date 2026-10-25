@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Footer Telemetry Bar Styles — High Density Multi-Column Responsive HUD
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§3.3)
+   ========================================================================== */
+
+.telemetryBar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2, 8px) var(--space-4, 16px);
+  padding-block: var(--space-2, 8px);
+  border-block-end: 1px solid var(--border-subtle, rgba(246, 245, 240, 0.08));
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .telemetryBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2, 8px) var(--space-4, 16px);
+  }
+}
+
+.itemGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (min-width: 1024px) {
+  .itemGroup {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.label {
+  font-family: var(--font-technical);
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #94A3B8);
+  text-transform: uppercase;
+}
+
+.value {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--color-warm-alabaster, #F6F5F0);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusLive {
+  color: #4ADE80;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  display: inline-block;
+  -webkit-animation: telemetryDotPulse 2.5s ease-in-out infinite;
+  animation: telemetryDotPulse 2.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes telemetryDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 4px #10B981;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 12px #4ADE80, 0 0 4px #FFFFFF;
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+}
+
+@keyframes telemetryDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 4px #10B981;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 12px #4ADE80, 0 0 4px #FFFFFF;
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .statusDot {
+    -webkit-animation: none !important;
+    animation: none !important;
+  }
+}

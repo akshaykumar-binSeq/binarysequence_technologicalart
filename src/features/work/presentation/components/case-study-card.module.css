@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Case Study Card Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract
+   Ethos: "Swiss Laboratory Meets Natural Observation"
+   ========================================================================== */
+
+.card {
+  position: relative;
+  background-color: var(--surface-raised, #12151B);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  transition: border-color var(--duration-fast, 150ms) var(--ease-standard, ease),
+              box-shadow var(--duration-fast, 150ms) var(--ease-standard, ease),
+              transform var(--duration-fast, 150ms) var(--ease-standard, ease);
+}
+
+.card:hover {
+  border-color: rgba(217, 119, 6, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 24px rgba(217, 119, 6, 0.12);
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 1024px) {
+  .card {
+    padding: var(--space-8, 32px);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.1em;
+  color: var(--color-signal-amber);
+  text-transform: uppercase;
+}
+
+.statusBadge {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm, 4px);
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ADE80;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.title {
+  font-family: var(--font-structural);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-warm-alabaster);
+  margin-top: 4px;
+}
+
+.subtitle {
+  font-size: var(--text-base, 1rem);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 75ch;
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4, 16px);
+  padding: var(--space-4, 16px);
+  background: rgba(11, 12, 14, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md, 8px);
+}
+
+.metricBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metricValue {
+  font-family: var(--font-technical);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-signal-amber);
+  letter-spacing: -0.02em;
+}
+
+.metricLabel {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--color-warm-alabaster);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4, 16px);
+  padding-top: var(--space-4, 16px);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.clientMeta {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-muted);
+}
+
+.inspectButton {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: var(--radius-sm, 4px);
+  padding: 8px 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) var(--ease-standard);
+}
+
+.inspectButton:hover,
+.inspectButton:focus-visible {
+  background: rgba(217, 119, 6, 0.2);
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber-hover);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .card {
+    transition: none !important;
+    transform: none !important;
+  }
+}

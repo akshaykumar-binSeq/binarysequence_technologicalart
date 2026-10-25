@@ -10,13 +10,28 @@ export const APP_CONFIG = {
   author: 'Akshay Kumar VJ',
   tagline: 'Enterprise engineering. Human experience.',
   proposition: 'Everyone deserves an enterprise solution.',
+  siteUrl: 'https://binarysequencetechnologicalart.web.app',
   defaultTitle: 'Binary Sequence Technological Art',
   titleTemplate: '%s | Binary Sequence Technological Art',
+  homeSeoTitle: 'Binary Sequence Technological Art | Enterprise Engineering, Human Experience',
+  homeSeoDescription:
+    'Binary Sequence Technological Art is an independent product studio building thoughtful digital products through rigorous engineering, human-centered design, and considered technology.',
   description:
-    'We engineer scalable, secure digital systems and refined user interfaces for businesses, startups, and independent operators. By absorbing complexity inside the architecture, we ensure your software remains clear to use, economical to run, and maintainable over time.',
-  locale: 'en',
+    'Binary Sequence Technological Art is an independent product studio building thoughtful digital products through rigorous engineering, human-centered design, and considered technology.',
+  locale: 'en_US',
+  htmlLang: 'en',
   contactEmail: 'binarysequence.techart@gmail.com',
+  contactPhone: '+91 88482 10456',
+  contactPhoneRaw: '+918848210456',
+  contactWhatsappUrl: 'https://wa.me/918848210456',
   themeColor: '#0B0C0E',
+  defaultSocialImage: {
+    url: '/images/social-share.jpg',
+    width: 1200,
+    height: 630,
+    alt: 'Binary Sequence Technological Art — Enterprise Engineering, Human Experience',
+    type: 'image/jpeg',
+  },
   keywords: [
     'Binary Sequence Technological Art',
     'Enterprise Architecture',
@@ -24,6 +39,10 @@ export const APP_CONFIG = {
     'Domain-Driven Design',
     'Systems Engineering',
     'Technological Art',
+    'Full-Stack Engineering',
+    'Human-Centered Design',
+    'Software Architecture',
+    'Digital Product Development',
   ] as const,
 } as const;
 

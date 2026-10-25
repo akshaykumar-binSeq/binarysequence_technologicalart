@@ -1,0 +1,82 @@
+.switcherContainer {
+  width: 100%;
+  margin-block-end: clamp(24px, 4vw, 36px);
+  padding-block-end: 18px;
+  border-block-end: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 12px;
+}
+
+.registerLabel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  color: #8e8e93;
+  text-transform: uppercase;
+}
+
+.countBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-signal-amber, #f59e0b);
+}
+
+.pillsScrollTrack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-block-end: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.pillBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 150ms ease;
+}
+
+.pillBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pillActive {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+}
+
+.pillBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: #8e8e93;
+  text-transform: uppercase;
+}
+
+.pillActive .pillBadge {
+  color: var(--color-signal-amber, #f59e0b);
+}
+
+.pillName {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #f6f5f0;
+}

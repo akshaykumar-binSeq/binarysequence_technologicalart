@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Universal Scroll-to-Top (Return to Apex) Floating Button
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§3.2, §24)
+   ========================================================================== */
+
+.button {
+  position: fixed;
+  bottom: var(--space-6, 24px);
+  right: var(--space-6, 24px);
+  z-index: 99;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(7, 8, 10, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-structural, rgba(246, 245, 240, 0.16));
+  border-radius: var(--radius-sm, 4px);
+  padding: 8px 12px;
+  min-height: 40px;
+  min-width: 44px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transform: translateY(12px) scale(0.95);
+  transform: translateY(12px) scale(0.95);
+  transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 150ms ease,
+              border-color 150ms ease,
+              box-shadow 150ms ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6),
+              0 0 16px rgba(0, 229, 255, 0.08);
+}
+
+.button.visible {
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: rgba(234, 116, 25, 0.12);
+  border-color: var(--color-signal-amber, #EA7419);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.75),
+              0 0 20px rgba(234, 116, 25, 0.3);
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.buttonInner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon {
+  color: var(--color-cyan-process, #00E5FF);
+  transition: color 150ms ease, transform 150ms ease;
+  flex-shrink: 0;
+}
+
+.button:hover .icon,
+.button:focus-visible .icon {
+  color: var(--color-signal-amber, #EA7419);
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+.label {
+  font-family: var(--font-technical);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-high-contrast, #F6F5F0);
+  transition: color 150ms ease;
+}
+
+.button:hover .label,
+.button:focus-visible .label {
+  color: var(--color-signal-amber, #EA7419);
+}
+
+/* Micro corner bracket for technological precision aesthetic */
+.cornerBracket {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid var(--color-signal-amber, #EA7419);
+  border-right: 1px solid var(--color-signal-amber, #EA7419);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .button {
+    bottom: var(--space-4, 16px);
+    right: var(--space-4, 16px);
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .button {
+    transition: opacity 150ms ease !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+}

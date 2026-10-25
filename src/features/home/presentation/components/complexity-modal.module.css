@@ -1,9 +1,11 @@
 /* ==========================================================================
    Complexity Modal Presentation Styles
-   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§37)
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§37, §24)
    ========================================================================== */
 
 .triggerButton {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -21,23 +23,61 @@
   text-transform: uppercase;
   transition: background-color var(--duration-fast) var(--ease-standard),
               border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
               transform var(--duration-fast) var(--ease-standard);
+}
+
+.triggerButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(217, 119, 6, 0.15) 30%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(217, 119, 6, 0.15) 70%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: ctaPeriodicLightSweep 5.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.triggerButton:hover::after,
+.triggerButton:focus-visible::after {
+  animation: ctaHoverLightSweep 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .triggerButton:hover {
   background-color: rgba(217, 119, 6, 0.16);
   border-color: var(--color-signal-amber);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.25);
 }
 
 .triggerButton:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
+  background-color: rgba(217, 119, 6, 0.24);
 }
 
 .triggerIcon {
   font-size: 1rem;
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
 }
 
-/* Modal Overlay */
+.triggerButton:hover .triggerIcon,
+.triggerButton:focus-visible .triggerIcon {
+  transform: scale(1.15);
+  color: var(--color-signal-amber-hover);
+}
+
+/* Modal Overlay & GPU-Composited Lifecycle States */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -46,6 +86,23 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity var(--duration-medium, 300ms) cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity;
+}
+
+.overlayEntered {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlayExiting {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-exit, 200ms) var(--ease-in);
 }
 
 .modalBackdrop {
@@ -61,6 +118,8 @@
   width: min(840px, 95vw);
   max-height: 90dvh;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background-color: var(--surface-raised, #12151B);
   border: 1px solid var(--border-structural, #384151);
   border-radius: var(--radius-lg);
@@ -68,14 +127,33 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7),
+              0 0 32px rgba(217, 119, 6, 0.08);
   z-index: 1;
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  transition: transform var(--duration-medium, 300ms) cubic-bezier(0.16, 1, 0.3, 1),
+              opacity var(--duration-medium, 300ms) ease-out,
+              box-shadow var(--duration-medium, 300ms) ease-out;
+  will-change: transform, opacity;
 }
 
 @media (min-width: 768px) {
   .modalDialog {
     padding: var(--space-8);
   }
+}
+
+.dialogEntered {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.dialogExiting {
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  transition: transform var(--duration-exit, 200ms) var(--ease-in),
+              opacity var(--duration-exit, 200ms) var(--ease-in);
 }
 
 .modalHeader {
@@ -153,6 +231,15 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+.planeCard:hover {
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
 }
 
 .planeBadgeUser {
@@ -193,3 +280,107 @@
   color: var(--text-muted);
   line-height: 1.5;
 }
+
+/* Reduced Motion Support: Eliminate disorienting spatial movement while keeping clean opacity fades */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .modalOverlay,
+  :global(html:not([data-motion="standard"])) .overlayExiting,
+  :global(html:not([data-motion="standard"])) .modalDialog,
+  :global(html:not([data-motion="standard"])) .dialogExiting {
+    transition: opacity 120ms ease !important;
+    transform: none !important;
+  }
+
+  :global(html:not([data-motion="standard"])) .triggerButton,
+  :global(html:not([data-motion="standard"])) .closeButton,
+  :global(html:not([data-motion="standard"])) .planeCard {
+    transition: background-color 100ms ease, border-color 100ms ease, color 100ms ease !important;
+    transform: none !important;
+  }
+
+  :global(html:not([data-motion="standard"])) .triggerButton::after {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Periodic & Hover CTA Traveling Light Sweep Keyframes
+   ========================================================================== */
+@-webkit-keyframes ctaPeriodicLightSweep {
+  0% {
+    -webkit-transform: translateX(-150%) skewX(-20deg);
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.90;
+  }
+  20% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0.90;
+  }
+  24% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ctaPeriodicLightSweep {
+  0% {
+    -webkit-transform: translateX(-150%) skewX(-20deg);
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.90;
+  }
+  20% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0.90;
+  }
+  24% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes ctaHoverLightSweep {
+  0% {
+    -webkit-transform: translateX(-150%) skewX(-20deg);
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 1;
+  }
+}
+
+@keyframes ctaHoverLightSweep {
+  0% {
+    -webkit-transform: translateX(-150%) skewX(-20deg);
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(360%) skewX(-20deg);
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 1;
+  }
+}
+

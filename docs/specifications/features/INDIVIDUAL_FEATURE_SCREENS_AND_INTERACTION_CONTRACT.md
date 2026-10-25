@@ -48,13 +48,18 @@ A feature must **never** import internal domain logic, components, or styles fro
 
 ---
 
-### 2.4 Phase 04: `src/features/products` (Products & Systems Directory `/products`)
-- **Role:** Categorized directory of the 3 ecosystem clusters:
+### 2.4 Phase 04: `src/features/products` (Products & Systems Ecosystem Directory & Standalone Teardowns)
+- **Directory Route (`/products`):** Master directory categorizing Binary Sequence’s 7 proprietary systems across 3 clusters:
   1. *Utility & Enterprise Software:* `Time`, `Alert Wave`, `HREWEMS`, `Supermarket`.
   2. *Community & Places:* `Resonance`, `Just Breathe Valley`.
-  3. *Public Artifacts:* `Binary Sequence Studio Website V1`.
-- **Mandatory Monospace Status Badges:** Every product card must render a high-contrast status badge (`[STATUS: LIVE]`, `[STATUS: IN DEVELOPMENT]`, `[STATUS: CONCEPT / PROTOTYPE]`) pairing color with explicit text (Color Independence Rule).
-- **Dead-End Prevention:** Cards for products without an active public URL must render an accessible inline `"Project Overview"` disclosure drawer rather than an unclickable or broken external link.
+  3. *Public Artifacts & Practice:* `Binary Sequence Studio Platform V1`.
+- **Product Details Route (`/products/[id]`):** Dedicated standalone architectural teardown screen for each Binary Sequence product adopting the 6-layer Product Specification Sheet & Architecture Teardown IA.
+- **Governing Specification:** See [`PRODUCTS_AND_SYSTEMS_IA_AND_UI_SPECIFICATION.md`](file:///G:/binarysequence_techart/docs/specifications/features/PRODUCTS_AND_SYSTEMS_IA_AND_UI_SPECIFICATION.md).
+- **Mandatory Monospace Status Badges:** Every product card renders a high-contrast status badge (`[STATUS: LIVE]`, `[STATUS: IN DEVELOPMENT]`, `[STATUS: CONCEPT / PROTOTYPE]`) pairing color with explicit text (Color Independence Rule).
+- **Navigation Invariant:**
+  - Header `Products & Systems` links to `/products` (Directory).
+  - Directory rows feature both an in-situ quick disclosure drawer and an explicit `Inspect Architecture →` link to `/products/[id]`.
+  - Product Details screens feature breadcrumb return to `/products` and bottom trajectory navigation cycling through adjacent Binary Sequence products.
 
 ---
 
@@ -115,12 +120,25 @@ A feature must **never** import internal domain logic, components, or styles fro
 Before authoring presentation code for any feature:
 - [ ] Primary purpose, Tier 1 / Tier 2 role, and route slug are verified in `ARCHITECTURE_INDEX.toml`.
 - [ ] Content elements are classified into Priority 1 (Essential), Priority 2 (Important), Priority 3 (Exploratory).
+- [ ] Layout contract and responsive constraints (`COMMON_SHARED_DESIGN_INTERACTION_AND_MOTION_CONTRACT.md` §2.2 and `CORE_APP_SHELL_LAYOUT_AND_ROUTING_CONTRACT.md` §3.6) are inspected.
+- [ ] Section hierarchy, component relationships, and inter-section boundaries are planned using canonical tokens (`--space-16` mobile, `--space-24` desktop). Undefined tokens (e.g. `--space-20`) are strictly prohibited.
+- [ ] Final content-to-footer transition and page-clearance buffers are planned before implementation.
 - [ ] Responsive transformations (Mobile Portrait, Landscape Mobile `< 420px`, Tablet, 4:3 Desktop) are defined.
 - [ ] Dynamic background contrast strategy (`fixed`, `adaptive`, or `scrim`) is declared if media is present.
 - [ ] All 8 component lifecycle states are specified.
 
 ### 3.2 Post-Implementation Verification Gate (Sprint 05–08 Sign-Off)
 Before committing a completed feature phase:
+- [ ] **Mandatory Visual Boundary & Spacing Audit (Browser Rendered):**
+  Before a feature is considered complete, inspect every section boundary, every adjacent component group, and the final content-to-footer boundary across all 6 canonical viewports (`320×800`, `375×812`, `768×1024`, `1024×768`, `1280×900`, `1440×1000`) via headless Chrome CDP.
+  Verify:
+  1. *Section Heading Separation:* Every section title/eyebrow has intentional breathing room from the preceding content ($\ge 128\text{px}$ inter-content gap).
+  2. *Component Separation:* Distinct cards, panels, and action blocks maintain clear separation after responsive reflow.
+  3. *Final Content-to-Footer Clearance:* The final component is held comfortably inside its section boundary and not crammed against the footer.
+  4. *Zero Horizontal Overflow:* `scrollWidth <= clientWidth` across all 6 viewports.
+  5. *App Bar Protrusion Clearance:* Every secondary sticky component (e.g. stage navigators, sticky instruments, filter bars) and scroll anchor targets declare and respect `--sticky-top-clearance` and `--scroll-anchor-clearance`, maintaining $\ge 16\text{px}$–$24\text{px}$ positive breathing room below the protruding brand logo medallion.
+  6. *Clean Console:* 0 runtime errors or warnings.
+  *A feature cannot pass acceptance solely because TypeScript, linting, or production builds succeed. Rendered visual correctness is mandatory.*
 - [ ] **Container & Measure:** Content stays within `1280px–1440px` max-width; prose stays within `45–75 CPL`.
 - [ ] **Landscape Mobile:** Tested at `667px × 375px` and `844px × 390px`; sticky bars collapse; modals scroll cleanly.
 - [ ] **Touch & Pointer:** Interactive targets meet $\ge 44\text{px} \times 44\text{px}$; cursors match interaction semantics.

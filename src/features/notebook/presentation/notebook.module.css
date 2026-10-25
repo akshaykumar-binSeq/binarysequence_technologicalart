@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Notebook Screen Presentation Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§2.8)
+   ========================================================================== */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16, 64px);
+  padding-block: var(--space-12, 48px) var(--space-24, 96px);
+}
+
+@media (min-width: 1024px) {
+  .screen {
+    gap: var(--space-24, 96px);
+    padding-block: var(--space-16, 64px) var(--space-24, 96px);
+  }
+}
+
+/* 1. Hero */
+.heroSection {
+  width: 100%;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  max-width: var(--container-max, 1280px);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.binaryTelemetry {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  opacity: 0.75;
+  -webkit-animation: telemetryPulse 4s ease-in-out infinite;
+  animation: telemetryPulse 4s ease-in-out infinite;
+}
+
+@-webkit-keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-warm-alabaster);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  opacity: 0.9;
+  max-width: 68ch;
+}
+
+/* 2. Filters & Search */
+.filterSection {
+  width: 100%;
+}
+
+.filterControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4, 16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-4, 16px);
+}
+
+.categoryGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  flex-wrap: wrap;
+}
+
+.filterPill {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(18, 21, 27, 0.8);
+  color: var(--text-muted);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-full, 9999px);
+  padding: 6px 14px;
+  cursor: pointer;
+  min-height: var(--target-touch-min, 44px);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.filterPill:hover {
+  color: var(--color-warm-alabaster);
+  border-color: rgba(217, 119, 6, 0.5);
+}
+
+.filterActive {
+  background: rgba(217, 119, 6, 0.15);
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+  font-weight: 700;
+}
+
+.filterCount {
+  font-size: 0.6875rem;
+  opacity: 0.75;
+}
+
+.searchInput {
+  background: #08090B;
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--color-warm-alabaster);
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  padding: 8px 14px;
+  min-width: 240px;
+  min-height: var(--target-touch-min, 44px);
+  outline: none;
+  transition: border-color var(--duration-fast, 150ms) ease;
+}
+
+.searchInput:focus {
+  border-color: var(--color-signal-amber);
+  box-shadow: 0 0 12px rgba(217, 119, 6, 0.2);
+}
+
+/* 3. Entries List */
+.entriesSection {
+  width: 100%;
+}
+
+.entriesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+}
+
+.entryWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.emptyState {
+  padding: var(--space-8, 32px);
+  text-align: center;
+  background: var(--surface-raised);
+  border: 1px dashed var(--border-structural);
+  border-radius: var(--radius-md, 8px);
+  font-family: var(--font-technical);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted);
+}

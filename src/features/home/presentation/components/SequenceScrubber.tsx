@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 import { HOME_CONTENT } from '../../content';
+import { useContentProgression } from '@/core/interaction';
 import styles from './sequence-scrubber.module.css';
 
 /**
@@ -11,55 +12,48 @@ import styles from './sequence-scrubber.module.css';
  * Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§25, §27, §40)
  * Authority: Level 4 DDD Architectural Guidelines (§5.4)
  *
- * Implements accessible keyboard scrubbing within the tablist (ArrowLeft/Right, Home/End),
- * touch-friendly stage step selection, un-interrupted control button focus,
- * and a dimensionally reserved inspector panel ensuring visual layout stability.
+ * Implements:
+ * - Content-aware stage progression driven naturally by viewport scroll
+ * - Accessible keyboard scrubbing within the tablist (ArrowLeft/Right, Home/End)
+ * - Touch-friendly stage step selection with safe manual override
+ * - Uninterrupted control button focus and CLS = 0 reserved inspector card
+ * - ZERO scroll traps: uninterrupted document scrolling in both directions
  */
-export function SequenceScrubber() {
-  const [activeIndex, setActiveIndex] = useState(0);
+export function SequenceScrubber(): React.JSX.Element {
+  const containerRef = useRef<HTMLDivElement>(null);
   const stepButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const { stages, controls } = HOME_CONTENT.sequenceOverview;
+
+  const {
+    activeStage: activeIndex,
+    handleStageSelect,
+    handlePrev,
+    handleNext,
+    handleTabKeyDown,
+  } = useContentProgression({
+    stageCount: stages.length,
+    initialStage: 0,
+    containerRef,
+    framing: {
+      clearanceDesktop: 24,
+      clearanceMobile: 16,
+    },
+    scrollProgression: {
+      enabled: true,
+      startOffsetRatio: 0.65,
+      endOffsetRatio: 0.25,
+    },
+  });
+
   const currentStage = stages[activeIndex];
 
-  // Control actions: update active index without stealing focus from the clicked button
-  const handlePreviousClick = useCallback(() => {
-    setActiveIndex((prev) => Math.max(0, prev - 1));
-  }, []);
-
-  const handleNextClick = useCallback(() => {
-    setActiveIndex((prev) => Math.min(stages.length - 1, prev + 1));
-  }, [stages.length]);
-
-  // Tablist keyboard navigation: scoped strictly to tab buttons
-  const handleTabKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
-      let targetIndex = -1;
-
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        event.preventDefault();
-        targetIndex = Math.max(0, currentIndex - 1);
-      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        event.preventDefault();
-        targetIndex = Math.min(stages.length - 1, currentIndex + 1);
-      } else if (event.key === 'Home') {
-        event.preventDefault();
-        targetIndex = 0;
-      } else if (event.key === 'End') {
-        event.preventDefault();
-        targetIndex = stages.length - 1;
-      }
-
-      if (targetIndex >= 0 && targetIndex !== currentIndex) {
-        setActiveIndex(targetIndex);
-        stepButtonRefs.current[targetIndex]?.focus();
-      }
-    },
-    [stages.length]
-  );
-
   return (
-    <div className={styles.scrubberContainer} aria-label={controls.scrubberAriaLabel}>
+    <div ref={containerRef} className={styles.scrubberTrack}>
+      <div
+        className={styles.scrubberContainer}
+        aria-label={controls.scrubberAriaLabel}
+      >
       {/* 11-Step Interactive Stage Track (WAI-ARIA Tablist) */}
       <div
         className={styles.trackGrid}
@@ -81,7 +75,7 @@ export function SequenceScrubber() {
               aria-controls="stage-inspector-panel"
               tabIndex={isActive ? 0 : -1}
               className={`${styles.stepButton} ${isActive ? styles.stepActive : ''}`}
-              onClick={() => setActiveIndex(idx)}
+              onClick={() => handleStageSelect(idx, false)}
               onKeyDown={(e) => handleTabKeyDown(e, idx)}
             >
               <span className={styles.stepIndex}>{stage.index}</span>
@@ -119,7 +113,7 @@ export function SequenceScrubber() {
           <button
             type="button"
             className={styles.navButton}
-            onClick={handlePreviousClick}
+            onClick={handlePrev}
             disabled={activeIndex === 0}
             aria-label={controls.previousStage}
           >
@@ -133,7 +127,7 @@ export function SequenceScrubber() {
           <button
             type="button"
             className={styles.navButton}
-            onClick={handleNextClick}
+            onClick={handleNext}
             disabled={activeIndex === stages.length - 1}
             aria-label={controls.nextStage}
           >
@@ -142,5 +136,6 @@ export function SequenceScrubber() {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }

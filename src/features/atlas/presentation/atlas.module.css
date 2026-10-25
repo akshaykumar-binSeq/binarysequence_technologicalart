@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Atlas Screen Presentation Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§28)
+   Ethos: "Swiss Laboratory Meets Natural Observation"
+   ========================================================================== */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16, 64px);
+  padding-block: var(--space-12, 48px) var(--space-24, 96px);
+}
+
+@media (min-width: 1024px) {
+  .screen {
+    gap: var(--space-24, 96px);
+    padding-block: var(--space-16, 64px) var(--space-24, 96px);
+  }
+}
+
+/* 1. Hero */
+.heroSection {
+  width: 100%;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  max-width: var(--container-max, 1280px);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.binaryTelemetry {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  opacity: 0.75;
+  -webkit-animation: telemetryPulse 4s ease-in-out infinite;
+  animation: telemetryPulse 4s ease-in-out infinite;
+}
+
+@-webkit-keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-warm-alabaster);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  opacity: 0.9;
+  max-width: 68ch;
+}
+
+/* 2. Controls & Filter Bar */
+.controlSection {
+  width: 100%;
+}
+
+.controlBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4, 16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-4, 16px);
+}
+
+.layerPills {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  flex-wrap: wrap;
+}
+
+.layerPill {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(18, 21, 27, 0.8);
+  color: var(--text-muted);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-full, 9999px);
+  padding: 6px 14px;
+  cursor: pointer;
+  min-height: var(--target-touch-min, 44px);
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.layerPill:hover {
+  color: var(--color-warm-alabaster);
+  border-color: rgba(217, 119, 6, 0.5);
+}
+
+.layerActive {
+  background: rgba(217, 119, 6, 0.15);
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+  font-weight: 700;
+}
+
+.viewToggleGroup {
+  display: flex;
+  align-items: center;
+  background: #0B0C0E;
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-sm, 4px);
+  padding: 2px;
+}
+
+.toggleBtn {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 2px;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.toggleBtnActive {
+  background: rgba(217, 119, 6, 0.18);
+  color: var(--color-signal-amber);
+  font-weight: 700;
+}
+
+/* 3. Atlas View Container */
+.atlasSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+}
+
+/* 4. Guarantees Grid */
+.guaranteesSection {
+  width: 100%;
+  background: var(--surface-raised, #12151B);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-8, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+}
+
+@media (min-width: 1024px) {
+  .guaranteesSection {
+    padding: var(--space-12, 48px);
+  }
+}
+
+.guaranteesEyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-signal-amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.guaranteesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6, 24px);
+}
+
+@media (min-width: 768px) {
+  .guaranteesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.guaranteeCard {
+  background: #0B0C0E;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md, 8px);
+  padding: var(--space-6, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.guaranteeTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-lg, 1.15rem);
+  font-weight: 700;
+  color: var(--color-warm-alabaster);
+}
+
+.guaranteeDesc {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 5. CTA Block */
+.ctaSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6, 24px);
+  background: rgba(217, 119, 6, 0.06);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-6, 24px) var(--space-8, 32px);
+}
+
+.ctaText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ctaTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-h3, 1.35rem);
+  font-weight: 700;
+  color: var(--color-warm-alabaster);
+}
+
+.ctaSubtitle {
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted);
+}
+
+.ctaActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+}
+
+.ctaBtnPrimary {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0B0C0E;
+  background-color: var(--color-signal-amber);
+  border: 1px solid var(--color-signal-amber);
+  border-radius: var(--radius-sm, 4px);
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.ctaBtnPrimary:hover {
+  background-color: var(--color-signal-amber-hover);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.35);
+}

@@ -1,0 +1,16 @@
+.ambientCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .ambientCanvas {
+    display: none;
+  }
+}

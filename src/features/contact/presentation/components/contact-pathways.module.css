@@ -1,0 +1,195 @@
+.section {
+  padding: var(--space-8, 32px) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--space-12, 48px) 0;
+  }
+}
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+  margin-bottom: var(--space-2);
+}
+
+.headline {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  color: var(--color-warm-alabaster);
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: 6px;
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  border-color: rgba(217, 119, 6, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 20px rgba(217, 119, 6, 0.15);
+  transform: translateY(-4px) scale(1.01);
+}
+
+.cardHeader {
+  margin-bottom: var(--space-3);
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.08em;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-warm-alabaster);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.description {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-6) 0;
+  flex-grow: 1;
+}
+
+.actionContainer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.actionLink {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+  word-break: break-all;
+}
+
+.actionLink:hover {
+  color: var(--color-signal-amber-hover);
+}
+
+.channelList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  width: 100%;
+}
+
+.channelLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2, 8px);
+  padding: 8px 12px;
+  background: rgba(246, 245, 240, 0.03);
+  border: 1px solid var(--border-structural, rgba(246, 245, 240, 0.12));
+  border-radius: 4px;
+  text-decoration: none;
+  min-height: 38px;
+  transition: all 150ms ease;
+}
+
+.channelLink:hover,
+.channelLink:focus-visible {
+  background: rgba(217, 119, 6, 0.08);
+  border-color: var(--color-signal-amber);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+}
+
+.channelPrefixGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.channelIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--color-cyan-process, #00E5FF);
+  transition: color 150ms ease, transform 150ms ease;
+}
+
+.channelLink:hover .channelIcon,
+.channelLink:focus-visible .channelIcon {
+  color: var(--color-signal-amber);
+  transform: scale(1.1);
+}
+
+.channelPrefix {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-signal-amber);
+  flex-shrink: 0;
+}
+
+.channelValue {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-warm-alabaster);
+  letter-spacing: 0.02em;
+  flex: 1;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.channelArrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-signal-amber);
+  flex-shrink: 0;
+  transition: transform 150ms ease;
+}
+
+.channelLink:hover .channelArrow,
+.channelLink:focus-visible .channelArrow {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

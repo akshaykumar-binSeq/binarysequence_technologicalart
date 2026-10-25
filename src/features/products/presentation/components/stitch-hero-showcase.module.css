@@ -1,0 +1,308 @@
+.showcaseBanner {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  border-radius: var(--radius-lg, 14px);
+  border: 1px solid var(--border-structural, rgba(246, 245, 240, 0.12));
+  background-color: #07080a;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3.5vw, 40px);
+  margin-block-end: clamp(32px, 5vw, 48px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+/* Ambient Radiant Mesh & Dot Matrix */
+.ambientMesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dotGridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(246, 245, 240, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.6;
+}
+
+.auroraGlowBase {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 75%;
+  height: 120%;
+  filter: blur(55px);
+  transform: rotate(-15deg);
+}
+
+.auroraGlowIndigo {
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.35) 0%, rgba(79, 70, 229, 0) 70%);
+}
+
+.auroraGlowCyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.35) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+.auroraGlowEmerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(16, 185, 129, 0) 70%);
+}
+
+.auroraGlowAmber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.35) 0%, rgba(245, 158, 11, 0) 70%);
+}
+
+.auroraGlowViolet {
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: 50%;
+  height: 85%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.32) 0%, rgba(168, 85, 247, 0) 70%);
+  filter: blur(55px);
+  transform: rotate(20deg);
+}
+
+/* Centerpiece Prompt Card Mockup */
+.promptCardContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+}
+
+.promptCard {
+  background: rgba(18, 19, 24, 0.84);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: clamp(18px, 2.5vw, 26px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Prompt Input Line */
+.promptInputWrapper {
+  width: 100%;
+}
+
+.promptInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  color: #f6f5f0;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.promptInput::placeholder {
+  color: rgba(246, 245, 240, 0.6);
+}
+
+/* Bottom Controls Toolbar */
+.toolbarRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f6f5f0;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.iconBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.plusGlyph {
+  font-size: 18px;
+  line-height: 1;
+  font-family: var(--font-mono);
+}
+
+/* Segmented App / Web Toggle */
+.segmentedToggle {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.toggleSegment {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  border-radius: 7px;
+  padding: 5px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(246, 245, 240, 0.65);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.toggleIcon {
+  width: 13px;
+  height: 13px;
+}
+
+.segmentActive {
+  background: rgba(255, 255, 255, 0.14);
+  color: #f6f5f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Right Controls */
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtnSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(246, 245, 240, 0.7);
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.iconBtnSmall:hover {
+  color: #f6f5f0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.toolIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Model Selector Badge */
+.modelBadgePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 4px 11px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #f6f5f0;
+  cursor: pointer;
+}
+
+.sparkleIcon {
+  color: #f59e0b;
+  font-size: 11px;
+}
+
+.modelName {
+  font-size: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.modelIndicatorDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+}
+
+.dropdownCaret {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* Upward Submit Arrow Button */
+.submitArrowBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+.submitArrowBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.arrowIcon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .showcaseBanner {
+    min-height: 300px;
+    padding: 16px;
+  }
+
+  .promptCard {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .toolbarRow {
+    gap: 10px;
+  }
+
+  .modelName {
+    display: none;
+  }
+
+  .modelBadgePill {
+    padding: 4px 8px;
+  }
+}

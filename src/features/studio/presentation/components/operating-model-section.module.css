@@ -1,0 +1,510 @@
+/* ==========================================================================
+   OperatingModelSection Styles — FEAT-03-STUDIO Sections 03 & 04
+   Authority: Level 2 Audience-Facing Content Spec v1.1
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§38)
+   Constraint E: App Bar Logo Protrusion Clearance
+   ========================================================================== */
+
+.section {
+  padding-block-start: var(--space-12);
+  padding-block-end: var(--space-12);
+  border-block-end: 1px solid var(--border-subtle);
+  scroll-margin-top: var(--scroll-anchor-clearance);
+}
+
+@media (min-width: 1025px) {
+  .section {
+    padding-block-start: var(--space-16);
+    padding-block-end: var(--space-16);
+  }
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 65ch;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast);
+}
+
+.leadNarrative {
+  font-family: var(--font-editorial);
+  font-size: var(--text-lead);
+  line-height: 1.65;
+  color: var(--color-warm-alabaster);
+  max-width: 65ch;
+}
+
+/* --------------------------------------------------------------------------
+   Direct Transmission Pipeline Visual
+   -------------------------------------------------------------------------- */
+.pipelineFrame {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.pipelineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(18, 21, 27, 0.8);
+  border-block-end: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .pipelineHeader {
+    padding: var(--space-4) var(--space-6);
+  }
+}
+
+.pipelineBadge {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-signal-amber);
+  text-transform: uppercase;
+}
+
+.pipelineTelemetry {
+  font-family: var(--font-technical);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.svgContainer {
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .svgContainer {
+    padding: var(--space-6);
+  }
+}
+
+.pipelineSvg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 240;
+  display: block;
+}
+
+.pipelineNodeGroup {
+  transition: transform 0.3s var(--ease-standard);
+}
+
+/* --------------------------------------------------------------------------
+   Continuity Protocol: Sovereign Covenant Deed
+   -------------------------------------------------------------------------- */
+.continuityTrack {
+  position: relative;
+  width: 100%;
+  min-height: 220vh;
+}
+
+.continuityCard {
+  position: sticky;
+  top: var(--sticky-top-clearance);
+  align-self: start;
+  width: 100%;
+  z-index: 10;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(30, 41, 59, 0.4) 0%,
+    rgba(18, 21, 27, 0.8) 70%,
+    var(--surface-card) 100%
+  );
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  scroll-margin-top: var(--scroll-anchor-clearance);
+}
+
+@media (min-width: 768px) {
+  .continuityCard {
+    padding: var(--space-6);
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1025px) {
+  .continuityCard {
+    padding: var(--space-8);
+    gap: var(--space-8);
+  }
+}
+
+.continuityHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 70ch;
+}
+
+@media (min-width: 768px) {
+  .continuityHeader {
+    gap: var(--space-3);
+  }
+}
+
+.continuityBadgeRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.continuityBadge {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.continuityTag {
+  font-family: var(--font-technical);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}
+
+.continuityTitle {
+  font-family: var(--font-structural);
+  font-size: clamp(1.15rem, 3vw, 1.85rem);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+  letter-spacing: -0.01em;
+}
+
+.continuityDesc {
+  font-family: var(--font-editorial);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-warm-alabaster);
+  opacity: 0.92;
+}
+
+@media (min-width: 768px) {
+  .continuityDesc {
+    font-size: var(--text-base);
+    line-height: 1.65;
+  }
+}
+
+/* 4 Numbered Clauses — 2x2 on mobile & tablet, 4 across on desktop */
+.clausesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .clausesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1025px) {
+  .clausesGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.clauseCard {
+  background-color: rgba(11, 12, 14, 0.6);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  cursor: pointer;
+  transition: border-color var(--duration-fast, 150ms) var(--ease-standard),
+              background-color var(--duration-fast, 150ms) var(--ease-standard),
+              box-shadow var(--duration-medium, 300ms) var(--ease-out-expo),
+              transform var(--duration-fast, 150ms) var(--ease-standard);
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .clauseCard {
+    padding: var(--space-5);
+    gap: var(--space-3);
+  }
+}
+
+.clauseCard:hover,
+.clauseCard:focus-visible {
+  border-color: rgba(217, 119, 6, 0.45);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.clauseSelected {
+  border-color: var(--color-signal-amber) !important;
+  background-color: rgba(217, 119, 6, 0.08) !important;
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.2) !important;
+}
+
+.clauseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block-end: 1px solid var(--border-subtle);
+  padding-block-end: var(--space-1);
+}
+
+@media (min-width: 768px) {
+  .clauseHeader {
+    padding-block-end: var(--space-2);
+  }
+}
+
+.clauseNumber {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 768px) {
+  .clauseNumber {
+    font-size: var(--text-xs);
+  }
+}
+
+.clauseCheck {
+  color: var(--color-signal-amber);
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+.clauseText {
+  font-family: var(--font-structural);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-warm-alabaster);
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .clauseText {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+}
+
+/* Illustrative Artifact Inspector — Visible within screen context on all viewports */
+.artifactInspector {
+  background-color: rgba(11, 12, 14, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .artifactInspector {
+    padding: var(--space-6);
+    gap: var(--space-3);
+  }
+}
+
+.inspectorHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  border-block-end: 1px solid var(--border-subtle);
+  padding-block-end: var(--space-1);
+}
+
+@media (min-width: 768px) {
+  .inspectorHeader {
+    gap: var(--space-2);
+    padding-block-end: var(--space-2);
+  }
+}
+
+.inspectorLabel {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 768px) {
+  .inspectorLabel {
+    font-size: var(--text-xs);
+  }
+}
+
+.inspectorNotice {
+  font-family: var(--font-technical);
+  font-size: 0.5625rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .inspectorNotice {
+    font-size: 0.625rem;
+  }
+}
+
+.inspectorBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  -webkit-animation: artifactFadeIn var(--duration-medium, 250ms) var(--ease-out-expo);
+  animation: artifactFadeIn var(--duration-medium, 250ms) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+@media (min-width: 768px) {
+  .inspectorBody {
+    gap: var(--space-2);
+  }
+}
+
+@-webkit-keyframes artifactFadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes artifactFadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.artifactTitle {
+  font-family: var(--font-structural);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-high-contrast);
+}
+
+@media (min-width: 768px) {
+  .artifactTitle {
+    font-size: var(--text-base);
+  }
+}
+
+.artifactRole {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  color: var(--color-signal-amber);
+}
+
+@media (min-width: 768px) {
+  .artifactRole {
+    font-size: var(--text-xs);
+  }
+}
+
+.artifactPurpose {
+  font-family: var(--font-editorial);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-warm-alabaster);
+  max-width: 70ch;
+}
+
+@media (min-width: 768px) {
+  .artifactPurpose {
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
+}
+
+/* Defensive overflow safety for short viewports (mobile landscape) */
+@media (max-height: 520px) {
+  .continuityCard {
+    position: relative;
+    top: auto;
+  }
+  .continuityTrack {
+    min-height: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Support
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .clauseCard,
+  :global(html:not([data-motion="standard"])) .pipelineNodeGroup {
+    transition: none !important;
+    transform: none !important;
+  }
+  :global(html:not([data-motion="standard"])) .inspectorBody {
+    animation: none !important;
+  }
+}

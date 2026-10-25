@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Work Screen Presentation Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§37)
+   Ethos: "Swiss Laboratory Meets Natural Observation"
+   ========================================================================== */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16, 64px);
+  padding-block: var(--space-12, 48px) var(--space-24, 96px);
+}
+
+@media (min-width: 1024px) {
+  .screen {
+    gap: var(--space-24, 96px);
+    padding-block: var(--space-16, 64px) var(--space-24, 96px);
+  }
+}
+
+/* 1. Hero Section */
+.heroSection {
+  width: 100%;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  max-width: var(--container-max, 1280px);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.binaryTelemetry {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  opacity: 0.75;
+  -webkit-animation: telemetryPulse 4s ease-in-out infinite;
+  animation: telemetryPulse 4s ease-in-out infinite;
+}
+
+@-webkit-keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--color-signal-amber); }
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-warm-alabaster);
+}
+
+.lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  opacity: 0.9;
+  max-width: 68ch;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+  flex-wrap: wrap;
+  margin-top: var(--space-2, 8px);
+}
+
+.btnPrimary {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0B0C0E;
+  background-color: var(--color-signal-amber);
+  border: 1px solid var(--color-signal-amber);
+  border-radius: var(--radius-sm, 4px);
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.btnPrimary:hover {
+  background-color: var(--color-signal-amber-hover);
+  box-shadow: 0 0 20px rgba(217, 119, 6, 0.4);
+}
+
+.btnSecondary {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-warm-alabaster);
+  background-color: transparent;
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-sm, 4px);
+  padding: 12px 24px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.btnSecondary:hover {
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+}
+
+/* 2. Filter Bar */
+.filterSection {
+  width: 100%;
+}
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-4, 16px);
+}
+
+.filterPill {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(18, 21, 27, 0.8);
+  color: var(--text-muted);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-full, 9999px);
+  padding: 6px 16px;
+  cursor: pointer;
+  min-height: var(--target-touch-min, 44px);
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.filterPill:hover {
+  color: var(--color-warm-alabaster);
+  border-color: rgba(217, 119, 6, 0.5);
+}
+
+.filterActive {
+  background: rgba(217, 119, 6, 0.15);
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+  font-weight: 700;
+}
+
+/* 3. Case Studies List */
+.caseStudiesSection {
+  width: 100%;
+}
+
+.caseStudiesList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8, 32px);
+}
+
+.caseStudyWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. Call to Action */
+.ctaSection {
+  background-color: var(--surface-raised, #12151B);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-8, 32px);
+  margin-top: var(--space-8, 32px);
+}
+
+@media (min-width: 1024px) {
+  .ctaSection {
+    padding: var(--space-12, 48px);
+  }
+}
+
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  max-width: 75ch;
+}
+
+.ctaEyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--color-signal-amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ctaHeadline {
+  font-family: var(--font-structural);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-warm-alabaster);
+  line-height: 1.2;
+}
+
+.ctaBody {
+  font-size: var(--text-base, 1rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.ctaActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 16px);
+  flex-wrap: wrap;
+}

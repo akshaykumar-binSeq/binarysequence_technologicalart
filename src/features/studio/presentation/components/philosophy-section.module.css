@@ -1,0 +1,299 @@
+/* ==========================================================================
+   PhilosophySection Styles — FEAT-03-STUDIO Section 01
+   Authority: Level 2 Audience-Facing Content Spec v1.1
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§38)
+   Constraint E: App Bar Logo Protrusion Clearance
+   ========================================================================== */
+
+.section {
+  padding-block-start: var(--space-12);
+  padding-block-end: var(--space-12);
+  border-block-end: 1px solid var(--border-subtle);
+  scroll-margin-top: var(--scroll-anchor-clearance);
+}
+
+@media (min-width: 1025px) {
+  .section {
+    padding-block-start: var(--space-16);
+    padding-block-end: var(--space-16);
+  }
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 65ch;
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.headline {
+  font-family: var(--font-structural);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast);
+}
+
+.leadText {
+  font-family: var(--font-editorial);
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--color-warm-alabaster);
+  max-width: 65ch;
+}
+
+/* --------------------------------------------------------------------------
+   Visual Console: Complexity to Clarity
+   -------------------------------------------------------------------------- */
+.consoleTrack {
+  position: relative;
+  width: 100%;
+  min-height: 180vh;
+}
+
+.visualConsole {
+  position: sticky;
+  top: var(--sticky-top-clearance);
+  align-self: start;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.consoleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(18, 21, 27, 0.8);
+  border-block-end: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 768px) {
+  .consoleHeader {
+    padding: var(--space-4) var(--space-6);
+  }
+}
+
+.consoleTelemetry {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.telemetryPip {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-signal-amber);
+  box-shadow: 0 0 8px var(--color-signal-amber);
+}
+
+.telemetryTag {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.toggleGroup {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(11, 12, 14, 0.8);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.toggleButton {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius-sm) - 2px);
+  color: var(--text-muted);
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: var(--space-1) var(--space-3);
+  min-height: 32px;
+  cursor: pointer;
+  transition: color var(--duration-fast, 150ms) var(--ease-standard),
+              background-color var(--duration-fast, 150ms) var(--ease-standard),
+              border-color var(--duration-fast, 150ms) var(--ease-standard);
+}
+
+.toggleButton:hover {
+  color: var(--text-high-contrast);
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid var(--color-signal-amber);
+  outline-offset: 1px;
+}
+
+.toggleActive {
+  background-color: rgba(217, 119, 6, 0.15);
+  border-color: rgba(217, 119, 6, 0.4);
+  color: var(--color-signal-amber);
+}
+
+.svgFrame {
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .svgFrame {
+    padding: var(--space-6);
+  }
+}
+
+.svgDiagram {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 320;
+  display: block;
+}
+
+.stateGroup {
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.stateVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.stateHidden {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   The Three Connected Canonical Arguments
+   -------------------------------------------------------------------------- */
+.argumentsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .argumentsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.argumentCard {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  transition: border-color 0.3s var(--ease-standard),
+              box-shadow 0.3s var(--ease-standard),
+              transform 0.3s var(--ease-standard);
+  cursor: default;
+}
+
+@media (min-width: 1025px) {
+  .argumentCard {
+    padding: var(--space-8);
+  }
+}
+
+.argumentCard:hover,
+.argumentCard:focus-visible,
+.argumentCardHighlighted {
+  border-color: rgba(217, 119, 6, 0.45);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(217, 119, 6, 0.15);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-block-end: 1px solid var(--border-subtle);
+  padding-block-end: var(--space-2);
+  margin-block-end: var(--space-1);
+}
+
+.cardIndex {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-signal-amber);
+  letter-spacing: 0.1em;
+}
+
+.cardBadge {
+  font-family: var(--font-technical);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.argumentTitle {
+  font-family: var(--font-structural);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text-high-contrast);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.argumentBody {
+  font-family: var(--font-editorial);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--color-warm-alabaster);
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Support
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .stateGroup,
+  :global(html:not([data-motion="standard"])) .argumentCard,
+  :global(html:not([data-motion="standard"])) .toggleButton {
+    transition: none !important;
+    transform: none !important;
+  }
+}

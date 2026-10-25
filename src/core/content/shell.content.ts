@@ -14,35 +14,41 @@
  * Maps each brand asset to its intended architectural and responsive context.
  */
 export const BRAND_ASSETS = {
-  /** Small / compact logo: Header / navigation / compact containers */
+  /** Small / compact logo: Header / navigation / compact containers (Mandatory minimum: 60x60px) */
   iconSmall: {
     src: '/images/icon-small.png',
     alt: '', // Decorative when inside accessible home link
-    width: 40,
-    height: 40,
+    width: 96,
+    height: 96,
     intrinsicWidth: 356,
     intrinsicHeight: 356,
-    description: 'Compact high-contrast emblem for navigation and compact containers',
+    minRenderedWidth: 60,
+    minRenderedHeight: 60,
+    description: 'Compact high-contrast emblem for navigation and prominent header medallion presentation (min: 60x60px)',
   },
-  /** Large / expanded logo: Cards, prominent brand areas, footer identity anchor */
+  /** Large / expanded logo: Cards, prominent brand areas, footer identity anchor (Mandatory minimum: 150x150px = icon-small min 60px * 2.5) */
   iconBig: {
     src: '/images/icon-big.png',
     alt: '', // Decorative when paired with text wordmark
-    width: 48,
-    height: 48,
+    width: 160,
+    height: 160,
     intrinsicWidth: 518,
     intrinsicHeight: 518,
-    description: 'Expanded ambient insignia for cards, feature panels, and prominent brand areas',
+    minRenderedWidth: 150,
+    minRenderedHeight: 150,
+    description: 'Expanded ambient insignia for cards, feature panels, and prominent footer identity anchor (min: 150x150px = 60px * 2.5)',
   },
-  /** Full transparent lockup: Wireframe typography + central mark on transparent background */
+  /** Content-area application logo: Full brand lockup with wireframe typography + central mark on transparent background (Mandatory minimum: 255x255px = icon-big min 150px * 1.7) */
   logoFullTransparent: {
     src: '/images/logo-final-transparent.png',
     alt: 'Binary Sequence Technological Art',
-    width: 1024,
-    height: 1024,
+    width: 280,
+    height: 280,
     intrinsicWidth: 1024,
     intrinsicHeight: 1024,
-    description: 'Full brand lockup with complete wireframe wordmarks on transparent background',
+    minRenderedWidth: 255,
+    minRenderedHeight: 255,
+    description: 'Content-area application logo (min: 255x255px = icon-big min 150px * 1.7; restricted to content area only)',
   },
   /** Original reference lockup: Full lockup on solid dark surface */
   logoFullSource: {
@@ -85,7 +91,7 @@ export const SHELL_CONTENT = {
       {
         label: 'Studio',
         routeKey: 'studio',
-        ariaLabel: 'Navigate to Studio & Philosophy',
+        ariaLabel: 'Navigate to Studio',
       },
       {
         label: 'Products & Systems',
@@ -126,18 +132,84 @@ export const SHELL_CONTENT = {
     subEthos: 'Enterprise engineering. Human experience.',
     contact: {
       email: 'binarysequence.techart@gmail.com',
+      emailLabel: 'binarysequence.techart@gmail.com',
+      phone: '+91 88482 10456',
+      phoneRaw: '+918848210456',
+      phoneHref: 'tel:+918848210456',
+      whatsappUrl: 'https://wa.me/918848210456',
       label: 'binarysequence.techart@gmail.com',
       ariaLabel: 'Send email to binarysequence.techart@gmail.com',
     },
+    directAction: {
+      badge: '@BINARYSEQUENCE.TECHART',
+      href: 'mailto:binarysequence.techart@gmail.com',
+      ariaLabel: 'Direct communication: send email to binarysequence.techart@gmail.com',
+      phoneBadge: '+91 88482 10456',
+      phoneHref: 'tel:+918848210456',
+      phoneAriaLabel: 'Direct telephone line: call +91 88482 10456',
+      whatsappBadge: 'WHATSAPP // +91 88482 10456',
+      whatsappHref: 'https://wa.me/918848210456',
+      whatsappAriaLabel: 'Direct messaging: chat on WhatsApp with +91 88482 10456',
+      termsText: 'TERMS & BOUNDARIES',
+      privacyText: 'PRIVACY NOTICE',
+    },
+    telemetry: {
+      statusLabel: 'ALL SYSTEMS OPERATIONAL',
+      missionLabel: 'CUSTOM ENTERPRISE ARCHITECTURE',
+      versionLabel: '1.0.0 PRODUCTION',
+      anchorLabel: 'KERALA, INDIA [UTC+05:30]',
+    },
+    capabilitiesDock: {
+      tag: 'DISCIPLINES',
+      ariaLabel: 'Core Architectural Disciplines and Capabilities',
+      items: [
+        {
+          code: 'DDD',
+          title: 'DOMAIN-DRIVEN DESIGN',
+          subtitle: 'Bounded Contexts & Aggregate Invariants',
+          icon: '◫',
+        },
+        {
+          code: 'RAFT',
+          title: 'DISTRIBUTED CONSENSUS',
+          subtitle: 'Linearizable Multi-Zone Quorum',
+          icon: '▲',
+        },
+        {
+          code: 'RING',
+          title: 'LOCK-FREE DISRUPTOR',
+          subtitle: 'Sub-Millisecond Zero-GC Ingestion',
+          icon: '◎',
+        },
+        {
+          code: 'MERKLE',
+          title: 'CRYPTOGRAPHIC LEDGER',
+          subtitle: 'Continuous Mathematical Proofs',
+          icon: '◈',
+        },
+      ] as const,
+    },
+    trajectorySequence: [
+      { routeKey: 'home', label: 'Home', fullLabel: 'Home // Philosophy & Identity' },
+      { routeKey: 'studio', label: 'Studio', fullLabel: 'Studio // Living Narrative' },
+      { routeKey: 'products', label: 'Products & Systems', fullLabel: 'Products & Systems // Operational Suite' },
+      { routeKey: 'method', label: 'Sequence Method', fullLabel: 'Sequence Method // Engineering Trajectory' },
+      { routeKey: 'blueprint', label: 'Sequence Blueprint', fullLabel: 'Sequence Blueprint // 10-Day Evaluation' },
+      { routeKey: 'work', label: 'Selected Work', fullLabel: 'Selected Work // Enterprise Teardowns' },
+      { routeKey: 'notebook', label: 'Field Notebook', fullLabel: 'Field Notebook // EDRs & Telemetry' },
+      { routeKey: 'atlas', label: 'Topology Atlas', fullLabel: 'Topology Atlas // Architecture Substrate' },
+      { routeKey: 'contact', label: 'Contact', fullLabel: 'Contact // Direct Discussion' },
+    ] as const,
     columns: {
       commercial: {
         title: 'Commercial Practice',
         links: [
           { label: 'Home', routeKey: 'home' },
-          { label: 'Studio & Philosophy', routeKey: 'studio' },
+          { label: 'Studio', routeKey: 'studio' },
           { label: 'Products & Systems', routeKey: 'products' },
           { label: 'Sequence Method', routeKey: 'method' },
           { label: 'Sequence Blueprint', routeKey: 'blueprint' },
+          { label: 'Selected Work', routeKey: 'work' },
           { label: 'Contact', routeKey: 'contact' },
         ] as const,
       },
@@ -145,6 +217,7 @@ export const SHELL_CONTENT = {
         title: 'Notebook & Research',
         links: [
           { label: 'Engineering Notebook', routeKey: 'notebook' },
+          { label: 'Architecture Atlas', routeKey: 'atlas' },
           { label: 'Research & Experiments', routeKey: 'research' },
           { label: 'Founder Profile', routeKey: 'founder' },
           { label: 'Continuity & Trust', routeKey: 'continuity' },

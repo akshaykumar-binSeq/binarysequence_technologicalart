@@ -46,6 +46,71 @@ Component layouts enforce human perceptual shortcuts:
 - **Law of Closure & Common Region:** Group related data items within explicit bounding borders and raised surfaces (`--surface-raised`, `#12151B`).
 - **Figure-Ground Discrimination:** Strict luminance stepping (`#0B0C0E` base $\rightarrow$ `#12151B` surface $\rightarrow$ `#1E293B` elevated) ensures intuitive spatial depth without heavy drop shadows.
 
+### 2.2 Reusable Layout & Boundary Constraints
+
+#### Constraint A — Section Separation
+Every section must have an intentional and visually verified boundary from the preceding section:
+- Section vertical spacing must be defined strictly using approved design tokens (`--space-16` for mobile/tablet; `--space-24` for desktop). Non-existent tokens (e.g. `--space-20`) are prohibited.
+- Section titles and introduction blocks must never collide with, touch, or visually merge with the preceding section's content.
+- Section introductions must maintain a disciplined internal hierarchy: eyebrow (`var(--font-technical)`), heading (`var(--font-structural)`), lead text (`var(--font-editorial)` or structural), and subsequent child content.
+- Consecutive sections must not rely on accidental margin collapse or inconsistent local overrides to establish their spacing.
+- Responsive styles must preserve section separation at every supported breakpoint (mobile mini 320px up to widescreen 1440px).
+
+#### Constraint B — Component Separation
+Distinct cards, panels, action blocks, and content groups must have visible, calibrated separation:
+- Adjacent cards must not touch unless the design contract explicitly defines them as an unbroken connected group.
+- Grid and flex layouts must provide intentional row and column gaps (`--space-6` to `--space-8`).
+- When responsive layouts collapse into a single column, vertical spacing must not disappear accidentally.
+- Components with different semantic roles (e.g. operational model vs. transition navigation) must remain visually and spatially distinguishable.
+- Component separation must be verified in the browser after responsive reflow, never inferred solely from desktop CSS.
+
+#### Constraint C — Final Content and Footer Clearance
+The last content element on every page must transition into the shared footer intentionally:
+- The final card or section must not appear attached to, fused with, or crammed against the footer.
+- Spacing between the final content element and the footer consists of two independent dimensions:
+  1. *Section/Page Boundary Clearance:* The padding inside the final section/page container (`padding-block-end: var(--space-12)` to `var(--space-16)`), ensuring the card is held comfortably within its page boundary.
+  2. *Shell Transition Clearance:* The global shell margin on the footer (`margin-block-start: var(--space-24)` = 96px).
+- Feature-specific bottom padding and shared footer margins must be checked together to avoid accidental double-spacing or complete removal of clearance.
+- Verify the final content boundary and footer boundary independently in the browser.
+
+#### Constraint D — Responsive Layout Acceptance Viewports
+A successful desktop build does not establish responsive layout correctness. For every new or materially modified page, layout correctness must be verified across all 6 canonical viewports:
+- `320 × 800` (Mobile Mini)
+- `375 × 812` (Mobile Standard)
+- `768 × 1024` (Tablet Portrait)
+- `1024 × 768` (Tablet Landscape / Small Desktop)
+- `1280 × 900` (Desktop Standard)
+- `1440 × 1000` (Widescreen HD)
+
+At each viewport, verify:
+1. Section heading separation from preceding content.
+2. Content-to-heading internal relationships.
+3. Card-to-card separation.
+4. Final content-to-footer clearance.
+5. Horizontal overflow (`scrollWidth <= clientWidth`).
+6. Overlapping or clipped content.
+7. Responsive reflow (grid to single-column).
+8. Navigation and interaction behavior.
+
+#### Constraint E — App Bar Logo Icon Projection & Sticky Content Clearance Contract
+All content areas across the application must explicitly account for the physical protrusion of the oversized app bar brand logo medallion (`.logoFrame` / `icon-small.png`):
+- **Physical Protrusion Geometry:**
+  The primary navigation rail has nominal heights of `56px` (mobile), `64px` (tablet), and `72px` (desktop). However, the brand medallion intentionally punches through the bottom of the app bar, reaching:
+  - Mobile Mini ($< 375\text{px}$): `70px` from viewport top (8px padding + 56px rail + 3px protrusion + 3px hover/focus buffer).
+  - Mobile Standard ($375\text{px} - 767\text{px}$): `72px` from viewport top (8px padding + 56px rail + 4px protrusion + 4px hover/focus buffer).
+  - Tablet ($768\text{px} - 1024\text{px}$): `88px` from viewport top (12px padding + 64px rail + 8px protrusion + 4px hover/focus buffer).
+  - Desktop ($\ge 1025\text{px}$): `104px` from viewport top (14px padding + 72px rail + 12px protrusion + 6px hover/focus buffer).
+  - Mobile Landscape ($\le 440\text{px}$ viewport height): `64px` from viewport top.
+- **Prohibition of Rail-Only Assumption:**
+  No feature screen, section header, sticky sub-navigation, sticky instrument, or scroll anchor may assume the app bar height is only `56px`, `64px`, or `72px`. Doing so causes elements to touch, tuck underneath, or collide with the protruding brand medallion.
+- **Mandatory Canonical Design Tokens:**
+  All secondary sticky components and scroll anchors must consume canonical clearance tokens defined in `globals.css`:
+  1. `--header-total-reach`: Absolute bottom reach of the header including the protruding medallion (`72px` mobile, `88px` tablet, `104px` desktop).
+  2. `--sticky-top-clearance`: Mandatory minimum `top` value for any secondary pinned element (`calc(var(--header-total-reach) + var(--space-4))` = `88px` mobile, `112px` tablet, `128px` desktop).
+  3. `--scroll-anchor-clearance`: Mandatory minimum `scroll-margin-top` for section anchors and deep-linked headings (`calc(var(--header-total-reach) + var(--space-6))` = `96px` mobile, `120px` tablet, `136px` desktop).
+- **Exemplary Enforcement in Sticky Sub-Navigation:**
+  When components such as the Foundation Stage Navigator (`01 Binary | 02 Sequence | 03 Technology | 04 Art`) or the living visual instrument pin at the top of the screen, they must declare `top: var(--sticky-top-clearance)` (e.g. `128px` on desktop), guaranteeing positive architectural breathing space ($\ge 24\text{px}$) below the brand medallion. This rule applies throughout all application screens.
+
 ### Multi-Column Grid Architecture
 ```css
 .bs-grid {

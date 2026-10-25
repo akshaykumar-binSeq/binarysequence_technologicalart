@@ -1,0 +1,287 @@
+/**
+ * Method Screen Module Styles
+ * Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§37)
+ */
+
+.screenContainer {
+  width: 100%;
+  min-height: 100dvh;
+  padding-block-start: var(--space-8);
+  padding-block-end: var(--space-24);
+}
+
+@media (min-width: 768px) {
+  .screenContainer {
+    padding-block-start: var(--space-12);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Introduction Section
+   -------------------------------------------------------------------------- */
+.introSection {
+  width: 100%;
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+}
+
+.introHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--container-max, 1280px);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-amber, #D97706);
+}
+
+.binaryTelemetry {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  color: var(--text-dim, #64748B);
+  letter-spacing: 0.04em;
+  -webkit-animation: telemetryPulse 4s ease-in-out infinite;
+  animation: telemetryPulse 4s ease-in-out infinite;
+}
+
+@-webkit-keyframes telemetryPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; color: var(--accent-amber, #D97706); }
+}
+
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; color: var(--accent-amber, #D97706); }
+}
+
+.headline {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: var(--space-1) 0;
+}
+
+.subHeadline {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: 0;
+  max-width: 48ch;
+}
+
+.narrative {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-muted, #94A3B8);
+  max-width: var(--measure-max, 65ch);
+  margin-top: var(--space-2);
+}
+
+.anchorCta {
+  align-self: flex-start;
+  margin-top: var(--space-4);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-amber, #D97706);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.4);
+  transition: all 180ms ease;
+}
+
+.anchorCta:hover {
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   Trajectory Section (Scroll-Pinned Animation on Desktop)
+   -------------------------------------------------------------------------- */
+.trajectorySection {
+  width: 100%;
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  scroll-margin-top: 100px;
+}
+
+.trajectoryStickyFrame {
+  position: static;
+  width: 100%;
+}
+
+.trajectoryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.trajectoryStepBadge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-amber, #D97706);
+  background: rgba(217, 119, 6, 0.12);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: var(--radius-sm, 4px);
+  padding: 2px 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  transition: all 200ms ease;
+}
+
+@media (min-width: 900px) {
+  .trajectorySection {
+    /* 1600px scroll travel accommodates smooth step activation from 01 to 11 */
+    height: calc(100vh + 1600px);
+    position: relative;
+    padding-top: var(--space-4);
+    padding-bottom: 0;
+  }
+
+  .trajectoryStickyFrame {
+    position: sticky;
+    top: 88px;
+    z-index: 20;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .trajectoryStickyFrame {
+    top: 96px;
+  }
+}
+
+/* Reduced Motion Override for Pinned Trajectory */
+@media (prefers-reduced-motion: reduce) {
+  :global(html:not([data-motion="standard"])) .trajectorySection {
+    height: auto !important;
+  }
+
+  :global(html:not([data-motion="standard"])) .trajectoryStickyFrame {
+    position: static !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Stage Detail Inspector Section
+   -------------------------------------------------------------------------- */
+.inspectorSection {
+  width: 100%;
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
+}
+
+/* --------------------------------------------------------------------------
+   Closing Section
+   -------------------------------------------------------------------------- */
+.closingSection {
+  width: 100%;
+  padding-top: var(--space-16);
+}
+
+.closingCard {
+  background: var(--bg-surface, #12141A);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 768px) {
+  .closingCard {
+    padding: var(--space-12);
+  }
+}
+
+.closingHeadline {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: 0;
+}
+
+.closingLead {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-muted, #94A3B8);
+  max-width: var(--measure-max, 65ch);
+  margin: 0;
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  background: var(--accent-amber, #D97706);
+  color: #000000;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm, 4px);
+  text-decoration: none;
+  transition: all 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnPrimary:hover {
+  background: var(--accent-amber-glow, #F59E0B);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.5);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  background: transparent;
+  color: var(--text-high-contrast, #F8FAFC);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.2));
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm, 4px);
+  text-decoration: none;
+  transition: all 180ms ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}

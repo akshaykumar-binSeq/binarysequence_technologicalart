@@ -1206,7 +1206,7 @@ to transform ideas into functioning digital products.
 
 ## 52. Definition of Akshay Kumar VJ
 
-**Akshay Kumar VJ is a computer science and technology graduate, software engineer, technical consultant and product-oriented architect who combines engineering, architecture, creative technology and scientific curiosity to design and build complete digital solutions.**
+**Akshay Kumar VJ is a seasoned software engineer, technical consultant and product-oriented architect who combines engineering, architecture, creative technology and scientific curiosity to design and build complete digital solutions.**
 
 His technical practice includes the authorship of **Domain-Driven Design principles for enterprise scalable and maintainable system code architecture**, along with **coding architecture models, architectural patterns and guidelines for Flutter and Dart.**
 

@@ -3,11 +3,21 @@
    Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§40, §24)
    ========================================================================== */
 
+.scrubberTrack {
+  position: relative;
+  width: 100%;
+  min-height: 240vh;
+}
+
 .scrubberContainer {
+  position: sticky;
+  top: var(--sticky-top-clearance);
+  align-self: start;
+  width: 100%;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  width: 100%;
 }
 
 /* 11-Step Interactive Stage Track */
@@ -194,9 +204,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .stepButton,
-  .inspectorCard,
-  .navButton {
+  :global(html:not([data-motion="standard"])) .stepButton,
+  :global(html:not([data-motion="standard"])) .inspectorCard,
+  :global(html:not([data-motion="standard"])) .navButton {
     transition: none !important;
   }
 }

@@ -1,8 +1,13 @@
+'use client';
+
+import Image from 'next/image';
 import Link from 'next/link';
 import { ROUTES } from '@/core/constants/routes';
+import { BRAND_ASSETS } from '@/core/content/shell.content';
 import { HOME_CONTENT } from '../content';
 import { SequenceScrubber } from './components/SequenceScrubber';
 import { ComplexityModal } from './components/ComplexityModal';
+import { useSmoothAnchor } from '@/core/interaction';
 import styles from './home.module.css';
 
 /**
@@ -17,6 +22,7 @@ import styles from './home.module.css';
  * and progressive interactive components (SequenceScrubber, ComplexityModal).
  */
 export function HomeScreen() {
+  const { handleAnchorClick } = useSmoothAnchor();
   const {
     hero,
     complexityAbsorption,
@@ -31,40 +37,63 @@ export function HomeScreen() {
       {/* 1. Hero Section */}
       <section id="hero" className={styles.heroSection} aria-label={hero.eyebrow}>
         <div className="bs-container">
-          <div className={styles.heroContent}>
-            <p className={styles.eyebrow}>{hero.eyebrow}</p>
-            <h1 className={styles.heroHeadline}>{hero.headline}</h1>
-            <p className={styles.subHeadline}>{hero.subHeadline}</p>
-            <p className={styles.heroNarrative}>{hero.narrative}</p>
+          <div className={styles.heroLayout}>
+            <div className={styles.heroContent}>
+              <p className={styles.eyebrow}>{hero.eyebrow}</p>
+              <h1 className={styles.heroHeadline}>{hero.headline}</h1>
+              <p className={styles.subHeadline}>{hero.subHeadline}</p>
+              <p className={styles.heroNarrative}>{hero.narrative}</p>
 
-            {/* Binary Sequence Philosophy Monospace Indicator */}
-            <div className={styles.binaryIndicator} aria-hidden="true">
-              <span>{hero.binaryPhilosophy}</span>
+              {/* Binary Sequence Philosophy Monospace Indicator */}
+              <div className={styles.binaryIndicator} aria-hidden="true">
+                <span>{hero.binaryPhilosophy}</span>
+              </div>
+
+              <div className={styles.heroActions}>
+                <Link
+                  href={ROUTES.blueprint}
+                  className={styles.btnPrimary}
+                  aria-label={hero.actions.primary.ariaLabel}
+                >
+                  {hero.actions.primary.label}
+                </Link>
+                <Link
+                  href={ROUTES.products}
+                  className={styles.btnSecondary}
+                  aria-label={hero.actions.secondary.ariaLabel}
+                >
+                  {hero.actions.secondary.label}
+                </Link>
+              </div>
+              <a
+                href="#complexity-absorption"
+                className={styles.manifestoAnchor}
+                onClick={handleAnchorClick}
+                aria-label={hero.actions.manifestoAnchor.ariaLabel}
+              >
+                {hero.actions.manifestoAnchor.label}
+              </a>
             </div>
 
-            <div className={styles.heroActions}>
-              <Link
-                href={ROUTES.blueprint}
-                className={styles.btnPrimary}
-                aria-label={hero.actions.primary.ariaLabel}
-              >
-                {hero.actions.primary.label}
-              </Link>
-              <Link
-                href={ROUTES.products}
-                className={styles.btnSecondary}
-                aria-label={hero.actions.secondary.ariaLabel}
-              >
-                {hero.actions.secondary.label}
-              </Link>
+            {/* Content-Area Application Logo Showcase: Top icon on mobile/tablet, side-by-side lockup on desktop */}
+            <div className={styles.heroBrandContainer}>
+              <Image
+                src={BRAND_ASSETS.iconBig.src}
+                alt={BRAND_ASSETS.iconBig.alt || 'Binary Sequence Emblem'}
+                width={360}
+                height={360}
+                className={styles.heroLogoMobile}
+                priority
+              />
+              <Image
+                src={BRAND_ASSETS.logoFullTransparent.src}
+                alt={BRAND_ASSETS.logoFullTransparent.alt}
+                width={512}
+                height={512}
+                className={styles.heroLogoDesktop}
+                priority
+              />
             </div>
-            <a
-              href="#complexity-absorption"
-              className={styles.manifestoAnchor}
-              aria-label={hero.actions.manifestoAnchor.ariaLabel}
-            >
-              {hero.actions.manifestoAnchor.label}
-            </a>
           </div>
         </div>
       </section>

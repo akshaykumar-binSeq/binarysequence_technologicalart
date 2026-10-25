@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Matrix View Presentation Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§28)
+   ========================================================================== */
+
+.tableContainer {
+  overflow-x: auto;
+  background: var(--surface-raised, #12151B);
+  border: 1px solid var(--border-structural, #1E293B);
+  border-radius: var(--radius-lg, 12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--text-xs, 0.75rem);
+}
+
+.table th,
+.table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.table th {
+  background: #0B0C0E;
+  color: var(--color-signal-amber);
+  font-family: var(--font-technical);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rowSelected {
+  background: rgba(217, 119, 6, 0.12) !important;
+}
+
+.codeCell {
+  font-family: var(--font-technical);
+  font-weight: 700;
+  color: var(--color-signal-amber);
+  white-space: nowrap;
+}
+
+.nameCell {
+  font-weight: 600;
+  color: var(--color-warm-alabaster);
+  min-width: 180px;
+}
+
+.layerCell {
+  font-family: var(--font-technical);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.statusCell {
+  font-family: var(--font-technical);
+  color: #4ADE80;
+  white-space: nowrap;
+}
+
+.protocolCell {
+  font-family: var(--font-technical);
+  color: var(--text-muted);
+}
+
+.throughputCell {
+  font-family: var(--font-technical);
+  color: var(--color-warm-alabaster);
+  white-space: nowrap;
+}
+
+.latencyCell {
+  font-family: var(--font-technical);
+  color: var(--color-signal-amber);
+  white-space: nowrap;
+}
+
+.actionCell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.inspectBtn {
+  font-family: var(--font-technical);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  border-radius: var(--radius-sm, 4px);
+  padding: 6px 12px;
+  cursor: pointer;
+  min-height: var(--target-touch-min, 44px);
+  transition: all var(--duration-fast, 150ms) ease;
+}
+
+.inspectBtn:hover {
+  background: rgba(217, 119, 6, 0.2);
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber-hover);
+}

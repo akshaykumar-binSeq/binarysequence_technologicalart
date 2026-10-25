@@ -14,7 +14,9 @@ export const ROUTES = {
   contact: '/contact',
 
   // Tier 2: Deep Exploratory
+  work: '/work',
   notebook: '/notebook',
+  atlas: '/atlas',
   research: '/research',
   founder: '/founder',
   continuity: '/continuity',

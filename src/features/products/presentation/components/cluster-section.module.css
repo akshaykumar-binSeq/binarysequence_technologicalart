@@ -1,0 +1,53 @@
+/**
+ * Cluster Section — Ecosystem Category Wrapper
+ * Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract (§37)
+ */
+
+.clusterWrapper {
+  margin-top: var(--space-12);
+}
+
+.clusterHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.clusterEyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.clusterIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-amber, #D97706);
+}
+
+.clusterName {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-high-contrast, #F8FAFC);
+  margin: 0;
+}
+
+.clusterLead {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted, #94A3B8);
+  max-width: var(--measure-max, 65ch);
+  margin: 0;
+}
+
+/* Monolithic Inset Slate Container (P4) */
+.consoleContainer {
+  background: #08080A;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 8px);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+}
