@@ -18,6 +18,7 @@
   * Documentation commit: `3c15797` (`docs: record initial Git baseline`)
   * Governance commit: `c512bac` (`docs(governance): establish persistent context and change propagation protocol`)
   * References commit: `9cc9ec1` (`docs(governance): codify parent-to-target retrieval, long-prompt protocol, and AI references`)
+  * Refinements commit: `b5e0661` (`docs(governance): refine long-task tracking protocol and add fresh-session test procedure`)
   * Working Tree: Clean
 
 ---
