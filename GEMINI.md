@@ -66,17 +66,48 @@ LEVEL 6: IMPLEMENTATION & RUNTIME EVIDENCE
 
 ---
 
-## 4. Bounded-Context Knowledge Retrieval Sequence
+## 4. Parent-to-Target Knowledge Retrieval Sequence
 
-To eliminate hallucinations and avoid context saturation, agents must never load the entire documentation tree indiscriminately. For every new task, follow this exact retrieval sequence:
+To eliminate hallucinations and avoid context saturation, agents must never load the entire documentation tree indiscriminately. For every new task, follow this exact logical retrieval chain:
 
+```
+Project Instructions (GEMINI.md)
+       │
+       ▼
+Living Session State (docs/ACTIVE_SESSION_STATE.md)
+       │
+       ▼
+Knowledge Index (docs/discovery/SOURCE_OF_TRUTH_INDEX.md)
+       │
+       ▼
+AI-Readable Associative Reference (docs/references/REF-*.md)
+       │
+       ▼
+Governing Parent Source Document (Levels 1–4)
+       │
+       ▼
+Referenced Subdocuments & Contracts (Level 5 *.toml / *.schema.json)
+       │
+       ▼
+Exact Authoritative Target Specification
+       │
+       ▼
+Affected Dependent Features & Common Contracts
+       │
+       ▼
+Implementation Evidence & Tests (Level 6)
+```
+
+### Retrieval Steps
 1. **Read Root Governance:** Read this `GEMINI.md` to load active operational constraints.
 2. **Read Session State:** Read [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) to inspect the current phase, active task, recent commits, and handoff notes.
-3. **Consult Index:** Read [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) to locate authoritative documents relevant to the task.
-4. **Retrieve Bounded Contracts:** Follow explicit references to load only the relevant common and feature-specific contracts (e.g. `FEATURE_SPEC.toml`, `UI_UX_WIREFRAME.toml`). Never load contracts of unrelated features.
-5. **Inspect Implementation:** Inspect actual files, tests, and Git status before proposing any modifications.
-6. **Verify Existence:** Confirm that referenced documents, schemas, and paths physically exist on disk before using them.
-7. **Identify Missing Context:** If required information is missing, document the gap instead of inventing requirements.
+3. **Consult Index:** Read [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) to locate the governing parent document.
+4. **Consult AI-Readable Reference:** Read the compact reference card in `docs/references/` (e.g. `REF-01` through `REF-04`) to evaluate constraints and token-dense requirements without loading massive prose files.
+5. **Inspect Authoritative Source:** When precise phrasing, trade-offs, or exact verbatim copy matters, read the specific sections of the authoritative Level 1–4 document.
+6. **Retrieve Bounded Contracts:** Follow explicit references to load only relevant common and feature-specific contracts (`FEATURE_SPEC.toml`, `UI_UX_WIREFRAME.toml`). Never load contracts of unrelated features.
+7. **Inspect Implementation Evidence:** Inspect actual source files, tests, and Git status before proposing modifications.
+8. **Verify Existence:** Confirm that referenced paths, schemas, and files physically exist on disk before using them.
+9. **Identify Missing Context:** If required information is missing, document the gap in `docs/contracts/DISCREPANCY_REGISTER.md` instead of guessing.
 
 ---
 
@@ -196,3 +227,36 @@ At the end of every substantive task, update [`docs/ACTIVE_SESSION_STATE.md`](fi
 * Explicit recommended next action.
 
 Never create separate, versioned handoff files. Maintain one canonical living ledger.
+
+---
+
+## 11. Long-Prompt & Complex Task Execution Protocol
+
+When a prompt is lengthy or contains multiple dependent requirements:
+
+1. **Preserve Prompt:** Store the complete original prompt in a temporary task file (`.task_<name>.tmp` or scratch directory).
+2. **Decompose to Checklist:** Create an ordered checklist mapping every requirement to its parent document, exact target, dependencies, and acceptance criteria.
+3. **Track Lifecycle State:** Track each step explicitly using standard statuses:
+   - `NOT_STARTED`
+   - `IN_PROGRESS`
+   - `BLOCKED`
+   - `COMPLETED`
+   - `VERIFIED`
+4. **Dependency Execution Order:** Execute tasks in strict dependency order. Never jump to code before governing contracts and specs exist.
+5. **Periodic Reassessment:** Reassess the full requirement set before and after significant steps.
+6. **Empirical Evidence:** Record concrete evidence (diffs, test outputs, file hashes) for completed items.
+7. **Final Audit:** Audit the completed work against the *original prompt*, not merely the checklist. Never claim completion if any required deliverable remains unverified.
+8. **Safe Cleanup:** Retain the temporary task file if work is blocked or incomplete. Delete it only after the entire task is audited, permanent records are updated, and deletion is verified safe.
+9. **Simplicity Exception:** Do not create temporary files for simple tasks that can be executed and verified reliably in a single turn.
+
+---
+
+## 12. AI-Readable Associative Reference System
+
+For every large or complex authoritative document (Levels 1–4), maintain an associated concise AI-readable reference card in `docs/references/` (e.g. `REF-01` through `REF-04`):
+
+* **Purpose:** Acts as a high-density, token-efficient comprehension and navigation aid.
+* **Content Preserved:** Source path, approval status, mandatory constraints, key decisions, parent/child relationships, dependencies, and superseded requirements.
+* **Authority Relationship:** Reference cards are subordinate navigation aids, not competing sources of truth. When exact nuance or verbatim text matters, consult the primary source document.
+* **Synchronization Mandate:** Whenever an authoritative document is modified, its corresponding reference card and knowledge index entries must be synchronized in the same task.
+

@@ -58,9 +58,15 @@
 * `ai_contract_bootstrap/docs/schemas/*.json` — Formal JSON schemas for TOML validation.
 * `src/app/docs/` and `src/core/docs/` — App shell and common interaction contracts.
 
+### AI-Readable Associative References (`docs/references/`)
+* [`REF-01`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md) — Master Strategy Canon Reference (Level 1).
+* [`REF-02`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md) — Content Specification Reference (Level 2).
+* [`REF-03`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) — IA, Viewport, Motion & Loading Contract Reference (Level 3).
+* [`REF-04`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) — DDD Architectural Guidelines Reference (Level 4).
+
 ### Discovery & Governance Ledger
-* [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) — Root-level operational governance rules.
-* [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) — Precedence ranking & audit matrix.
+* [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) — Root-level operational governance rules (Parent-to-Target & Long-Prompt protocols).
+* [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) — Precedence ranking, audit matrix & reference index.
 * [`docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) — Dual Markdown/TOML model & decision registry schema.
 * [`docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md`](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) — 10-item sign-off checklist.
 * [`docs/discovery/CANONICAL_WORKSPACE_AND_GIT_BASELINE_REPORT.md`](file:///G:/binarysequence_techart/docs/discovery/CANONICAL_WORKSPACE_AND_GIT_BASELINE_REPORT.md) — Verified Git initialization evidence.
@@ -77,14 +83,19 @@
 
 ## 5. Active Task Log & Handoff Summary
 
-* **Task Just Completed:** Established Persistent Project Context, Root Governance Protocol (`GEMINI.md`), Compatibility Pointer (`AGENTS.md`), and Living Session State (`docs/ACTIVE_SESSION_STATE.md`).
+* **Active Phase:** Phase 2: Persistent AI Context and Documentation Governance.
+* **Task Objective:** Established the complete persistent project context, Parent-to-Target Retrieval sequence, Long-Prompt Execution Protocol, AI-Readable Associative Reference Index (`docs/references/`), and living session handoff system.
 * **Change Classification:** `CROSS-CUTTING` + `COMMON`
+* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0 & Layout Contract Final, Level 4 DDD Guidelines.
 * **Files Created:**
-  * [`G:\binarysequence_techart\GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) (11,116 bytes, native auto-loaded rule).
-  * [`G:\binarysequence_techart\AGENTS.md`](file:///G:/binarysequence_techart/AGENTS.md) (Lightweight compatibility pointer).
-  * [`G:\binarysequence_techart\docs\ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (This living handoff ledger).
+  * [`docs/references/REF-01-FINAL-MASTER-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md)
+  * [`docs/references/REF-02-CONTENT-SPEC-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md)
+  * [`docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md)
+  * [`docs/references/REF-04-DDD-ARCHITECTURE.md`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md)
 * **Files Updated:**
-  * [`G:\binarysequence_techart\docs\discovery\DEVELOPMENT_READINESS_CHECKLIST.md`](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) (Updated DR-01 & DR-10 to COMPLETE).
-  * [`G:\binarysequence_techart\docs\discovery\SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) (Integrated global layout contract & Git baseline references).
-  * [`G:\binarysequence_techart\docs\discovery\DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) (Added change classifications, common-to-feature dependency protocol, and no-unnecessary-documents rule).
-* **Next Recommended Action:** Present governance artifacts for founder review; stage and commit the governance files to Git.
+  * [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) (Expanded with Parent-to-Target flow, Long-Prompt execution protocol, and AI-Readable reference rules; verified at 14.5 KB).
+  * [`docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) (Codified Sections 4.7, 4.8, 4.9).
+  * [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) (Added Section 3 AI-Readable Associative Reference Index).
+  * [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (Updated in place).
+* **Verification Evidence:** All files inspected via `Test-Path`, sizes confirmed below limits, Git diffs reviewed, working tree clean after commit.
+* **Next Recommended Action:** Review framework selection (`DR-03` / `EDR-001`) and host Node.js path configuration (`DR-02`).

@@ -246,6 +246,57 @@ Substantive engineering tasks execute through 7 phases:
 * **Phase F — Verify:** Execute terminal verification (tests, lint, hash checks, diff reviews).
 * **Phase G — Handoff:** Update `docs/ACTIVE_SESSION_STATE.md` in place.
 
+### 4.7 Parent-to-Target Knowledge Retrieval Sequence
+
+Agents must navigate the established documentation hierarchy systematically rather than executing arbitrary text searches:
+
+```
+Project Instructions (GEMINI.md)
+       │
+       ▼
+Living Session State (docs/ACTIVE_SESSION_STATE.md)
+       │
+       ▼
+Knowledge Index (docs/discovery/SOURCE_OF_TRUTH_INDEX.md)
+       │
+       ▼
+AI-Readable Associative Reference (docs/references/REF-*.md)
+       │
+       ▼
+Governing Parent Source Document (Levels 1–4)
+       │
+       ▼
+Referenced Subdocuments & Contracts (Level 5 *.toml / *.schema.json)
+       │
+       ▼
+Exact Authoritative Target Specification
+       │
+       ▼
+Affected Dependent Features & Common Contracts
+       │
+       ▼
+Implementation Evidence & Tests (Level 6)
+```
+
+### 4.8 Long-Prompt & Complex Task Execution Protocol
+
+When a task prompt contains multiple dependent requirements or deliverables:
+1. **Preserve Prompt:** Store the complete original prompt in a temporary task file (`.task_<name>.tmp` or scratch directory).
+2. **Decompose to Checklist:** Map each requirement to its parent document, exact target, dependencies, and acceptance criteria.
+3. **Track Lifecycle State:** Use explicit statuses (`NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `COMPLETED`, `VERIFIED`).
+4. **Dependency Execution Order:** Execute in logical order; never jump ahead to code before specifications are locked.
+5. **Periodic Reassessment:** Re-evaluate the entire requirement set before and after significant steps.
+6. **Empirical Evidence:** Record concrete command outputs, file hashes, and test results.
+7. **Final Audit:** Audit against the original prompt before declaring completion.
+8. **Safe Cleanup:** Delete the temporary file only after all records are updated and deletion is verified safe.
+
+### 4.9 AI-Readable Associative Reference System
+
+For large Level 1–4 foundational specifications, maintain compact structured reference cards under `docs/references/` (e.g. `REF-01` through `REF-04`):
+* Preserves core invariants, rules, decisions, and dependencies.
+* Reduces context consumption while maintaining 100% fidelity to governing constraints.
+* Subordinate to primary source documents; synchronized whenever source files are updated.
+
 ---
 
 ## 5. Handoff to Phase 1: Documentation System & Architecture Setup

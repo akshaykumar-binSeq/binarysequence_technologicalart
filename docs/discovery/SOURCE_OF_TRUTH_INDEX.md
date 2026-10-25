@@ -207,3 +207,18 @@ Authority in this project is not determined by filename or version number alone,
 - **Authority:** **Proposed Implementation Model (Level 5 — Candidate).** Not yet approved or adopted into the active workspace.
 - **Detailed Assessment:** See dedicated report `docs/discovery/BOOTSTRAP_ASSESSMENT.md`.
 - **Proposed Role:** Selective integration into `docs/contracts/` and `docs/schemas/` after resolving stack and validator limitations.
+
+---
+
+## 3. AI-Readable Associative Reference Index (`docs/references/`)
+
+To optimize AI agent context retrieval and prevent token exhaustion, the governing Level 1–4 documents are paired with high-density, structured reference cards in `docs/references/`:
+
+| Reference Card | Source Document | Authority Tier | Scope & Key Constraints Preserved |
+| :--- | :--- | :--- | :--- |
+| [`REF-01`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md) | `Binary_Sequence_Technological_Art_Final_Master_v1.1.md` | Level 1 Master | 17 Formal Changes, 3-layer 5–15 yr horizon, Minimum Appropriate Technology rule, 9-step execution order, operating capacity. |
+| [`REF-02`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md) | `audience_facing_content_specification_v1_1.md` | Level 2 Content | Two-Tier Discovery Model (Tier 1 Commercial vs Tier 2 Exploratory), 7 Invariant Editorial Rules, contact email resolution. |
+| [`REF-03`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) | `Binary_Sequence_Information_Architecture_v2.0.md` & `binary_sequence_screen_layout_ia_motion_loading_contract_final.md` | Level 3 IA & Sensory | 10-screen sitemap, 5 viewport breakpoints, 8pt spatial grid, fluid measure, dark-surface ergonomics, hardware motion physics, loading latency tiers. |
+| [`REF-04`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) | `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md` | Level 4 Architecture | 4 clean architecture layers, public gateway boundaries (zero internal cross-feature imports), shared kernel discipline, 8-sprint feature lifecycle. |
+
+* **Retrieval Protocol:** Agents read the reference card first. When verbatim text, editorial nuance, or legal phrasing is required, the agent consults the primary source document. Reference cards are synchronized whenever primary sources change.
