@@ -282,13 +282,21 @@ Implementation Evidence & Tests (Level 6)
 
 When a task prompt contains multiple dependent requirements or deliverables:
 1. **Preserve Prompt:** Store the complete original prompt in a temporary task file (`.task_<name>.tmp` or scratch directory).
-2. **Decompose to Checklist:** Map each requirement to its parent document, exact target, dependencies, and acceptance criteria.
-3. **Track Lifecycle State:** Use explicit statuses (`NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `COMPLETED`, `VERIFIED`).
-4. **Dependency Execution Order:** Execute in logical order; never jump ahead to code before specifications are locked.
-5. **Periodic Reassessment:** Re-evaluate the entire requirement set before and after significant steps.
-6. **Empirical Evidence:** Record concrete command outputs, file hashes, and test results.
-7. **Final Audit:** Audit against the original prompt before declaring completion.
-8. **Safe Cleanup:** Delete the temporary file only after all records are updated and deletion is verified safe.
+2. **Decompose to Unique Step Identifiers:** Create an ordered checklist mapping every requirement to a unique, stable alphanumeric identifier (e.g. `REQ-01`, `REQ-02`, `REQ-03`).
+3. **Map Boundaries & Acceptance Criteria:** Map each identifier to its governing parent document, exact target files/sections, explicit dependencies, and measurable acceptance criteria. Every original requirement must map to one or more execution steps or be explicitly identified as blocked, awaiting approval, out of scope, or unresolved.
+4. **Lifecycle State Vocabulary:** Track each step explicitly using standard statuses:
+   - `NOT_STARTED` — Defined but work has not begun.
+   - `IN_PROGRESS` — Currently under active execution.
+   - `BLOCKED` — Execution obstructed by external tooling, environment, or dependency.
+   - `AWAITING_APPROVAL` — Change requires founder sign-off before proceeding.
+   - `COMPLETED` — Work finished, but acceptance criteria not yet empirically verified.
+   - `VERIFIED` — Concrete empirical evidence (passing tests, clean diffs, verified hashes) confirms acceptance criteria are met. Work must never be marked `VERIFIED` without evidence.
+5. **Dependency Execution Order:** Execute in logical order; never jump ahead to code before specifications are locked.
+6. **Periodic Reassessment:** Re-evaluate the entire requirement set before and after significant steps.
+7. **Empirical Evidence:** Record concrete command outputs, file hashes, and test results for completed items.
+8. **Final Audit Against Original Prompt:** Audit the final result against the *complete original prompt*, not merely the derived checklist. Never claim completion if any required deliverable remains unverified.
+9. **Safe Cleanup:** Retain the temporary task file if work is blocked, incomplete, or awaiting approval. Delete it only after all permanent records are preserved in Git, no further work depends on it, and deletion is verified safe.
+10. **Simplicity Exception:** Do not create temporary files for simple tasks that can be executed and verified reliably in a single turn.
 
 ### 4.9 AI-Readable Associative Reference System
 
@@ -296,6 +304,22 @@ For large Level 1–4 foundational specifications, maintain compact structured r
 * Preserves core invariants, rules, decisions, and dependencies.
 * Reduces context consumption while maintaining 100% fidelity to governing constraints.
 * Subordinate to primary source documents; synchronized whenever source files are updated.
+
+### 4.10 Fresh-Session Persistence Verification Procedure
+
+To empirically test whether a newly started Antigravity session correctly discovers and applies persistent repository governance without relying on prior conversation history:
+
+1. **Test Prerequisite:** Open a completely fresh conversation window in Antigravity anchored to `G:\binarysequence_techart\`.
+2. **Audit Prompt:** Issue a neutral query requiring root governance grounding, such as:
+   > *"What is the active project, current phase, latest verified commit, and the status of the framework selection decision?"*
+3. **Verification Criteria (Pass/Fail):**
+   - **Check 1 (Root Instruction Auto-Discovery):** The fresh agent must reference [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) as its root governance guide.
+   - **Check 2 (Living Ledger Navigation):** The fresh agent must consult [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) to report the current phase and recent commit history.
+   - **Check 3 (Hierarchy Grounding):** The fresh agent must consult [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) and relevant reference cards rather than searching randomly.
+   - **Check 4 (Decision Status Fidelity):** The fresh agent must explicitly identify `DR-03` / `DEC-006` (Astro vs. Next.js) as `PROPOSED / UNRESOLVED`, and must **not** assume Astro or Next.js has been selected.
+   - **Check 5 (History Independence):** The fresh agent must not hallucinate or assume conversation history from previous sessions.
+   - **Check 6 (Evidence-Based Gap Reporting):** The fresh agent must report any missing context or tool blockers (`DR-02`) instead of inventing assumptions.
+4. **Execution Limitation:** This test requires a user-initiated new chat session in the IDE UI. An active agent within an ongoing session cannot simulate a user-level IDE restart.
 
 ---
 

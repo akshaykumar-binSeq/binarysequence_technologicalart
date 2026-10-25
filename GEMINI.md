@@ -232,22 +232,24 @@ Never create separate, versioned handoff files. Maintain one canonical living le
 
 ## 11. Long-Prompt & Complex Task Execution Protocol
 
-When a prompt is lengthy or contains multiple dependent requirements:
+When a prompt is lengthy, multi-step, or contains multiple dependent requirements:
 
 1. **Preserve Prompt:** Store the complete original prompt in a temporary task file (`.task_<name>.tmp` or scratch directory).
-2. **Decompose to Checklist:** Create an ordered checklist mapping every requirement to its parent document, exact target, dependencies, and acceptance criteria.
-3. **Track Lifecycle State:** Track each step explicitly using standard statuses:
-   - `NOT_STARTED`
-   - `IN_PROGRESS`
-   - `BLOCKED`
-   - `COMPLETED`
-   - `VERIFIED`
-4. **Dependency Execution Order:** Execute tasks in strict dependency order. Never jump to code before governing contracts and specs exist.
-5. **Periodic Reassessment:** Reassess the full requirement set before and after significant steps.
-6. **Empirical Evidence:** Record concrete evidence (diffs, test outputs, file hashes) for completed items.
-7. **Final Audit:** Audit the completed work against the *original prompt*, not merely the checklist. Never claim completion if any required deliverable remains unverified.
-8. **Safe Cleanup:** Retain the temporary task file if work is blocked or incomplete. Delete it only after the entire task is audited, permanent records are updated, and deletion is verified safe.
-9. **Simplicity Exception:** Do not create temporary files for simple tasks that can be executed and verified reliably in a single turn.
+2. **Decompose to Unique Step Identifiers:** Create an ordered checklist mapping every requirement to a unique, stable alphanumeric identifier (e.g. `REQ-01`, `REQ-02`, `REQ-03`).
+3. **Map Boundaries & Acceptance Criteria:** Map each identifier to its governing parent document, exact target files/sections, explicit dependencies, and measurable acceptance criteria. Every original requirement must map to one or more execution steps or be explicitly identified as blocked, awaiting approval, out of scope, or unresolved.
+4. **Lifecycle State Vocabulary:** Track each step explicitly using standard statuses:
+   - `NOT_STARTED` — Defined but work has not begun.
+   - `IN_PROGRESS` — Currently under active execution.
+   - `BLOCKED` — Execution is obstructed by external tooling, environment, or dependency.
+   - `AWAITING_APPROVAL` — Change requires founder sign-off before proceeding.
+   - `COMPLETED` — Work finished, but acceptance criteria not yet empirically verified.
+   - `VERIFIED` — Concrete empirical evidence (passing tests, clean diffs, verified hashes) confirms acceptance criteria are met. Work must never be marked `VERIFIED` without evidence.
+5. **Dependency Execution Order:** Execute tasks in strict dependency order. Never jump to implementation before governing contracts and specs are validated.
+6. **Periodic Reassessment:** Re-evaluate the entire requirement set before and after significant steps.
+7. **Empirical Evidence:** Record concrete command outputs, file hashes, and test results for completed items.
+8. **Final Audit Against Original Prompt:** Audit the final result against the *complete original prompt*, not merely the derived checklist. Never claim completion if any required deliverable remains unverified.
+9. **Safe Cleanup:** Retain the temporary task file if work is blocked, incomplete, or awaiting approval. Delete it only after the entire task is audited, permanent records are preserved in Git, no further work depends on it, and deletion is verified safe.
+10. **Simplicity Exception:** Do not create temporary files for simple tasks that can be executed and verified reliably in a single turn.
 
 ---
 
