@@ -1,0 +1,96 @@
+[bounded_context]
+feature_id = "FEAT-01-ONB"
+feature_name = "onboarding"
+feature_version = "1.0.0"
+implementation_phase = "01"
+status = "planned"
+
+[architecture]
+layers = ["domain", "application", "infrastructure", "presentation"]
+allowed_dependency_roots = ["src/core"]
+cross_feature_imports = false
+
+[domain.state_machine]
+initial = "NOT_STARTED"
+states = ["NOT_STARTED", "IN_SEQUENCE", "COMPLETED", "SKIPPED"]
+
+[domain.state_machine.transitions]
+NOT_STARTED = ["IN_SEQUENCE", "SKIPPED"]
+IN_SEQUENCE = ["COMPLETED", "SKIPPED"]
+COMPLETED = []
+SKIPPED = []
+
+[[domain.invariants]]
+id = "ONB-INV-001"
+predicate = "reduced_motion == true -> bypass_nonessential_motion"
+description = "Reduced-motion preference bypasses non-essential introduction motion."
+severity = "must"
+
+[[domain.invariants]]
+id = "ONB-INV-002"
+predicate = "essential_content_available_without_client_gate == true"
+description = "Crawler handling must not be the primary SEO strategy; core content remains accessible."
+severity = "must"
+
+[[domain.invariants]]
+id = "ONB-INV-003"
+predicate = "storage_exception == true -> no_unhandled_exception"
+description = "Storage access failures degrade safely."
+severity = "must"
+
+[[domain.invariants]]
+id = "ONB-INV-004"
+predicate = "escape_key_down == true and dismissible == true -> transition_to(SKIPPED)"
+description = "Escape dismisses the sequence when dismissal is available."
+severity = "must"
+
+[application.use_cases.CheckOnboardingStatus]
+input = "void"
+output = "OnboardingState"
+side_effects = false
+
+[application.use_cases.SkipOnboarding]
+input = "void"
+output = "void"
+side_effects = "persist(SKIPPED) when persistence is available"
+
+[application.use_cases.CompleteOnboarding]
+input = "void"
+output = "void"
+side_effects = "persist(COMPLETED) when persistence is available"
+
+[infrastructure.storage_port]
+interface = "IOnboardingStorageRepository"
+primary_adapter = "BrowserLocalStorageOnboardingRepository"
+fallback_adapter = "InMemoryOnboardingRepository"
+storage_key = "bs_onboarding_state_v1"
+
+[[testing.fixtures]]
+id = "ONB-FIX-001"
+scenario = "first_visit_standard"
+prefers_reduced_motion = false
+is_crawler = false
+storage_available = true
+stored_value = "null"
+expected_initial_state = "NOT_STARTED"
+expected_rendered_ui = "INTRODUCTION_MODAL_VISIBLE"
+
+[[testing.fixtures]]
+id = "ONB-FIX-002"
+scenario = "reduced_motion_active"
+prefers_reduced_motion = true
+is_crawler = false
+storage_available = true
+stored_value = "null"
+expected_initial_state = "SKIPPED"
+expected_rendered_ui = "GATE_BYPASS_NULL"
+
+[[testing.fixtures]]
+id = "ONB-FIX-003"
+scenario = "storage_unavailable"
+prefers_reduced_motion = false
+is_crawler = false
+storage_available = false
+stored_value = "null"
+expected_initial_state = "NOT_STARTED"
+expected_fallback_mode = "IN_MEMORY_ONLY"

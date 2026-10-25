@@ -1,0 +1,58 @@
+[gateway_contract]
+interface_name = "FeatureGatewaySummary"
+target_file = "src/core/gateways/FeatureGatewaySummary.ts"
+immutability = true
+strict_boundary_rule = "Navigation and Home consume gateway summaries; feature internals are private."
+
+[schema]
+required_fields = ["featureId", "sequenceIndex", "title", "subtitle", "tier", "availability", "interactivePreview", "navigation"]
+
+[schema.fields.featureId]
+type = "string"
+pattern = "^FEAT-[0-9]{2}-[A-Z0-9]+$"
+
+[schema.fields.sequenceIndex]
+type = "string"
+pattern = "^[0-9]{2}$"
+
+[schema.fields.title]
+type = "string"
+max_length = 60
+
+[schema.fields.subtitle]
+type = "string"
+max_length = 160
+
+[schema.fields.tier]
+type = "enum"
+allowed_values = ["tier_1_commercial", "tier_2_exploratory", "utility_governance"]
+
+[schema.fields.availability]
+type = "enum"
+allowed_values = ["available", "in_development", "experimental", "planned"]
+
+[schema.fields.interactivePreview]
+type = "object"
+required = true
+
+[schema.fields.interactivePreview.properties.triggerLabel]
+type = "string"
+
+[schema.fields.interactivePreview.properties.previewType]
+type = "enum"
+allowed_values = ["sequence-scrubber", "complexity-toggle", "ecosystem-map", "stewardship-horizon", "none"]
+
+[schema.fields.interactivePreview.properties.fallbackStaticText]
+type = "string"
+required = true
+
+[schema.fields.navigation]
+type = "object"
+required = true
+
+[schema.fields.navigation.properties.label]
+type = "string"
+
+[schema.fields.navigation.properties.routePath]
+type = "string"
+pattern = "^(/|/[a-z0-9-]+)$"

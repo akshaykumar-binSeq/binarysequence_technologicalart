@@ -1,0 +1,81 @@
+# Binary Sequence Technological Art - .gitignore
+# Canonical repository root: G:\binarysequence_techart\
+
+# 1. Environment variables & credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.cer
+*.crt
+*credentials*.json
+*service-account*.json
+
+# 2. Dependency directories
+node_modules/
+jspm_packages/
+
+# 3. Production build outputs & generated assets
+dist/
+build/
+out/
+.output/
+
+# 4. Framework caches & dev artifacts
+.astro/
+.next/
+.nuxt/
+.svelte-kit/
+.cache/
+.turbo/
+.parcel-cache/
+
+# 5. Runtime & package-manager logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 6. Test coverage
+coverage/
+.nyc_output/
+
+# 7. IDE & editor state
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 8. Operating System metadata
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# 9. Temporary files & swap
+*.tmp
+*.temp
+*~
+
+# 10. Excluded historical preview artifacts
+docs/discovery/DOCUMENT_6_PREVIEW.md
+
+# 11. Local distribution archives (retained on disk, uncompressed sources tracked)
+/Binary_Sequence_AI_Development_Contract_System_v1.0_bootstrap.zip

@@ -1,0 +1,63 @@
+[bounded_context]
+feature_id = "FEAT-02-HOME"
+feature_name = "home"
+feature_version = "1.0.0"
+public_route = "/"
+tier = "tier_1_commercial"
+status = "planned"
+
+[architecture]
+layers = ["domain", "application", "infrastructure", "presentation"]
+allowed_dependency_roots = ["src/core"]
+cross_feature_imports = false
+consumed_gateways = ["FEAT-03-STUDIO", "FEAT-04-PROD", "FEAT-05-METH", "FEAT-06-BLUE"]
+
+[layout]
+container_max_width = "1280px"
+max_sections = 6
+desktop_scroll_budget = "3_viewport_scrolls"
+grid_columns = 12
+
+[[sections]]
+id = "hero"
+order = 1
+priority = "essential"
+heading = "Everyone deserves an enterprise solution."
+actions = [
+  { label = "Explore the Sequence Blueprint", route = "/blueprint", role = "primary" },
+  { label = "View Systems & Products", route = "/products", role = "secondary" }
+]
+
+[[sections]]
+id = "complexity-absorption"
+order = 2
+priority = "essential"
+heading = "Complexity belongs in the architecture, not in your user's hands."
+
+[[sections]]
+id = "service-disciplines"
+order = 3
+priority = "important"
+disciplines = ["Custom Product Engineering", "Architecture & Modernization", "Operations & Cloud", "Product Media"]
+
+[[sections]]
+id = "featured-ecosystem"
+order = 4
+priority = "important"
+featured_products = ["Supermarket", "Alert Wave", "HREWEMS"]
+
+[[sections]]
+id = "sequence-overview"
+order = 5
+priority = "important"
+stages_count = 11
+route = "/method"
+
+[[sections]]
+id = "terminal-action"
+order = 6
+priority = "essential"
+actions = [
+  { label = "Initiate a Sequence Blueprint", route = "/blueprint" },
+  { label = "Direct Technical Inquiry", route = "/contact" }
+]

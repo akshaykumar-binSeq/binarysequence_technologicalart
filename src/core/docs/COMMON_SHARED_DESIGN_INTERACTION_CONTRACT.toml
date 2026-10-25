@@ -1,0 +1,97 @@
+[meta]
+name = "Binary Sequence Common Shared Design & Interaction Contract"
+status = "canonical_baseline"
+design_direction = "Swiss Laboratory Meets Natural Observation"
+
+[spacing]
+space_1 = "0.25rem"
+space_2 = "0.50rem"
+space_3 = "0.75rem"
+space_4 = "1.00rem"
+space_6 = "1.50rem"
+space_8 = "2.00rem"
+space_12 = "3.00rem"
+space_16 = "4.00rem"
+space_24 = "6.00rem"
+
+[grid]
+mobile_columns = 4
+mobile_gap = "16px"
+tablet_columns = 8
+tablet_gap = "24px"
+desktop_columns = 12
+desktop_gap = "32px"
+
+[typography.families]
+structural = "Inter Tight, -apple-system, BlinkMacSystemFont, sans-serif"
+editorial = "Newsreader, Georgia, serif"
+technical = "JetBrains Mono, monospace"
+
+[typography.scale]
+display = "clamp(2.0rem, 1.5rem + 2.5vw, 3.5rem)"
+h2 = "clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem)"
+h3 = "clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem)"
+lead = "clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem)"
+base = "1.0rem"
+sm = "0.875rem"
+xs = "0.75rem"
+
+[typography.measure]
+min_cpl = 45
+max_cpl = 75
+target_cpl = 65
+mobile_input_min_font_size = "16px"
+
+[colors.primitives]
+obsidian_carbon = "#0B0C0E"
+warm_alabaster = "#F6F5F0"
+signal_amber = "#D97706"
+signal_amber_hover = "#F59E0B"
+deep_forest_slate = "#1E293B"
+elevated_surface_slate = "#12151B"
+
+[colors.semantic]
+text_muted = "#94A3B8"
+status_live = "#10B981"
+status_development = "#F59E0B"
+status_error = "#EF4444"
+focus_ring = "#D97706"
+
+[accessibility.contrast]
+body_min_ratio = 4.5
+large_text_min_ratio = 3.0
+color_independence_enforced = true
+
+[motion.durations]
+fast = "150ms"
+medium = "300ms"
+exit = "200ms"
+slow = "450ms"
+
+[motion.easings]
+standard = "cubic-bezier(0.4, 0.0, 0.2, 1)"
+out_expo = "cubic-bezier(0.16, 1, 0.3, 1)"
+in_curve = "cubic-bezier(0.4, 0.0, 1, 1)"
+
+[motion.invariants]
+composited_properties_only = ["transform", "opacity"]
+prefers_reduced_motion_override = "0.01ms"
+flashing_max_frequency = 3
+cls_budget_max = 0.05
+
+[loading.latency_thresholds]
+instant_max_ms = 100
+quiet_debounce_max_ms = 200
+short_wait_max_ms = 1000
+structural_wait_max_ms = 10000
+hard_timeout_gate_ms = 15000
+
+[interaction.touch]
+min_hit_area_px = 44
+preferred_hit_area_px = 48
+
+[interaction.audio]
+opt_in_default = true
+frequency_min_hz = 120
+frequency_max_hz = 1800
+harmonics_strict = true

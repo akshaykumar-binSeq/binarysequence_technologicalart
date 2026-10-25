@@ -1,0 +1,67 @@
+[routing]
+framework = "Next.js App Router"
+status = "proposed_baseline"
+route_files_import = "feature_root_index_only"
+not_found_boundary = "app_router_not_found"
+error_boundary = "app_router_error_boundary"
+metadata_source = "approved_feature_content_contract"
+
+[[routes]]
+path = "/"
+feature_id = "FEAT-02-HOME"
+feature = "home"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/studio"
+feature_id = "FEAT-03-STUDIO"
+feature = "studio"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/products"
+feature_id = "FEAT-04-PROD"
+feature = "products"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/method"
+feature_id = "FEAT-05-METH"
+feature = "sequence-method"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/blueprint"
+feature_id = "FEAT-06-BLUE"
+feature = "sequence-blueprint"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/contact"
+feature_id = "FEAT-07-CONT"
+feature = "contact"
+visibility = "tier_1_commercial"
+
+[[routes]]
+path = "/notebook"
+feature_id = "FEAT-08-NOTE"
+feature = "engineering-notebook"
+visibility = "tier_2_exploratory"
+
+[[routes]]
+path = "/research"
+feature_id = "FEAT-09-RES"
+feature = "research-experiments"
+visibility = "tier_2_exploratory"
+
+[[routes]]
+path = "/founder"
+feature_id = "FEAT-10-FNDR"
+feature = "studio-founder"
+visibility = "tier_2_exploratory"
+
+[[routes]]
+path = "/continuity"
+feature_id = "FEAT-11-TRST"
+feature = "continuity-trust"
+visibility = "tier_2_exploratory"

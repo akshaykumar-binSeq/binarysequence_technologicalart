@@ -1,0 +1,55 @@
+[view.root]
+tag = "section"
+role = "dialog"
+aria_modal = true
+aria_labelledby = "onb-node-title"
+aria_describedby = "onb-node-desc"
+layout = "fixed_inset_zero"
+z_index = 50
+background = "var(--color-obsidian-carbon)"
+display = "flex"
+align_items = "center"
+justify_content = "center"
+dismissible = true
+
+[[view.nodes]]
+id = "onb-node-eyebrow"
+tag = "span"
+text = "BINARY SEQUENCE TECHNOLOGICAL ART"
+typography = "var(--font-technical)"
+font_size = "var(--text-xs)"
+color = "var(--color-signal-amber)"
+
+[[view.nodes]]
+id = "onb-node-title"
+tag = "h1"
+text = "Everyone deserves an enterprise solution."
+typography = "var(--font-structural)"
+font_size = "var(--heading-lg)"
+color = "var(--color-warm-alabaster)"
+
+[[view.nodes]]
+id = "onb-node-desc"
+tag = "p"
+text = "Thoughtful engineering for digital products that work for people—built around the problem, the people using it, and the system it may need to become."
+typography = "var(--font-editorial)"
+font_size = "var(--text-lg)"
+color = "var(--text-muted)"
+
+[[view.nodes]]
+id = "btn-enter"
+tag = "button"
+text = "Enter the studio"
+action = "CompleteOnboarding"
+autofocus = true
+style = "primary_solid"
+background = "var(--color-warm-alabaster)"
+text_color = "var(--color-obsidian-carbon)"
+
+[[view.nodes]]
+id = "btn-skip"
+tag = "button"
+text = "Skip introduction"
+action = "SkipOnboarding"
+style = "ghost"
+text_color = "var(--text-muted)"

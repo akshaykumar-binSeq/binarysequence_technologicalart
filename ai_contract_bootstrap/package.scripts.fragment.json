@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "verify:specs": "node scripts/validate-specs.mjs",
+    "verify:boundaries": "node scripts/validate-feature-boundaries.mjs",
+    "verify:tokens": "node scripts/validate-design-tokens.mjs",
+    "verify:architecture": "npm run verify:specs && npm run verify:boundaries && npm run verify:tokens"
+  },
+  "devDependencies": {
+    "@iarna/toml": "^3.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+[protocol]
+name = "Binary Sequence AI Development Task Protocol"
+version = "1.0.0"
+enforcement = "contract_checked_bounded_changes"
+
+[context_selection_rules.domain_modelling]
+required_files = ["docs/ARCHITECTURE_INDEX.toml", "src/features/{feature}/docs/FEATURE_SPEC.toml"]
+conditional_files = ["src/features/{feature}/docs/FEATURE_SPEC.md", "docs/CORE_GATEWAY_CONTRACTS.toml"]
+prohibited_edits_by_default = ["src/core/**", "src/features/{other_feature}/**", "src/app/**"]
+
+[context_selection_rules.presentation_ui]
+required_files = ["docs/GLOBAL_DESIGN_SYSTEM.toml", "src/features/{feature}/docs/FEATURE_SPEC.toml", "src/features/{feature}/docs/UI_UX_WIREFRAME.toml"]
+conditional_files = ["src/features/{feature}/docs/STYLES_THEME.toml", "existing_feature_source", "existing_tests"]
+prohibited_edits_by_default = ["src/core/**", "src/features/{other_feature}/**", "src/app/**"]
+
+[context_selection_rules.gateway_integration]
+required_files = ["docs/CORE_GATEWAY_CONTRACTS.toml", "src/app/docs/APP_SHELL_ROUTING.toml", "src/features/{feature}/index.ts"]
+conditional_files = ["docs/ARCHITECTURE_INDEX.toml", "affected_feature_public_exports", "integration_tests"]
+prohibited_edits_by_default = ["src/features/{feature}/domain/**"]
+
+[task_lifecycle_steps]
+step_1 = "Inspect repository ground truth and current tests."
+step_2 = "Load the minimum sufficient authoritative context."
+step_3 = "Record material discrepancies before implementation."
+step_4 = "Implement only within authorized paths by default."
+step_5 = "Run relevant contract, boundary, token, type, test, and build checks."
+step_6 = "Update docs based on approved decisions and implementation evidence."
+step_7 = "Report evidence and unresolved risks."
+step_8 = "Stop at the approved phase boundary; await sign-off."

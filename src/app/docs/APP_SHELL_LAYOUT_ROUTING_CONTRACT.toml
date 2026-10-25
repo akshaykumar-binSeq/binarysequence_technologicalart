@@ -1,0 +1,119 @@
+[shell]
+name = "Binary Sequence App Shell"
+status = "canonical_baseline"
+max_content_width = "1280px"
+container_range_min = "1140px"
+container_range_max = "1440px"
+foveal_frame_ratio = "4:3"
+landscape_mobile_max_height = "440px"
+landscape_mobile_header_max_ratio = 0.15
+single_document_scroll = true
+top_progress_bar_height = "2px"
+top_progress_bar_color = "#D97706"
+
+[z_index]
+below = -1
+base = 0
+surface = 10
+sticky = 100
+drawer = 200
+backdrop = 300
+modal = 400
+popover = 500
+toast = 600
+skip_link = 700
+
+[breakpoints]
+mobile_portrait_max = "639px"
+mobile_landscape_max = "767px"
+tablet_portrait_max = "1024px"
+desktop_min = "1025px"
+widescreen_min = "1441px"
+
+[[routes]]
+path = "/"
+tier = "tier_1_commercial"
+feature_id = "FEAT-02-HOME"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/studio"
+tier = "tier_1_commercial"
+feature_id = "FEAT-03-STUDIO"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/products"
+tier = "tier_1_commercial"
+feature_id = "FEAT-04-PROD"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/method"
+tier = "tier_1_commercial"
+feature_id = "FEAT-05-METH"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/blueprint"
+tier = "tier_1_commercial"
+feature_id = "FEAT-06-BLUE"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/contact"
+tier = "tier_1_commercial"
+feature_id = "FEAT-07-CONT"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/notebook"
+tier = "tier_2_exploratory"
+feature_id = "FEAT-08-NOTE"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/research"
+tier = "tier_2_exploratory"
+feature_id = "FEAT-09-RES"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/founder"
+tier = "tier_2_exploratory"
+feature_id = "FEAT-10-FNDR"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/continuity"
+tier = "tier_2_exploratory"
+feature_id = "FEAT-11-TRST"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/privacy"
+tier = "utility_governance"
+layout = "standard_centered"
+auth_required = false
+
+[[routes]]
+path = "/service-boundaries"
+tier = "utility_governance"
+layout = "standard_centered"
+auth_required = false
+
+[print]
+invert_dark_backgrounds = true
+hide_selectors = ["header", "footer", "nav", ".bs-no-print", "[role='dialog']", "button"]
+expand_external_links = true
+page_break_inside_avoid = ["article", "section", "pre", "blockquote", ".bs-card", "tr"]

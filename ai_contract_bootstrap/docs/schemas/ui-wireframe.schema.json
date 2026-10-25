@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"UI wireframe TOML parsed data","type":"object","required":["view"],"properties":{"view":{"type":"object","required":["root","nodes"]}}}

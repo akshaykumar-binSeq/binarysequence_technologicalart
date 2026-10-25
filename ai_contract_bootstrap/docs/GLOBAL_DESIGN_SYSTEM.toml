@@ -1,0 +1,67 @@
+[meta]
+design_direction = "Swiss Laboratory Meets Natural Observation"
+version = "1.1.0"
+status = "proposed_baseline"
+authority = "canonical_tokens"
+
+[colors.primitives]
+obsidian_carbon = "#0B0C0E"
+warm_alabaster = "#F6F5F0"
+signal_amber = "#D97706"
+deep_forest_slate = "#1E293B"
+
+[colors.semantic]
+surface_ground = "var(--color-obsidian-carbon)"
+surface_paper = "var(--color-warm-alabaster)"
+accent_action = "var(--color-signal-amber)"
+border_structural = "var(--color-deep-forest-slate)"
+text_high_contrast = "#F6F5F0"
+text_muted = "#94A3B8"
+text_inverted = "#0B0C0E"
+focus_ring = "#D97706"
+
+[typography.families]
+structural = "Inter Tight, -apple-system, BlinkMacSystemFont, sans-serif"
+editorial = "Newsreader, Georgia, serif"
+technical = "JetBrains Mono, monospace"
+
+[typography.scale]
+text_xs = "0.75rem"
+text_sm = "0.875rem"
+text_base = "1rem"
+text_lg = "1.125rem"
+text_xl = "1.25rem"
+heading_sm = "1.5rem"
+heading_md = "2rem"
+heading_lg = "2.5rem"
+heading_xl = "3.5rem"
+
+[spacing]
+space_1 = "0.25rem"
+space_2 = "0.5rem"
+space_3 = "0.75rem"
+space_4 = "1rem"
+space_6 = "1.5rem"
+space_8 = "2rem"
+space_12 = "3rem"
+space_16 = "4rem"
+space_24 = "6rem"
+
+[breakpoints]
+mobile_max = "640px"
+tablet_max = "1024px"
+desktop_min = "1025px"
+desktop_wide = "1440px"
+
+[accessibility.metrics]
+contrast_body_min = 4.5
+contrast_large_text_min = 3.0
+focus_indicator_style = "2px solid var(--color-signal-amber)"
+focus_offset = "2px"
+
+[motion]
+standard_easing = "cubic-bezier(0.16, 1, 0.3, 1)"
+duration_fast = "150ms"
+duration_medium = "300ms"
+duration_slow = "500ms"
+reduced_motion_override = "none"

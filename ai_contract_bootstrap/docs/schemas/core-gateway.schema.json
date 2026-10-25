@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Core gateway contract TOML parsed data","type":"object","required":["gateway_contract","schema"],"properties":{"gateway_contract":{"type":"object","required":["interface_name","target_file"]},"schema":{"type":"object","required":["required_fields","fields"]}}}

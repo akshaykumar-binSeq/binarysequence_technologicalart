@@ -1,0 +1,178 @@
+[system]
+name = "Binary Sequence Technological Art"
+version = "1.1.0"
+status = "proposed_baseline"
+stack_primary = "Next.js App Router + TypeScript (verify repository)"
+stack_persistence = "Firebase Firestore/Storage/Hosting (verify repository)"
+stack_microservices = "Python FastAPI (only if present; verify repository)"
+cls_budget_max = 0.05
+keyboard_nav_required = true
+prefers_reduced_motion_enforced = true
+
+[authority]
+machine_contracts = "authoritative_for_structured_testable_facts"
+markdown = "authoritative_for_rationale_context_editorial_rules"
+implementation = "evidence_of_current_behavior_not_automatic_requirement_authority"
+conflict_action = "record_in_discrepancy_register_and_request_resolution"
+
+[precedence_order]
+# Conflict resolution: approved strategic/product decisions govern intent; TOML governs exact structured facts once those decisions are encoded and approved.
+hierarchy = [
+  "1. Foundational identity and strategic playbook (intent)",
+  "2. Audience-facing content specification v1.1 (approved content intent)",
+  "3. Information Architecture v2.0 (approved route and screen structure)",
+  "4. DDD Architectural and Methodological Guidelines v1.0 (architecture principles)",
+  "5. Approved machine contracts (*.toml) (exact structured implementation facts)",
+  "6. Human specifications (*.md) (rationale and context)",
+  "7. Existing codebase (observed implementation; reconcile discrepancies)"
+]
+
+[shared_kernel]
+path = "src/core/shared-kernel"
+allowed_import_roots = ["src/core"]
+feature_to_feature_imports = false
+must_remain_small_and_stable = true
+
+[[features]]
+id = "FEAT-01-ONB"
+name = "onboarding"
+path = "src/features/onboarding"
+tier = "implementation_gate"
+public_route = ""
+status = "planned"
+spec_toml = "src/features/onboarding/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/onboarding/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/onboarding/docs/UI_UX_WIREFRAME.toml"
+exports = ["OnboardingGate", "useOnboardingStatus"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-02-HOME"
+name = "home"
+path = "src/features/home"
+tier = "tier_1_commercial"
+public_route = "/"
+status = "planned"
+spec_toml = "src/features/home/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/home/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/home/docs/UI_UX_WIREFRAME.toml"
+exports = ["HomeScreen"]
+dependencies = ["src/core"]
+consumed_gateways = ["FEAT-03-STUDIO", "FEAT-04-PROD", "FEAT-05-METH", "FEAT-06-BLUE"]
+
+[[features]]
+id = "FEAT-03-STUDIO"
+name = "studio"
+path = "src/features/studio"
+tier = "tier_1_commercial"
+public_route = "/studio"
+status = "planned"
+spec_toml = "src/features/studio/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/studio/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/studio/docs/UI_UX_WIREFRAME.toml"
+exports = ["StudioScreen", "studioGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-04-PROD"
+name = "products"
+path = "src/features/products"
+tier = "tier_1_commercial"
+public_route = "/products"
+status = "planned"
+spec_toml = "src/features/products/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/products/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/products/docs/UI_UX_WIREFRAME.toml"
+exports = ["ProductsScreen", "productsGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-05-METH"
+name = "sequence-method"
+path = "src/features/sequence-method"
+tier = "tier_1_commercial"
+public_route = "/method"
+status = "planned"
+spec_toml = "src/features/sequence-method/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/sequence-method/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/sequence-method/docs/UI_UX_WIREFRAME.toml"
+exports = ["MethodScreen", "methodGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-06-BLUE"
+name = "sequence-blueprint"
+path = "src/features/sequence-blueprint"
+tier = "tier_1_commercial"
+public_route = "/blueprint"
+status = "planned"
+spec_toml = "src/features/sequence-blueprint/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/sequence-blueprint/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/sequence-blueprint/docs/UI_UX_WIREFRAME.toml"
+exports = ["BlueprintScreen", "blueprintGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-07-CONT"
+name = "contact"
+path = "src/features/contact"
+tier = "tier_1_commercial"
+public_route = "/contact"
+status = "planned"
+spec_toml = "src/features/contact/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/contact/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/contact/docs/UI_UX_WIREFRAME.toml"
+exports = ["ContactScreen"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-08-NOTE"
+name = "engineering-notebook"
+path = "src/features/engineering-notebook"
+tier = "tier_2_exploratory"
+public_route = "/notebook"
+status = "planned"
+spec_toml = "src/features/engineering-notebook/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/engineering-notebook/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/engineering-notebook/docs/UI_UX_WIREFRAME.toml"
+exports = ["NotebookScreen", "notebookGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-09-RES"
+name = "research-experiments"
+path = "src/features/research-experiments"
+tier = "tier_2_exploratory"
+public_route = "/research"
+status = "planned"
+spec_toml = "src/features/research-experiments/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/research-experiments/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/research-experiments/docs/UI_UX_WIREFRAME.toml"
+exports = ["ResearchScreen", "researchGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-10-FNDR"
+name = "studio-founder"
+path = "src/features/studio-founder"
+tier = "tier_2_exploratory"
+public_route = "/founder"
+status = "planned"
+spec_toml = "src/features/studio-founder/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/studio-founder/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/studio-founder/docs/UI_UX_WIREFRAME.toml"
+exports = ["FounderScreen", "founderGatewaySummary"]
+dependencies = ["src/core"]
+
+[[features]]
+id = "FEAT-11-TRST"
+name = "continuity-trust"
+path = "src/features/continuity-trust"
+tier = "tier_2_exploratory"
+public_route = "/continuity"
+status = "planned"
+spec_toml = "src/features/continuity-trust/docs/FEATURE_SPEC.toml"
+spec_md = "src/features/continuity-trust/docs/FEATURE_SPEC.md"
+wireframe_toml = "src/features/continuity-trust/docs/UI_UX_WIREFRAME.toml"
+exports = ["ContinuityScreen", "continuityGatewaySummary"]
+dependencies = ["src/core"]
