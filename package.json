@@ -1,0 +1,28 @@
+{
+  "name": "binary-sequence-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "verify:specs": "node ai_contract_bootstrap/scripts/validate-specs.mjs",
+    "verify:boundaries": "node ai_contract_bootstrap/scripts/validate-feature-boundaries.mjs",
+    "verify:tokens": "node ai_contract_bootstrap/scripts/validate-design-tokens.mjs",
+    "verify:architecture": "npm run verify:specs && npm run verify:boundaries && npm run verify:tokens"
+  },
+  "dependencies": {
+    "next": "^16.4.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@iarna/toml": "^3.0.0",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}

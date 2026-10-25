@@ -10,9 +10,9 @@
 
 ## 1. Current Phase & Operational Status
 
-* **Current Phase:** Phase 0 (Discovery & Verification Complete) ➔ Phase 1 Preparation (Architecture & Contracts Synchronized)
-* **Active Working Boundary:** Documentation Architecture, Machine Contracts, and Verified Founder Decisions
-* **Implementation Status:** Technology stack confirmed (`DEC-DR03`: Next.js App Router + TypeScript + Firebase). Direct Home landing confirmed (`DEC-DR04`: `/` maps to `FEAT-02-HOME` as primary V1 target; `FEAT-01-ONB` deferred). All contracts and documentation synchronized. Host shell PATH (`DR-02`) remains only pre-flight environment blocker before project scaffolding.
+* **Current Phase:** Phase 1 (Minimal Next.js Runtime Foundation Established)
+* **Active Working Boundary:** Runtime Foundation Configuration (`package.json`, `tsconfig.json`, `next.config.mjs`, `next-env.d.ts`, `.gitignore`)
+* **Implementation Status:** Technology stack confirmed (`DEC-DR03`: Next.js App Router + TypeScript + Firebase). Direct Home landing confirmed (`DEC-DR04`: `/` maps to `FEAT-02-HOME` as primary V1 target; `FEAT-01-ONB` deferred). Task 1 complete: Next.js 16.4.3 runtime foundation configured, dependencies installed cleanly (0 vulnerabilities), TypeScript 5.7 strict compilation verified (`tsc --noEmit`), and production build baseline verified (`next build`). Zero application code, CSS, or Firebase integrations created.
 * **Source Control State:**
   * Root commit: `a047c2d` (`chore: establish project documentation and contract baseline`)
   * Documentation commit: `3c15797` (`docs: record initial Git baseline`)
@@ -20,7 +20,8 @@
   * References commit: `9cc9ec1` (`docs(governance): codify parent-to-target retrieval, long-prompt protocol, and AI references`)
   * Refinements commit: `b5e0661` (`docs(governance): refine long-task tracking protocol and add fresh-session test procedure`)
   * Sensory contract commit: `6190139` (`docs(sensory): integrate layout science, color psychology, and content reveal contract`)
-  * Working Tree: Clean
+  * Founder decisions commit: `dec4d7f` (`docs(governance): synchronize confirmed founder decisions DEC-DR03 (Next.js + Firebase) and DEC-DR04 (Direct Home landing)`)
+  * Working Tree: Uncommitted changes in working directory (ready for founder inspection).
 
 ---
 
@@ -36,6 +37,7 @@
 | **DEC-006** | Architecture / Stack (`DEC-DR03`) | `CONFIRMED` | Next.js App Router + TypeScript + Firebase approved baseline for V1. | [Confirmed Founder Decisions](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) |
 | **DEC-007** | Workspace Root | `CONFIRMED` | Sole canonical repository root is `G:\binarysequence_techart\`. | [Canonical Workspace Report](file:///G:/binarysequence_techart/docs/discovery/CANONICAL_WORKSPACE_AND_GIT_BASELINE_REPORT.md) |
 | **DEC-008** | Documentation Arch | `PROPOSED` | Unified `docs/` hierarchy eliminating `master_documents/` and `final_docs/`. | [Documentation Protocol](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) |
+| **DEC-009** | Architecture / Code Quality | `CONFIRMED` | Mandatory centralization of all application constants and UI screen text; zero raw text in UI; zero unexplained magic values. | [Founder Directive](file:///G:/binarysequence_techart/Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md) |
 
 ---
 
@@ -84,33 +86,38 @@
 
 * **Git Version:** `2.49.0.windows.1` — Active, operational, verified.
 * **Workspace Path:** `G:\binarysequence_techart\` — Confirmed canonical root.
-* **Node.js / pnpm Runtime (`DR-02`):** Blocked in sandbox shell environment. Host has Node.js via NVM for Windows, but executable symlink is missing in active shell PATH. Required before running automated contract validation scripts (`validate-specs.mjs`).
+* **Node.js / npm Runtime (`DR-02`):** Operational in PowerShell. Host has Node.js `v22.16.0` and npm `10.9.2` (via `C:\nvm4w\nodejs\`). `package-lock.json` generated and audited with 0 vulnerabilities. Next.js `v16.4.3` and TypeScript `5.7.0` verified. `pnpm` is not in shell PATH; standard npm toolchain used in accordance with `DEVELOPMENT_READINESS_CHECKLIST.md` §2.
 
 ---
 
 ## 5. Active Task Log & Handoff Summary
 
-* **Active Phase:** Phase 3.6: Confirmed Founder Decisions Synchronization (`DEC-DR03` & `DEC-DR04`).
+### Previous Substantive Milestone: Confirmed Founder Decisions Synchronization (`DEC-DR03` & `DEC-DR04`)
 * **Task Objective:** Synchronized all project contracts, machine TOML specifications, readiness checklists, and architectural references with the confirmed founder decisions: Next.js App Router + TypeScript + Firebase approved baseline (`DEC-DR03`), and Direct Home landing on `FEAT-02-HOME` with `FEAT-01-ONB` deferred as a blocking gate (`DEC-DR04`).
-* **Change Classification:** `ARCHITECTURE` + `SCOPE` + `FOUNDER_DECISION`
-* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0, Level 4 DDD Guidelines, `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`.
-* **Files Updated:**
-  * [`docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md`](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) (Marked `DR-03` and `DR-04` as COMPLETE / CONFIRMED).
-  * [`docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md`](file:///G:/binarysequence_techart/docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md) (Resolved `DISC-005` via `DEC-DR04` and `DISC-006` via `DEC-DR03`).
-  * [`ai_contract_bootstrap/docs/DISCREPANCY_REGISTER.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/DISCREPANCY_REGISTER.md) (Resolved `DISC-005`, `DISC-006`, and `DISC-007`).
-  * [`ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.toml) & [`ARCHITECTURE_INDEX.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.md) (Confirmed baseline: Next.js + TS + Firebase; `FEAT-02-HOME` primary V1 target; `FEAT-01-ONB` deferred).
-  * [`ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.toml) & [`APP_SHELL_ROUTING.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.md) (Status confirmed baseline; route `/` mapped to `FEAT-02-HOME`).
-  * [`docs/specifications/core_app/CORE_APP_SHELL_LAYOUT_AND_ROUTING_CONTRACT.md`](file:///G:/binarysequence_techart/docs/specifications/core_app/CORE_APP_SHELL_LAYOUT_AND_ROUTING_CONTRACT.md) & [`src/app/docs/APP_SHELL_LAYOUT_ROUTING_CONTRACT.md`](file:///G:/binarysequence_techart/src/app/docs/APP_SHELL_LAYOUT_ROUTING_CONTRACT.md) (Reconciled with `DEC-DR03` and `DEC-DR04`).
-  * [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Section 36 updated to DEFERRED; Section 37 updated to PRIMARY V1 TARGET).
-  * [`Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`](file:///G:/binarysequence_techart/Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md) (Updated Section 1, 8, 9, 14 with governance notices for `DEC-DR03` and `DEC-DR04`).
-  * [`src/features/onboarding/docs/FEATURE_SPEC.md`](file:///G:/binarysequence_techart/src/features/onboarding/docs/FEATURE_SPEC.md) & [`FEATURE_SPEC.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/features/onboarding/docs/FEATURE_SPEC.toml) (Updated status to deferred per `DEC-DR04`).
-  * [`src/features/home/docs/FEATURE_SPEC.md`](file:///G:/binarysequence_techart/src/features/home/docs/FEATURE_SPEC.md) & [`FEATURE_SPEC.toml`](file:///G:/binarysequence_techart/src/features/home/docs/FEATURE_SPEC.toml) (Updated status to primary V1 target with direct landing).
-  * [`docs/references/REF-01-FINAL-MASTER-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md) (Updated `CHG-15` row with `DEC-DR03`).
-  * [`docs/references/REF-02-CONTENT-SPEC-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md) (Updated direct landing rule with `DEC-DR04`).
-  * [`docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) (Added direct landing baseline rule).
-  * [`docs/references/REF-04-DDD-ARCHITECTURE.md`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) (Updated V1 execution priority to `FEAT-02-HOME`).
-  * [`docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) (Updated active decisions inventory and fresh-session check criteria).
-  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) & [`docs/OPERATIONAL_MASTER_BLUEPRINT.md`](file:///G:/binarysequence_techart/docs/OPERATIONAL_MASTER_BLUEPRINT.md) (Synchronized decisions and readiness status).
-  * [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (Updated in place).
-* **Verification Evidence:** All 16 modified files link-checked (0 broken links); git diff verified (zero application code modified); contract and machine TOML properties validated.
-* **Next Recommended Action:** Define specific Firebase services, configuration, security rules, and deployment approach; resolve environment PATH (`DR-02`); scaffold Next.js App Router project structure.
+* **Source Control Commit:** `dec4d7f`
+
+### Current Substantive Milestone: Task 1 — Minimal Next.js Runtime Foundation Established
+* **Task Objective:** Establish the smallest valid Next.js App Router and TypeScript foundation required to begin implementing the Binary Sequence Technological Art website without application code, CSS, or Firebase integration.
+* **Change Classification:** `RUNTIME_FOUNDATION` + `CONFIGURATION`
+* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 4 DDD Guidelines, `GEMINI.md`, `docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md`, `DEC-DR03`, `DEC-DR04`.
+* **Files Created/Modified:**
+  * `package.json` (Minimal Next.js 16.4.3 + React 19 + TypeScript 5.7 dependencies and scripts).
+  * `tsconfig.json` (Strict TypeScript, path alias `@/*` -> `./src/*`, bundler module resolution, `react-jsx`).
+  * `next.config.mjs` (Minimal Next.js configuration with `reactStrictMode: true`).
+  * `package-lock.json` (Lockfile generated by npm install; 0 vulnerabilities).
+  * `next-env.d.ts` (Next.js TypeScript declaration generated during build/typecheck).
+  * `.gitignore` (Added `*.tsbuildinfo` to Framework caches section).
+  * `docs/ACTIVE_SESSION_STATE.md` (Updated in place).
+* **Verification Evidence & Current Operational Boundaries:**
+  * `npm install`: Exited code 0 (installed 31 packages, audited 0 vulnerabilities).
+  * `npm audit`: Exited code 0 (`found 0 vulnerabilities`).
+  * `npx next --version`: Output `Next.js v16.4.3`.
+  * `npm run typecheck` (`tsc --noEmit`): Exited code 0 (0 type errors).
+  * `npm run build` (`next build`): Exited code 0 (Turbopack production build succeeded; static `/404` fallback emitted).
+  * The root `/` route does not exist yet; zero application pages (`page.tsx`), layouts (`layout.tsx`), styles (`globals.css`), or UI components exist.
+  * Firebase SDK, configuration, and backend integrations have not been implemented.
+  * Contract-validation scripts (`verify:specs`, `verify:tokens`, `verify:architecture`) have known failures because TOML specifications reside in `ai_contract_bootstrap/docs/` and have not yet been promoted to canonical `docs/`.
+  * `verify:boundaries` passing is not meaningful evidence of application boundary compliance while there are no application `.ts`/`.tsx` source files in `src/`.
+  * Contract-validation failures are deferred to the relevant readiness work (`DR-06` and `DR-07`); they do not authorize premature contract promotion or file movements during Task 1.
+  * These actual results and limitations must be reverified before future acceptance claims.
+* **Next Recommended Action:** Founder inspection of uncommitted files; upon authorization, proceed to Task 2 (design tokens & base CSS variables in `src/app/globals.css`).

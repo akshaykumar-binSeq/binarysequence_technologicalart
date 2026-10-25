@@ -32,6 +32,7 @@ out/
 .cache/
 .turbo/
 .parcel-cache/
+*.tsbuildinfo
 
 # 5. Runtime & package-manager logs
 *.log
