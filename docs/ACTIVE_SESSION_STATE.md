@@ -54,7 +54,7 @@
 
 ### Level 3: Information Architecture & Sensory Contracts
 * [`Binary_Sequence_Information_Architecture_v2.0.md`](file:///G:/binarysequence_techart/Binary_Sequence_Information_Architecture_v2.0.md) — Sitemaps, URL taxonomy, footer matrix.
-* [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) — Viewport behavior, responsive grids, dark-surface contrast, physics motion, loading architecture.
+* [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) — Viewport behavior, responsive grids, layout science (Gestalt principles), neural processing ergonomics, color psychology, dark-surface contrast, physics motion, progressive disclosure & non-disruptive overlay hierarchy.
 
 ### Level 4: Architectural Guidelines
 * [`Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`](file:///G:/binarysequence_techart/Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md) — Domain boundaries, kernel separation, public gateway rules.
@@ -67,7 +67,7 @@
 ### AI-Readable Associative References (`docs/references/`)
 * [`REF-01`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md) — Master Strategy Canon Reference (Level 1).
 * [`REF-02`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md) — Content Specification Reference (Level 2).
-* [`REF-03`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) — IA, Viewport, Motion & Loading Contract Reference (Level 3).
+* [`REF-03`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) — IA, Viewport, Motion, Layout Science & Content Reveal Reference (Level 3).
 * [`REF-04`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) — DDD Architectural Guidelines Reference (Level 4).
 
 ### Discovery & Governance Ledger
@@ -89,14 +89,17 @@
 
 ## 5. Active Task Log & Handoff Summary
 
-* **Active Phase:** Phase 3.4: Export Operational Master Blueprint & Permanent Development Flow.
-* **Task Objective:** Exported the comprehensive operational master blueprint, guiding philosophy, 6-level precedence hierarchy, 13-step AI development lifecycle (with Mermaid flowchart), Engineering Constitution (SOLID, DDD, component reuse, Sequence Core rules, 15 ARCH Quality Gates, anti-patterns), and readiness status to [`docs/OPERATIONAL_MASTER_BLUEPRINT.md`](file:///G:/binarysequence_techart/docs/OPERATIONAL_MASTER_BLUEPRINT.md).
-* **Change Classification:** `COMMON` + `CLARIFICATION`
-* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0 & Layout Contract Final, Level 4 DDD Guidelines, `GEMINI.md`, `docs/DOCUMENT_REFERENCE.md`.
-* **Files Created:**
-  * [`docs/OPERATIONAL_MASTER_BLUEPRINT.md`](file:///G:/binarysequence_techart/docs/OPERATIONAL_MASTER_BLUEPRINT.md) (22.8 KB operational master blueprint & permanent development flow export).
+* **Active Phase:** Phase 3.5: Layout Science, Color Psychology & Content Reveal Contract Integration.
+* **Task Objective:** Integrated the canonical sensory, perceptual, and content architecture contract into the primary Level 3 layout contract, AI reference card `REF-03`, shared component contracts, and master documentation reference.
+* **Change Classification:** `COMMON` + `ENHANCEMENT`
+* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0, `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`.
 * **Files Updated:**
-  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) (Registered in Section 3 Directory Map, Section 4.6 Catalogue, and Section 10 Quick Lookup).
+  * [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Integrated Gestalt principles §11.1, neural processing ergonomics §11.2, color psychology §19.1, progressive disclosure & non-disruptive overlay hierarchy §30.1, pre-implementation protocol).
+  * [`docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) (Propagated Gestalt laws, color psychology, and overlay hierarchy).
+  * [`docs/specifications/common_shared/COMMON_SHARED_DESIGN_INTERACTION_AND_MOTION_CONTRACT.md`](file:///G:/binarysequence_techart/docs/specifications/common_shared/COMMON_SHARED_DESIGN_INTERACTION_AND_MOTION_CONTRACT.md) (Synchronized Gestalt spacing tokens, neural color ergonomics, and progressive disclosure rules).
+  * [`src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.md`](file:///G:/binarysequence_techart/src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.md) (Synchronized with shared sub-specification).
+  * [`src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.toml`](file:///G:/binarysequence_techart/src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.toml) (Added `[gestalt]` and `[overlay_hierarchy]` machine tokens).
+  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) (Updated catalog entries for Layout Contract, REF-03, and Common Shared specifications).
   * [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (Updated in place).
-* **Verification Evidence:** All 16 markdown links in `docs/OPERATIONAL_MASTER_BLUEPRINT.md` verified with 0 broken links; git diff reviewed; zero application code modified; working tree clean.
+* **Verification Evidence:** All cross-document links verified; git diff audited (zero application code modified); token alignment verified.
 * **Next Recommended Action:** Founder resolution of pre-implementation readiness items: shell PATH configuration (`DR-02`), technology stack selection (`DR-03` / `EDR-001`), and launch scope sign-off (`DR-04`).

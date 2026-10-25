@@ -1,11 +1,11 @@
 # BINARY SEQUENCE TECHNOLOGICAL ART
-## Screen, View, Layout, Information Architecture, Motion & Loading Contract — FINAL
+## Screen, View, Layout, Information Architecture, Motion, Layout Science, Color Psychology & Content Reveal Contract — FINAL
 
-**Document Type:** Canonical Global Design, Viewport, Layout, Interaction, Motion & System State Contract  
-**Scope:** Entire Binary Sequence Technological Art website (`binary-sequence-web`), all public screens, application views, responsive states, and feature bounded contexts  
-**Authority:** Global Structural & Sensory Implementation Contract  
+**Document Type:** Canonical Global Design, Viewport, Layout, Interaction, Motion, Sensory Ergonomics & Content Architecture Contract  
+**Scope:** Entire Binary Sequence Technological Art website (`binary-sequence-web`), all view transitions, UI components, modal/drawer systems, color token usage, editorial micro-copy, application views, responsive states, and feature bounded contexts  
+**Authority:** Global Structural, Perceptual & Editorial Implementation Contract  
 **Status:** Approved Canonical Baseline  
-**Primary Consumers:** Human Systems Architects, UI/UX Engineers, AI Coding Agents (Antigravity / LLM Pipelines), Accessibility Validators, Automated QA Suites  
+**Primary Consumers:** Human Systems Architects, UI/UX Designers, Frontend Engineers, AI Coding Agents (Antigravity / LLM Pipelines), Content Editors, Accessibility Validators, Automated QA Suites  
 
 ---
 
@@ -13,30 +13,35 @@
 
 You are working on the **Binary Sequence Technological Art** website.
 
-This document defines the mandatory global engineering and sensory rules for:
+This document defines the mandatory visual science, color psychology, structural engineering, and content architecture rules governing how human beings perceive, process, and interact with the interface:
 - Screen and viewport behavior;
 - Responsive layout transformations (Mobile Portrait, Landscape Mobile, Tablet, Desktop, Widescreen/Ultra-Wide);
 - Two-Tier Information Architecture and Feature Gateway composition;
 - Grids, containers, and the 8pt spacing system;
+- Layout science, Gestalt perceptual cognition, and neural processing ergonomics;
 - Fluid typography, measure, and vertical rhythm;
-- Color distribution, dark-surface ergonomics, and background-aware dynamic foreground contrast;
+- Color distribution, color psychology, dark-surface ergonomics, and background-aware dynamic foreground contrast;
 - Touch, pointer, and keyboard interaction targets;
 - Hardware-composited motion, natural physics easing, and reduced-motion compliance;
+- Progressive disclosure, content reveal mechanisms, and non-disruptive overlay hierarchy (drawer vs. modal semantics);
 - Loading architectures, latency thresholds, and state transitions;
 - Form ergonomics, empty/degraded states, z-index elevation, psychoacoustic rules, internationalization, print exportability, cursor semantics, and the 8-state component lifecycle;
+- Editorial micro-copy, cognitive tone, and zero-interruption rules;
 - Feature-specific contract overrides.
 
 **Do not treat this document as a collection of optional visual suggestions.** Treat it as a binding implementation contract unless a later, explicitly approved project decision supersedes a specific rule.
 
 ### Pre-Implementation Protocol
-Before implementing or modifying any screen or component:
+Before designing or coding any interface surface, component, or content block:
 1. Read `docs/ARCHITECTURE_INDEX.toml` and `docs/GLOBAL_DESIGN_SYSTEM.toml`.
-2. Read this global Screen, Layout, IA, Motion & Loading Contract.
+2. Read this global **Screen, View, Layout, Information Architecture, Motion, Layout Science, Color Psychology & Content Reveal Contract**.
 3. Read the target feature’s `FEATURE_SPEC.toml` and `UI_UX_WIREFRAME.toml`.
-4. Inspect the existing repository implementation.
-5. Identify applicable architectural boundaries and verify zero cross-feature internal imports.
-6. Identify any conflicts or missing requirements; record discrepancies in `docs/DISCREPANCY_REGISTER.md` rather than silently inventing a conflicting implementation.
-7. Reference this global contract from feature-level documentation rather than duplicating its rules.
+4. Verify that all spatial groupings respect Gestalt cognitive laws, that color usage aligns with neural processing ergonomics, and that any "view more" or progressive disclosure mechanism adheres to the non-disruptive overlay hierarchy.
+5. Never introduce arbitrary popups, unsolicited modal gates, jarring layout shifts, or unformatted text blocks.
+6. Inspect the existing repository implementation.
+7. Identify applicable architectural boundaries and verify zero cross-feature internal imports.
+8. Identify any conflicts or missing requirements; record discrepancies in `docs/DISCREPANCY_REGISTER.md` rather than silently inventing a conflicting implementation.
+9. Reference this global contract from feature-level documentation rather than duplicating its rules.
 
 ---
 
@@ -206,6 +211,22 @@ Every screen follows a predictable vertical narrative structure:
 ### 11. Two-to-Three Scroll Scannability Baseline
 Primary landing views must communicate their complete Tier 1 orientation—*What is this? Why does it matter? What can I explore? What do I do next?*—within **2 to 3 normal viewport scrolls** on desktop (`~2000px–3000px` total document height). Exhaustive details must be progressively disclosed via accordions, modals, or dedicated sub-routes.
 
+### 11.1 Gestalt Principles of Visual Perception & Layout Science
+Layout composition must leverage human perceptual shortcuts to minimize cognitive load:
+
+- **Law of Proximity:** Elements placed close together are automatically perceived as a unified conceptual cluster. Maintain tight internal spacing (`space-2` to `space-3`, `8px`–`12px`) for related metadata (such as an eyebrow tag and its heading, or an icon and its text label), and wider separation (`space-8` to `space-12`, `32px`–`48px`) between distinct structural modules.
+- **Law of Similarity:** Elements sharing visual characteristics (shape, typography, color tone, border styling) are interpreted as having similar functional purpose. Use consistent bounding card styles, corner radii (`--radius-md`, `8px`), and typographic scales for peer elements (e.g., ecosystem product cards, sequence stage cards).
+- **Law of Continuity:** The human eye naturally follows smooth, established visual lines (such as horizontal sequence progression, timeline tracks, and alignment axes guiding scanning flow without visual fragmentation). Avoid jagged or irregular vertical alignments across list items and metadata grids to minimize unnecessary saccadic eye jumps.
+- **Law of Closure & Common Region:** Humans perceive enclosed boundaries as distinct conceptual entities. Group related fields, cards, and data summaries using explicit subtle bounding borders (`--border-subtle`, `rgba(255, 255, 255, 0.08)`) and dedicated background surface elevation (`--surface-raised`, `#12151B`).
+- **Law of Focal Point & Visual Weight:** Elements with distinct visual contrast or scale capture immediate initial foveal attention. Every screen state must establish exactly one dominant focal point (e.g., the Primary Value Statement or Active Conversion Trigger), subordinate secondary controls, and muted contextual metadata.
+- **Figure-Ground Relationship & Depth Planes:** Ensure immediate, unambiguous discrimination between active interactive surfaces (the figure) and background ambient structures (the ground). Use calibrated dark-surface luminance stepping (`#0B0C0E` base canvas $\rightarrow$ `#12151B` surface container $\rightarrow$ `#1E293B` active/hover elevation) rather than heavy drop shadows to communicate spatial layering.
+
+### 11.2 Neural Processing Ergonomics & Cognitive Load Budget
+- **Foveal vs. Peripheral Attention Budget:** Human foveal vision (high-acuity reading zone) covers an angle of approximately $2^\circ$ to $5^\circ$. Dense technical data, critical metrics, and interactive controls must be concentrated within the central 4:3 optical frame (`1024px` to `1280px` max-width container). Peripheral widescreen margins remain calm, atmospheric, and uncrowded.
+- **Working Memory Constraints (Miller's Law & Cowan's Limit):** Working memory comfortably holds only $4 \pm 1$ distinct items during active decision-making. Information must be chunked into digestible conceptual groups (e.g., the 11 Sequence stages chunked into 3 distinct operational phases: *Discovery & Strategy*, *Architecture & Prototype*, *Production & Continuity*).
+- **Hick's Law & Choice Architecture:** Decision latency increases logarithmically with the number of choices ($T = b \cdot \log_2(n + 1)$). Minimize decision paralysis by presenting a single primary route or next action per screen state. Never overwhelm a visitor with competing high-contrast buttons of equal visual weight.
+- **Motor Ergonomics & Fitts's Law:** Position high-frequency interactive triggers where movement time and targeting error are minimized. In touch contexts, ensure generous target buffers ($\ge 44 \times 44\text{px}$) and prioritize bottom-half thumb reach.
+
 ---
 
 ## PART III — GRID SYSTEMS, TOUCH TARGETS & LAYOUT MECHANICS
@@ -307,6 +328,17 @@ Typography scales smoothly across viewports without abrupt media-query jumps:
   - Verified / Live Status: `#10B981` (paired with `[STATUS: LIVE]`)
   - Warning / In Development: `#F59E0B` (paired with `[STATUS: IN DEVELOPMENT]`)
   - Danger / Error State: `#EF4444` (paired with explicit icon and error text)
+
+### 19.1 Color Psychology, Chromatic Ergonomics & Neural Processing
+Color communicates technical discipline, stability, and calm intelligence before a single word is read:
+- **Obsidian Carbon (`#0B0C0E`):** Represents grounded architectural gravitas, structural permanence, and quiet enterprise stability. It eliminates the ocular glare and harsh high-contrast edge halation produced by pure pitch black (`#000000`).
+- **Warm Alabaster / Chalk (`#F6F5F0`, `#D1D1D6`):** Communicates clarity, precision, and human-readable documentation without optical sterility. Provides comfortable contrast ratios ($\ge 7:1$ for body copy, $\ge 12:1$ for primary display headings) without straining photoreceptor cells during extended reading sessions.
+- **Signal Amber (`#D97706`, `#F59E0B`):** Conveys deliberate engineering intention, active stage progression, and telemetry focus. Unlike alarming reds or flashy neons, amber signifies warm vigilance, craft, and mechanical precision.
+- **Circadian Ergonomics & Low-Fatigue Dark Canvas:** Avoid high-frequency saturated blue light emission. Dark surfaces maintain warm, muted undertones (`slate/charcoal`) to protect user attention and ocular comfort during sustained technical exploration.
+- **The 60–30–10 Chromatic Balance in Human Perception:**
+  - **60% Base Canvas:** Resting visual plane (`#0B0C0E` dark ground) providing visual breathing room and cognitive tranquility.
+  - **30% Structural Frame & Content Hierarchy:** Typography, surface cards, dividers, and structural containers (`#1E293B`, `#F6F5F0`, `#94A3B8`).
+  - **10% Intentional Signal:** Focal action buttons, active sequence indicators, and critical state indicators (`#D97706`, `#10B981`).
 
 ### 20. WCAG Contrast Requirements & Color Independence
 - **Normal Body Copy ($< 18.5\text{px}$ regular / $< 14\text{px}$ bold):** Minimum **`4.5:1`** contrast ratio against the actual rendered surface (`7:1` target for long-form reading).
@@ -446,6 +478,32 @@ Arbitrary `z-index` values (`z-index: 9999`) are strictly forbidden. All elevate
 | `--z-popover` | `500` | Tooltips, dropdown menus, and floating contextual hints |
 | `--z-toast` | `600` | System-level alerts, connectivity banners, and submission feedback toasts |
 | `--z-skip-link` | `700` | Keyboard `"Skip to Main Content"` accessibility link when focused |
+
+### 30.1 Progressive Disclosure, Content Reveal & Non-Disruptive Overlay Hierarchy
+The interface must respect user autonomy, focus continuity, and spatial orientation. Never force unexpected visual jumps or jarring disruptions:
+- **The Two-Tier Reveal Principle:**
+  - **Tier 1 (Surface Scan):** Immediate, high-level summary readable within seconds. Every card or section provides immediate standalone value without requiring expansion.
+  - **Tier 2 (Deep Inspection):** Granular technical details, complete specifications, and secondary evidence revealed strictly on conscious user demand.
+- **In-Situ Expansion vs. Disruptive Page Navigation:**
+  - When inspecting granular details within a feature, prefer smooth in-situ accordion expansion or a non-blocking slide-over side drawer rather than unseating the user to a new URL.
+  - Utilize CSS grid height animation (`grid-template-rows: 0fr -> 1fr`) or composited slide transforms (`translate3d`) to ensure zero Layout Shift ($CLS < 0.05$).
+  - Preserve the user's scroll anchor position so collapsing or expanding content never causes disorienting page jumps.
+- **Drawer vs. Modal Semantic Differentiation:**
+  - **Contextual Side Drawers (`--z-drawer: 200`):** Used for non-destructive inspection (e.g., viewing an individual Sequence Stage specification, technical glossary terms, or previewing a product deep-dive). The underlying page remains visible through the scrim, preserving situational context.
+  - **Centered Modals (`--z-modal: 400`):** Reserved exclusively for focused, high-stakes, atomic interactions that require the user's undivided attention (e.g., Sequence Blueprint intake submission confirmation, critical system alert dialogs).
+- **Focus Trapping, Inertness & Keyboard Governance:**
+  - Overlays must declare `role="dialog"` or `role="alertdialog"`, `aria-modal="true"`, and `aria-labelledby="dialog-title-id"`.
+  - Upon activation, focus smoothly shifts to the primary interactive element or the close button.
+  - The background document must receive the HTML `inert` attribute to completely prevent keyboard tab leakage and assistive technology disorientation.
+  - Pressing `Escape` must dismiss the overlay immediately. Upon dismissal, focus must return seamlessly to the trigger element that opened it.
+  - Dismissal must be frictionless: clicking or tapping the backdrop scrim (`--z-backdrop: 300`) must dismiss non-critical drawers and modals without requiring pinpoint accuracy on a close icon.
+- **Zero Arbitrary Popups Rule:**
+  - Unsolicited promotional popups, modal takeovers, newsletter interception gates, or sudden layout-shifting banners are **strictly prohibited across the entire website**.
+  - All overlays and progressive disclosures must be directly initiated by an explicit user gesture (click, tap, keyboard activation).
+- **Editorial Micro-Copy & Perceptual Tone:**
+  - All interface copy, status badges, empty states, and error messages must speak with quiet enterprise authority: calm, precise, transparent, and direct.
+  - Strictly eliminate marketing superlatives, faux urgency ("Hurry!", "Act now!"), and patronizing conversational filler.
+  - Every interaction confirmation and error message must clearly explain what happened, verify data safety, and offer a concrete next step.
 
 ### 31. Audio Feedback & Psychoacoustic Ergonomics
 Reflecting the studio's research in sound physics and acoustic perception:

@@ -38,6 +38,14 @@ All component paddings, layout margins, element offsets, and grid gaps strictly 
 }
 ```
 
+### 2.1 Gestalt Spacing & Visual Perception Principles
+Component layouts enforce human perceptual shortcuts:
+- **Law of Proximity:** Keep related metadata tightly bound (`--space-2` to `--space-3`, 8px–12px); separate distinct functional modules broadly (`--space-8` to `--space-12`, 32px–48px).
+- **Law of Similarity:** Peer components (e.g. system cards, stage cards) share identical border styling (`--border-subtle`), radii (`--radius-md`, 8px), and typography.
+- **Law of Continuity:** Align elements along uninterrupted horizontal and vertical axes to guide reading flow without erratic visual saccades.
+- **Law of Closure & Common Region:** Group related data items within explicit bounding borders and raised surfaces (`--surface-raised`, `#12151B`).
+- **Figure-Ground Discrimination:** Strict luminance stepping (`#0B0C0E` base $\rightarrow$ `#12151B` surface $\rightarrow$ `#1E293B` elevated) ensures intuitive spatial depth without heavy drop shadows.
+
 ### Multi-Column Grid Architecture
 ```css
 .bs-grid {
@@ -123,6 +131,12 @@ export interface BackgroundProtectionProps {
 ```
 - **Static Images:** Sample luminance in the exact bounding box of text and select `--fg-adaptive-light` (`#F6F5F0`) or `--fg-adaptive-dark` (`#0B0C0E`).
 - **Video & High-Frequency Assets:** Apply a protected scrim (`background: linear-gradient(to top, rgba(11,12,14,0.88), transparent)`) or frosted glass container (`backdrop-filter: blur(8px); background: rgba(11,12,14,0.78)`).
+
+### 4.4 Color Psychology & Neural Ergonomics
+- **Obsidian Carbon (`#0B0C0E`):** Establishes enterprise permanence and cognitive calm; eliminates OLED halation caused by `#000000`.
+- **Warm Alabaster / Chalk (`#F6F5F0`, `#D1D1D6`):** Clinical optical clarity without eye strain; $\ge 7:1$ body contrast.
+- **Signal Amber (`#D97706`, `#F59E0B`):** Warm vigilance and intentional stage telemetry; avoids fatigue-inducing neon tones.
+- **Circadian Restraint:** Warm slate base tones; zero high-frequency saturated blue light emission.
 
 ---
 
@@ -210,6 +224,13 @@ Animation is permitted only for:
 - `cursor: text` — Inputs, selectable code blocks.
 - `cursor: not-allowed` — Disabled elements.
 - `cursor: grab / grabbing` — Draggable scrubber tracks.
+
+### 7.4 Progressive Disclosure, Content Reveal & Non-Disruptive Overlays
+- **Two-Tier Reveal:** Tier 1 glanceable scan (< 3s); Tier 2 deep inspection on conscious user intent.
+- **In-Situ Reveal:** Prefer CSS grid height transitions (`grid-template-rows: 0fr -> 1fr`) or composited side drawers over disorienting URL jumps; lock scroll anchor.
+- **Drawer vs. Modal Semantics:** Contextual Side Drawers (`--z-drawer: 200`) for non-destructive inspection; Centered Modals (`--z-modal: 400`) reserved strictly for high-stakes, atomic tasks.
+- **Focus & Keyboard Governance:** `role="dialog"`, `aria-modal="true"`, background `inert`, `Escape` to close, restore focus to opener trigger, scrim click dismissal (`--z-backdrop: 300`).
+- **Zero Arbitrary Popups:** All overlays must be user-triggered. No unsolicited promotional modals or layout shifts.
 
 ---
 

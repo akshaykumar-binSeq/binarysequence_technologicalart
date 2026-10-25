@@ -95,3 +95,18 @@ opt_in_default = true
 frequency_min_hz = 120
 frequency_max_hz = 1800
 harmonics_strict = true
+
+[gestalt]
+internal_metadata_spacing = ["0.50rem", "0.75rem"]
+structural_module_spacing = ["2.00rem", "3.00rem"]
+peer_border_radius = "8px"
+luminance_stepping = ["#0B0C0E", "#12151B", "#1E293B"]
+
+[overlay_hierarchy]
+zero_arbitrary_popups = true
+progressive_disclosure_tier_1_max_s = 3
+drawer_z_index = 200
+backdrop_z_index = 300
+modal_z_index = 400
+escape_dismissal_required = true
+inert_background_required = true

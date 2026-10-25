@@ -276,16 +276,19 @@ Every important document across the repository is detailed below with its comple
 
 #### 9. `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`
 * **Relative Path:** `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`
-* **Precedence Level:** Level 3 — Global Design, Viewport, Layout, Motion & Loading Contract
-* **Purpose:** Binding contractual specifications for responsive viewports, layout grids, typography scales, dark-surface ergonomics, physics-based motion, and loading system states.
-* **Governing Topics:** 5 responsive viewports, 8pt spatial grid, fluid typography formulas, contrast ratios (WCAG AAA for body text), GPU-composited motion (opacity/transform only), natural easing curves, loading state tiers (<100ms, <300ms, >1s), 8-state component lifecycle.
+* **Precedence Level:** Level 3 — Global Design, Viewport, Layout, Motion, Layout Science & Content Reveal Contract
+* **Purpose:** Binding contractual specifications for responsive viewports, layout grids, typography scales, dark-surface ergonomics, layout science (Gestalt principles), color psychology, physics-based motion, progressive disclosure, non-disruptive overlay hierarchy, and loading system states.
+* **Governing Topics:** 5 responsive viewports, 8pt spatial grid, Gestalt principles (Proximity, Similarity, Continuity, Closure, Focal Point, Figure-Ground), neural processing ergonomics (foveal 4:3 frame, Cowan's chunk limit, Hick's Law), color psychology (Obsidian Carbon, Warm Alabaster, Signal Amber, circadian ergonomics, 60-30-10 distribution), contrast ratios (WCAG AAA for body text), GPU-composited motion (opacity/transform only), non-disruptive progressive disclosure (in-situ expansion, side drawer vs modal semantics, focus trapping, `inert` attribute, zero arbitrary popups), natural easing curves, loading state tiers (<100ms, <300ms, >1s), 8-state component lifecycle.
 * **Upstream Documents:** Governed by Level 1 Master v1.1, Level 2 Content Spec v1.1, and Level 3 IA v2.0.
 * **Downstream Documents:** Directly governs `docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`, `GLOBAL_DESIGN_SYSTEM.toml`, CSS stylesheets, and presentation components.
-* **Status:** `Approved` / Binding Sensory & Layout Contract
+* **Status:** `Approved` / Binding Sensory, Perceptual & Layout Contract
 * **Key Invariants / Directives:**
   * 5 Viewport Breakpoints: Mobile Portrait (360–428px), Landscape Mobile (568–844px), Tablet (768–1024px), Desktop (1280–1440px), Widescreen/Ultra-Wide (1536–2560px+).
   * Strict reduced-motion support (`prefers-reduced-motion: reduce`) disables physics transitions.
   * Motion is restricted to GPU-composited properties (`transform`, `opacity`); no layout-triggering properties (`width`, `height`, `top`).
+  * Layout science and Gestalt proximity/similarity/continuity laws govern all spatial relationships.
+  * Color psychology and circadian ergonomics mandate obsidian carbon ground with zero pure black `#000000` halation.
+  * Zero unsolicited promotional popups or jarring modal takeovers; non-disruptive progressive disclosure with focus restoration.
 
 #### 10. `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
 * **Relative Path:** `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
@@ -367,13 +370,13 @@ Every important document across the repository is detailed below with its comple
 #### 16. `docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`
 * **Relative Path:** `docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`
 * **Precedence Level:** Level 3 Reference Card
-* **Purpose:** High-density reference card synthesizing IA v2.0 sitemap with the Global Layout, Viewport, Motion & Loading Contract.
-* **Governing Topics:** 10 approved screens, deferred register, 5 breakpoints, 8pt spatial grid, contrast ratios, GPU motion rules, loading latency thresholds.
+* **Purpose:** High-density reference card synthesizing IA v2.0 sitemap with the Global Layout, Viewport, Motion, Layout Science, Color Psychology & Content Reveal Contract.
+* **Governing Topics:** 10 approved screens, deferred register, 5 breakpoints, 8pt spatial grid, Gestalt principles, color psychology (Obsidian Carbon ground), non-disruptive progressive disclosure, drawer vs modal semantics, contrast ratios, GPU motion rules, loading latency thresholds.
 * **Upstream Documents:** Governed by `Binary_Sequence_Information_Architecture_v2.0.md` and `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`.
-* **Downstream Documents:** Informs UI layout and styling validation.
+* **Downstream Documents:** Informs UI layout, sensory ergonomics, and styling validation.
 * **Status:** `Reference` / Active Reference Card
 * **Key Invariants / Directives:**
-  * Combines IA and sensory layout constraints into a single rapid lookup card.
+  * Combines IA, sensory layout constraints, Gestalt principles, and overlay hierarchy into a single rapid lookup card.
 
 #### 17. `docs/references/REF-04-DDD-ARCHITECTURE.md`
 * **Relative Path:** `docs/references/REF-04-DDD-ARCHITECTURE.md`

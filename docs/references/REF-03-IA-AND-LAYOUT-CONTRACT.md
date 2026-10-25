@@ -1,9 +1,9 @@
-# REF-03: Information Architecture, Viewport, Motion & Loading Contract Reference
+# REF-03: Information Architecture, Viewport, Motion, Layout Science & Content Reveal Contract Reference
 
 * **Source Documents:** 
   1. [`Binary_Sequence_Information_Architecture_v2.0.md`](file:///G:/binarysequence_techart/Binary_Sequence_Information_Architecture_v2.0.md) (Level 3 IA & Wireframes)
-  2. [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Level 3 Viewport, Motion & Loading)
-* **Authority Level:** **LEVEL 3: Information Architecture & Sensory Implementation Contract**
+  2. [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Level 3 Viewport, Motion, Layout Science, Color Psychology & Content Reveal)
+* **Authority Level:** **LEVEL 3: Information Architecture, Sensory & Content Implementation Contract**
 * **Approval Status:** CONFIRMED & ACTIVE (Supersedes IA v1.0)
 * **Parent Relationships:** Dictated by Level 2 Content Spec (`audience_facing_content_specification_v1_1.md`).
 * **Child Relationships:** Constrains Level 4 DDD boundaries and Level 5 machine tokens (`GLOBAL_DESIGN_SYSTEM.toml`).
@@ -64,3 +64,39 @@
   - `< 100ms`: Instantaneous transition (no spinner/skeleton; avoid visual flash).
   - `100ms – 1000ms`: Render subtle indeterminate progress bar or skeleton placeholder.
   - `> 1000ms`: Explicit loading state with non-blocking feedback.
+
+---
+
+## 5. Layout Science & Gestalt Cognitive Principles
+
+* **Law of Proximity:** Tight internal spacing (`space-2` to `space-3`, 8px–12px) for related metadata; wide module gaps (`space-8` to `space-12`, 32px–48px).
+* **Law of Similarity:** Peer cards consume identical border tokens (`--border-subtle`), radii (`--radius-md`, 8px), and typography.
+* **Law of Continuity:** Preserve smooth, uninterrupted visual scan lines across timelines and product grids; eliminate erratic saccadic jumps.
+* **Law of Closure & Common Region:** Group related data fields and cards using explicit subtle bounding borders and raised surfaces.
+* **Focal Point & Weight:** Single dominant focal action per screen state; subordinate secondary controls and muted metadata.
+* **Figure-Ground Separation:** Calibrated luminance stepping (`#0B0C0E` canvas $\rightarrow$ `#12151B` surface $\rightarrow$ `#1E293B` elevated) without heavy drop shadows.
+* **Cognitive Ergonomics:** Foveal 4:3 frame containment (1024px–1280px); Cowan's 4-chunk working memory limit; Hick's Law choice minimization.
+
+---
+
+## 6. Color Psychology & Chromatic Ergonomics
+
+* **Obsidian Carbon (`#0B0C0E`):** Represents grounded architectural gravitas and quiet enterprise stability; pure `#000000` strictly prohibited.
+* **Warm Alabaster / Chalk (`#F6F5F0`, `#D1D1D6`):** Precision readability without optical sterility; $\ge 7:1$ body contrast.
+* **Signal Amber (`#D97706`, `#F59E0B`):** Warm vigilance, intentional telemetry, and active stage progression.
+* **Circadian Restraint:** Warm-biased slate undertones; zero high-frequency saturated blue light emission.
+* **60–30–10 Chromatic Rule:** 60% neutral dark canvas (restful ground), 30% structural framing/text, 10% intentional accent signal.
+* **Color Independence:** Status and validation never communicated by color alone; always pair with monospace badges (`[STATUS: LIVE]`) and icons.
+
+---
+
+## 7. Content Reveal, Progressive Disclosure & Overlay Hierarchy
+
+* **Two-Tier Reveal:** Tier 1 surface scan (< 3s glanceable value); Tier 2 deep inspection on conscious user intent.
+* **In-Situ Expansion:** Smooth CSS grid/transform accordions and side drawers over disruptive URL navigation; preserve scroll anchor.
+* **Drawer vs. Modal Semantics:**
+  - Contextual Side Drawers (`--z-drawer: 200`) for non-destructive contextual inspection.
+  - Centered Modals (`--z-modal: 400`) reserved exclusively for focused, high-stakes, atomic tasks.
+* **Focus & Keyboard Governance:** `role="dialog"`, `aria-modal="true"`, background `inert`, `Escape` to close, restore focus to opener trigger, scrim click dismissal (`--z-backdrop: 300`).
+* **Zero Arbitrary Popups:** Unsolicited promotional popups, newsletter gates, and unexpected layout-shifting modals are strictly prohibited.
+* **Editorial Micro-Copy:** Direct, calm, blameless, enterprise-grade tone; zero marketing superlatives or faux urgency.
