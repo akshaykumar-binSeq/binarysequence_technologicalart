@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Binary Sequence Technological Art — Canonical Design Tokens
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract
+   Ethos: "Swiss Laboratory Meets Natural Observation"
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. Color Primitives (Canonical Laboratory Palette)
+     ------------------------------------------------------------------------ */
+  --color-obsidian-carbon: #0B0C0E;       /* 60% Dominant Ground Canvas */
+  --color-warm-alabaster: #F6F5F0;        /* 30% Primary Documentation / Text */
+  --color-signal-amber: #D97706;          /* 10% Intentional Telemetry & Action Accent */
+  --color-signal-amber-hover: #F59E0B;    /* Accessible Bright Hover / In-Dev State */
+  --color-deep-forest-slate: #1E293B;     /* Structural Framing, Cards & Dividers */
+  --color-surface-slate: #12151B;         /* Elevated Surface Tint */
+
+  /* ------------------------------------------------------------------------
+     2. Semantic Color Roles & Dynamic Contrast
+     ------------------------------------------------------------------------ */
+  --surface-ground: var(--color-obsidian-carbon);
+  --surface-paper: var(--color-warm-alabaster);
+  --surface-raised: var(--color-surface-slate);
+  --surface-elevated: var(--color-deep-forest-slate);
+
+  --accent-action: var(--color-signal-amber);
+  --accent-hover: var(--color-signal-amber-hover);
+
+  --border-structural: var(--color-deep-forest-slate);
+  --border-subtle: rgba(246, 245, 240, 0.08);
+
+  --text-high-contrast: var(--color-warm-alabaster);
+  --text-muted: #94A3B8;                  /* Verified >= 4.5:1 on #0B0C0E */
+  --text-inverted: var(--color-obsidian-carbon);
+
+  --focus-ring: var(--color-signal-amber);
+
+  /* Status Indicators (Always paired with explicit text badges per contract) */
+  --status-live: #10B981;
+  --status-development: #F59E0B;
+  --status-error: #EF4444;
+
+  /* Adaptive Foreground System Tokens */
+  --fg-adaptive-light: #F6F5F0;
+  --fg-adaptive-dark: #0B0C0E;
+
+  /* ------------------------------------------------------------------------
+     3. 8pt Spatial Grid & Spacing Tokens
+     ------------------------------------------------------------------------ */
+  --space-1: 0.25rem;  /*  4px: Micro-spacing, inline badge padding, tag offsets */
+  --space-2: 0.50rem;  /*  8px: Tight element grouping, icon-to-label gap */
+  --space-3: 0.75rem;  /* 12px: Compact button vertical padding, list item spacing */
+  --space-4: 1.00rem;  /* 16px: Base card padding, mobile outer margin, standard gap */
+  --space-6: 1.50rem;  /* 24px: Tablet outer margin, grid gutter, desktop card padding */
+  --space-8: 2.00rem;  /* 32px: Desktop grid gutter, sub-section vertical separation */
+  --space-12: 3.00rem; /* 48px: Major content block separation */
+  --space-16: 4.00rem; /* 64px: Primary section vertical padding (mobile/tablet) */
+  --space-24: 6.00rem; /* 96px: Primary section vertical rhythm (desktop) */
+
+  /* ------------------------------------------------------------------------
+     4. Typography Families
+     ------------------------------------------------------------------------ */
+  --font-structural: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-editorial: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-technical: 'JetBrains Mono', 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* ------------------------------------------------------------------------
+     5. Fluid Typography Scale (CSS clamp()) & Line Heights
+     ------------------------------------------------------------------------ */
+  --text-display: clamp(2.0rem, 1.5rem + 2.5vw, 3.5rem);      /* 32px → 56px | Line-height: 1.12 */
+  --text-h2:      clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);     /* 24px → 36px | Line-height: 1.20 */
+  --text-h3:      clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);  /* 20px → 26px | Line-height: 1.30 */
+  --text-lead:    clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem); /* 18px → 20px | Line-height: 1.55 */
+  --text-base:    1.000rem;                                   /* 16px baseline | Line-height: 1.55 */
+  --text-sm:      0.875rem;                                   /* 14px          | Line-height: 1.45 */
+  --text-xs:      0.750rem;                                   /* 12px micro    | Line-height: 1.35 */
+
+  /* Static scale aliases for compatibility with GLOBAL_DESIGN_SYSTEM.toml */
+  --heading-xl: 3.5rem;
+  --heading-lg: 2.5rem;
+  --heading-md: 2.0rem;
+  --heading-sm: 1.5rem;
+  --text-xl: 1.25rem;
+  --text-lg: 1.125rem;
+
+  /* ------------------------------------------------------------------------
+     6. Motion & Hardware Compositor Tokens
+     ------------------------------------------------------------------------ */
+  --duration-fast: 150ms;    /* Micro-feedback (hover, focus, press: 120ms-150ms) */
+  --duration-medium: 300ms;  /* Component transitions (drawer, tab: 220ms-300ms) */
+  --duration-exit: 200ms;    /* Element exit/dismiss (150ms-200ms) */
+  --duration-slow: 450ms;    /* Structural/full-view transitions (350ms-450ms) */
+
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);  /* Natural standard easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);   /* Decelerated entrance curve */
+  --ease-in: cubic-bezier(0.4, 0.0, 1, 1);          /* Accelerated exit curve */
+
+  /* ------------------------------------------------------------------------
+     7. Z-Index Canonical Elevation Scale
+     ------------------------------------------------------------------------ */
+  --z-below: -1;     /* Decorative background canvases and ambient grid meshes */
+  --z-base: 0;       /* Standard document flow */
+  --z-surface: 10;   /* Raised interactive cards, active grid items, sticky sub-headers */
+  --z-sticky: 100;   /* Global primary header bar and route-loading bar */
+  --z-drawer: 200;   /* Navigation drawer and slide-over inspection panels */
+  --z-backdrop: 300; /* Dimmed modal/drawer backdrops */
+  --z-modal: 400;    /* Modal dialogs, Onboarding gate, scrubber modal preview */
+  --z-popover: 500;  /* Tooltips, dropdown menus, and floating hints */
+  --z-toast: 600;    /* System-level alerts, connectivity toasts */
+  --z-skip-link: 700;/* "Skip to Main Content" accessibility link when focused */
+
+  /* ------------------------------------------------------------------------
+     8. Layout Boundaries & Radii
+     ------------------------------------------------------------------------ */
+  --container-max: 1280px;  /* 12-column grid container max width */
+  --container-wide: 1440px; /* Widescreen container max width */
+  --measure-max: 65ch;      /* Optimal 45-75 CPL continuous prose measure */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* ------------------------------------------------------------------------
+     9. Interactive Ergonomics
+     ------------------------------------------------------------------------ */
+  --target-touch-min: 44px;      /* WCAG 2.1 AA touch target minimum */
+  --target-touch-preferred: 48px;/* Preferred touch target dimension */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+/* ==========================================================================
+   Base Reset & Global Styling Infrastructure
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 2;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--surface-ground);
+  color: var(--text-high-contrast);
+  font-family: var(--font-structural);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible Keyboard Focus Ring */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Eliminate outline for mouse click when focus-visible handles keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Mobile input zoom prevention (Contract §17: font-size >= 16px) */
+input, textarea, select, button {
+  font: inherit;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-size: max(16px, 1rem);
+}
+
+/* Typographic measure and wrapping rules */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+/* Media element aspect-ratio preservation to prevent CLS */
+img, video, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mandatory Reduced Motion Enforcement (Contract §25) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Archival Print Styles (Contract §49) */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #0B0C0E !important;
+  }
+
+  /* Invert high-contrast surfaces for paper */
+  :root {
+    --surface-ground: #FFFFFF;
+    --text-high-contrast: #0B0C0E;
+    --border-structural: #D1D1D6;
+  }
+}
+
+/* ==========================================================================
+   Shell Utilities & Accessibility Landmarks
+   ========================================================================== */
+
+/* Accessibility Skip Link (Contract §3.2, §30) */
+.bs-skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-skip-link);
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--surface-raised);
+  color: var(--color-signal-amber);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bs-skip-link:focus-visible {
+  top: var(--space-4);
+}
+
+/* Bounded Container Utility (Contract §2.1) */
+.bs-container {
+  width: min(100% - var(--space-8), var(--container-max));
+  margin-inline: auto;
+}
+

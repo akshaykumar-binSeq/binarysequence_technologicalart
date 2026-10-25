@@ -1,0 +1,452 @@
+/* ==========================================================================
+   FEAT-02-HOME — Presentation Styles
+   Authority: Level 3 Screen, View, Layout, Motion & Sensory Contract
+   ========================================================================== */
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-block-end: var(--space-24);
+}
+
+@media (min-width: 1025px) {
+  .homeContainer {
+    gap: var(--space-24);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Shared Section Styling
+   -------------------------------------------------------------------------- */
+
+.section {
+  width: 100%;
+}
+
+.sectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--container-max);
+}
+
+.eyebrow {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal-amber);
+}
+
+.headline {
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  color: var(--text-high-contrast);
+  max-width: 32ch;
+}
+
+.sectionLead {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: var(--measure-max);
+}
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  color: var(--color-signal-amber);
+  text-decoration: none;
+  min-height: var(--target-touch-min);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.actionLink:hover {
+  color: var(--color-signal-amber-hover);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   1. Hero Section
+   -------------------------------------------------------------------------- */
+
+.heroSection {
+  min-height: calc(85dvh - 80px);
+  display: flex;
+  align-items: center;
+  padding-block-start: var(--space-12);
+  padding-block-end: var(--space-12);
+  border-block-end: 1px solid var(--border-subtle);
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 52ch;
+}
+
+.heroHeadline {
+  font-size: var(--text-display);
+  line-height: 1.12;
+  color: var(--text-high-contrast);
+  letter-spacing: -0.02em;
+}
+
+.subHeadline {
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  color: var(--color-warm-alabaster);
+  font-weight: 500;
+}
+
+.heroNarrative {
+  font-size: var(--text-lead);
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: var(--measure-max);
+}
+
+.binaryIndicator {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--color-signal-amber);
+  letter-spacing: 0.08em;
+  padding: var(--space-2) var(--space-3);
+  background-color: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+  margin-block-start: var(--space-4);
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target-touch-preferred);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--accent-action);
+  color: var(--color-obsidian-carbon);
+  font-family: var(--font-structural);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+.btnPrimary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btnPrimary:active {
+  transform: scale(0.98);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--target-touch-preferred);
+  padding: var(--space-3) var(--space-6);
+  background-color: transparent;
+  color: var(--text-high-contrast);
+  font-family: var(--font-structural);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-structural);
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+.btnSecondary:hover {
+  border-color: var(--color-signal-amber);
+  color: var(--color-signal-amber);
+}
+
+.btnSecondary:active {
+  transform: scale(0.98);
+}
+
+.manifestoAnchor {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: var(--space-2) 0;
+  margin-block-start: var(--space-2);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.manifestoAnchor:hover {
+  color: var(--color-signal-amber);
+}
+
+/* --------------------------------------------------------------------------
+   2. Complexity Absorption Section (Principles Grid)
+   -------------------------------------------------------------------------- */
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .principlesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.principleCard {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.principleNumber {
+  font-family: var(--font-technical);
+  font-size: var(--text-sm);
+  color: var(--color-signal-amber);
+  font-weight: 600;
+}
+
+.principleTitle {
+  font-size: var(--text-base);
+  color: var(--text-high-contrast);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.principleDesc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   3. Service Disciplines Section
+   -------------------------------------------------------------------------- */
+
+.disciplinesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .disciplinesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.disciplineCard {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.disciplineCard:hover {
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+.disciplineTitle {
+  font-size: var(--text-h3);
+  color: var(--text-high-contrast);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.disciplineDesc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   4. Featured Ecosystem Section
+   -------------------------------------------------------------------------- */
+
+.ecosystemGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .ecosystemGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ecosystemCard {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  justify-content: space-between;
+}
+
+.ecosystemCardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.statusBadge {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--status-development);
+  letter-spacing: 0.05em;
+}
+
+.ecosystemTitle {
+  font-size: var(--text-h3);
+  color: var(--text-high-contrast);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.ecosystemDesc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   5. Sequence Overview Section (11 Stages)
+   -------------------------------------------------------------------------- */
+
+.sequenceTrack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .sequenceTrack {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .sequenceTrack {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.sequenceStep {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stepIndex {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--color-signal-amber);
+  font-weight: 600;
+}
+
+.stepName {
+  font-family: var(--font-technical);
+  font-size: var(--text-xs);
+  color: var(--text-high-contrast);
+  letter-spacing: 0.05em;
+}
+
+.sequenceCaption {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: var(--measure-max);
+}
+
+/* --------------------------------------------------------------------------
+   6. Terminal Action Section
+   -------------------------------------------------------------------------- */
+
+.terminalCard {
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-structural);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: var(--container-max);
+}
+
+@media (min-width: 768px) {
+  .terminalCard {
+    padding: var(--space-12);
+  }
+}
+
+.terminalHeadline {
+  font-size: var(--text-h2);
+  color: var(--text-high-contrast);
+  line-height: 1.2;
+}
+
+.terminalDesc {
+  font-size: var(--text-lead);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: var(--measure-max);
+}
+
+.terminalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
