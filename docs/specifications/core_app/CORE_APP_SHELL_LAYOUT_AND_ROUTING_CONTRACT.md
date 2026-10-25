@@ -12,7 +12,9 @@
 
 This document defines the structural, viewport, routing, and chrome requirements for the root application shell (`src/app/`) of Binary Sequence Technological Art. 
 
-The application shell provides the framing, accessibility landmarks, global navigation, modal portals, and route orchestrations. It enforces the project's foundational architectural axioms:
+The application shell provides the framing, accessibility landmarks, global navigation, modal portals, and route orchestrations using Next.js App Router and TypeScript (`DEC-DR03`). Route `/` maps directly to `FEAT-02-HOME` (the primary V1 implementation target), displaying the Home hero immediately without mandatory onboarding gates (`DEC-DR04`).
+
+It enforces the project's foundational architectural axioms:
 > **"Complexity belongs in the architecture, not in the user's hands."**  
 > **"Content is constrained; environments may extend."**  
 > **"Viewport conditions over device identities."**

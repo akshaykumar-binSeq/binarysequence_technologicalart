@@ -585,9 +585,11 @@ Every interactive component, button, card trigger, and form control must impleme
 
 Each feature bounded context (`src/features/<feature-name>/`) inherits the global rules above and applies the following feature-specific constraints.
 
-### 36. Phase 01: `src/features/onboarding` (Onboarding Perceptual Gate)
-- **Role:** Optional first-visit perceptual introduction (`Binary → Sequence → Technology → Experience`), never a permanent obstacle.
-- **Viewport & Z-Index:** Fixed full-screen overlay (`min-height: 100dvh; z-index: var(--z-modal, 400); background: var(--color-obsidian-carbon)`).
+### 36. Phase 01: `src/features/onboarding` (Onboarding Perceptual Gate — DEFERRED)
+- **Status:** **Deferred from V1 Launch (`DEC-DR04`).** The website lands directly on `FEAT-02-HOME` at `/`. Mandatory onboarding modals or full-screen introduction gates on initial entry are strictly prohibited.
+- **Future Re-Scope Constraint:** Any future onboarding experience must be purely optional, dismissible, and non-blocking, never obstructing access to essential public content.
+- **Role (If Activated in Future):** Lightweight, optional first-visit perceptual introduction (`Binary → Sequence → Technology → Experience`), never a permanent obstacle.
+- **Viewport & Z-Index:** Fixed overlay (`z-index: var(--z-modal, 400); background: var(--color-obsidian-carbon)`).
 - **Mandatory Bypass Invariants:**
   1. If `prefers-reduced-motion: reduce` is true $\rightarrow$ Bypass overlay immediately (`SKIPPED`).
   2. If user-agent is a search crawler/bot or SSR initial HTML $\rightarrow$ Ensure core Home content remains present and indexable in the DOM underneath.
@@ -595,7 +597,8 @@ Each feature bounded context (`src/features/<feature-name>/`) inherits the globa
 - **Persistence Resilience:** Use `localStorage` (`bs_onboarding_state_v1`) wrapped in a `try/catch` port that silently degrades to an in-memory session variable if storage is blocked in strict incognito browsers.
 - **Landscape Mobile Override:** Switch vertical intro stack into a compact 2-column horizontal split so `"Enter the studio"` and `"Skip introduction"` buttons remain visible without scrolling at `360px` height.
 
-### 37. Phase 02: `src/features/home` (Home Screen)
+### 37. Phase 02: `src/features/home` (Home Screen — PRIMARY V1 TARGET)
+- **Status:** **Primary V1 Implementation Target (`DEC-DR04`).** Visitors see the Home hero immediately upon entering `/`. Essential Home content must be rendered in the initial HTML and must never depend on completing an introduction.
 - **Role:** Primary Tier 1 orientation, core belief (`"Everyone deserves an enterprise solution"`), Complexity Absorption demonstration, and Feature Gateway routing.
 - **Scannability Target:** Strictly bounded to **6 compact sections** scannable within 2–3 desktop viewport scrolls.
 - **Gateway Isolation:** Consumes immutable `FeatureGatewaySummary` objects from `src/core/gateways/` to preview Studio, Products, Method, and Blueprint. Zero imports from other feature folders.

@@ -38,8 +38,8 @@ This guideline covers:
 - Route and public-screen mapping.
 - Feature gateway summaries and the composition boundary.
 - The repeatable eight-sprint lifecycle.
-- Phase 01: Onboarding feature.
-- Phase 02: Home feature.
+- Phase 01: Onboarding feature (DEFERRED as a blocking gate per DEC-DR04).
+- Phase 02: Home feature (PRIMARY V1 IMPLEMENTATION TARGET per DEC-DR04).
 - Accessibility, SEO, performance, resilience, security, testing, and living documentation.
 - Implementation readiness and sign-off criteria.
 
@@ -473,10 +473,11 @@ Use this message only when the phase actually satisfies its agreed acceptance cr
 
 ---
 
-## 8. Phase 01 — Onboarding feature
+## 8. Phase 01 — Onboarding feature (DEFERRED)
 
 **Feature path:** `src/features/onboarding/`  
-**Status:** Planned until repository inspection and verification establish otherwise.
+**Status:** **Deferred from V1 Launch (`DEC-DR04`).**  
+> **GOVERNANCE NOTICE (DEC-DR04):** Per confirmed founder decision `DEC-DR04`, mandatory onboarding is deferred as a blocking gate. Route `/` maps directly to `FEAT-02-HOME`. Visitors must see the Home hero immediately upon entering the site. Any future onboarding experience must be purely optional, dismissible, and non-blocking. Essential Home content must never depend on completing an introduction.
 
 ### 8.1 Responsibility
 
@@ -561,10 +562,11 @@ A useful target is **CLS < 0.05** for the relevant page experience, subject to t
 
 ---
 
-## 9. Phase 02 — Home feature
+## 9. Phase 02 — Home feature (PRIMARY V1 IMPLEMENTATION TARGET)
 
 **Feature path:** `src/features/home/`  
-**Status:** Planned until repository inspection and verification establish otherwise.
+**Status:** **Primary V1 Implementation Target (`DEC-DR04`).**  
+> **GOVERNANCE NOTICE (DEC-DR04):** Per confirmed founder decision `DEC-DR04`, `FEAT-02-HOME` is the primary V1 implementation target. Route `/` maps directly to this feature. Visitors see the Home hero immediately upon entry without any gate obstruction. All essential Home content is available in the initial rendered HTML. Technology baseline is Next.js App Router + TypeScript + Firebase (`DEC-DR03`).
 
 ### 9.1 Responsibility
 
@@ -785,7 +787,9 @@ Do not use DDD as a reason to over-engineer a static content page. A feature may
 
 The DDD blueprint and eight-sprint lifecycle may be treated as the **approved structural direction for planning**, but this approval is not evidence that the existing repository already conforms to it. Before implementation begins, inspect the actual repository and compare it with the approved documents.
 
-### Required first action: Sprint 01.1 — Onboarding
+> **GOVERNANCE NOTICE (DEC-DR04):** Sprint 01 (Onboarding) is **DEFERRED** as a blocking gate per confirmed founder decision `DEC-DR04`. The primary implementation sequence begins directly with **Phase 02 / Sprint 02: Home Feature (`FEAT-02-HOME`)** using Next.js App Router, TypeScript, and Firebase (`DEC-DR03`).
+
+### Required first action: Sprint 02.1 — Home Feature Setup & Baseline
 
 1. Inspect the current repository structure, framework, route system, build commands, tests, and current onboarding behaviour.
 2. Read the relevant sections of Audience-Facing Content Specification v1.1, Information Architecture v1.0, and the foundational strategy documents.

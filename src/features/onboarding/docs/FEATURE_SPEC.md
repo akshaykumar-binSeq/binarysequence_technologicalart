@@ -3,14 +3,17 @@
 **Feature ID:** `FEAT-01-ONB`  
 **Feature Name:** `onboarding`  
 **Public Route:** None (Overlay Gate)  
-**Tier:** Implementation Gate / Perceptual Introduction  
+**Tier:** Deferred Implementation Feature / Optional Introduction  
 **Derived From:** `binary_sequence_screen_layout_ia_motion_loading_contract_final.md` (Section 36)  
-**Status:** Planned Contract  
+**Status:** **Deferred from V1 Launch (`DEC-DR04`)**  
+**Governance Authority:** Confirmed Founder Decision `DEC-DR04` (Direct Home Landing)
 
 ---
 
 ## 1. Role & Purpose
-Optional first-visit perceptual introduction illustrating `Binary → Sequence → Technology → Experience`. It communicates the philosophy without becoming an unskippable obstacle to essential site content.
+**DEFERRED FOR V1 LAUNCH.** Per confirmed founder decision `DEC-DR04`, visitors see the Home hero immediately upon accessing `/`. Mandatory onboarding modals or full-screen introduction gates on initial entry are strictly prohibited.
+
+If activated in a future iteration, it must provide only a lightweight, optional first-visit perceptual introduction illustrating `Binary → Sequence → Technology → Experience`. It must never become an unskippable obstacle to essential site content. Essential Home content must render in the initial HTML and never depend on completing onboarding.
 
 ---
 

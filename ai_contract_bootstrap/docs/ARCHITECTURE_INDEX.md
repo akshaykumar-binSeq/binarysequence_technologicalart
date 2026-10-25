@@ -1,7 +1,7 @@
 # Binary Sequence Technological Art — Architecture Index
 
-**Version:** 1.1.0 (bootstrap proposal)  
-**Status:** Proposed baseline — reconcile with the live repository before adoption.
+**Version:** 1.1.0 (confirmed baseline)  
+**Status:** Confirmed baseline — approved by founder decisions `DEC-DR03` (Technology Stack) and `DEC-DR04` (Direct Home Landing).
 
 ## Purpose
 
@@ -13,11 +13,11 @@ This index is the entry point for developers and AI agents working on the Binary
 - Markdown is authoritative for rationale, trade-offs, editorial direction, and contextual explanation.
 - Where narrative text mentions a testable fact, it must reference the canonical machine-contract identifier or be generated from the machine contract.
 - Existing code is evidence of current behavior, not authority to silently override approved requirements. Record discrepancies before changing it.
-- The live repository, framework version, scripts, and deployment configuration must be inspected before this proposed baseline is treated as implemented.
+- The live repository, framework version, scripts, and deployment configuration must be inspected before this baseline is treated as implemented.
 
 ## Feature inventory
 
-There are eleven proposed feature bounded contexts: onboarding is an implementation gate, not a public screen; the remaining ten map to the approved public screen inventory. See `ARCHITECTURE_INDEX.toml` for IDs, paths, routes, status, and exports.
+There are eleven feature bounded contexts: `FEAT-02-HOME` is the primary V1 implementation target (`/`), mapping directly to the Home hero without gate obstruction per `DEC-DR04`. `FEAT-01-ONB` is deferred as a blocking experience; any future onboarding must be non-blocking and optional. The remaining nine features map to the approved public screen inventory. See `ARCHITECTURE_INDEX.toml` for IDs, paths, routes, status, and exports.
 
 ## Key contracts
 

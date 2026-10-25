@@ -410,7 +410,7 @@ Every important document across the repository is detailed below with its comple
 * **Relative Path:** `docs/ACTIVE_SESSION_STATE.md`
 * **Precedence Level:** Operational Governance / Living Session Ledger
 * **Purpose:** Living ledger tracking current project phase, active tasks, core decisions, commit history, tooling status, and handoff notes across AI sessions.
-* **Governing Topics:** Session continuity, phase progression, active blockers (`DR-02`), pending decisions (`DR-03`, `DR-04`, `DR-08`), completed work records.
+* **Governing Topics:** Session continuity, phase progression, active blockers (`DR-02`), confirmed decisions (`DEC-DR03`, `DEC-DR04`), pending infrastructure decisions (`DR-08`), completed work records.
 * **Upstream Documents:** Governed by `GEMINI.md` Section 10.
 * **Downstream Documents:** Consulted at the start of every session; updated at the conclusion of every task.
 * **Status:** `Living` / Active Operational Ledger
@@ -449,7 +449,7 @@ Every important document across the repository is detailed below with its comple
 * **Downstream Documents:** Gates Phase 1 application implementation.
 * **Status:** `Approved` / Active Gate Matrix
 * **Key Invariants / Directives:**
-  * Implementation cannot commence while `DR-02` (tooling) and `DR-03` (stack) remain unresolved.
+  * Primary technology stack confirmed (`DEC-DR03`) and direct landing confirmed (`DEC-DR04`); implementation tooling (`DR-02`) requires host shell PATH verification.
 
 #### 22. `docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md`
 * **Relative Path:** `docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md`
@@ -799,12 +799,12 @@ The following items are confirmed open questions or environment blockers discove
 1. **Host Tooling Path (`DR-02`):**  
    * *Status:* `BLOCKED (Environment)`  
    * *Detail:* Node.js and pnpm are installed on the host via NVM for Windows, but executable symlinks are unlinked in the active shell environment. Running automated validation scripts (`validate-specs.mjs`, `validate-design-tokens.mjs`) is blocked until the host shell PATH is configured.
-2. **Technology Stack Selection (`DR-03` / `DEC-006`):**  
-   * *Status:* `PROPOSED / AWAITING_APPROVAL`  
-   * *Detail:* Astro + TypeScript + CSS is recommended under Master v1.1 Change 15 (Minimum Appropriate Technology). Formal adoption requires founder approval via `EDR-001`.
-3. **Launch Scope: Direct Landing vs. Onboarding Gate (`DR-04` / `DEC-005`):**  
-   * *Status:* `PROPOSED / AWAITING_APPROVAL`  
-   * *Detail:* Content Spec v1.1 and IA v2.0 specify a direct Home hero landing. Deferring the pilot modal Onboarding Gate (`FEAT-01-ONB`) from V1 launch awaits formal founder sign-off.
+2. **Technology Stack Selection (`DR-03` / `DEC-DR03`):**  
+   * *Status:* `CONFIRMED BY FOUNDER`  
+   * *Detail:* Next.js with TypeScript and Firebase is the approved technology baseline for website V1. Uses Next.js App Router and TypeScript; Firebase services per documented requirements; DDD boundaries enforced; zero speculative backend infrastructure.
+3. **Launch Scope: Direct Landing vs. Onboarding Gate (`DR-04` / `DEC-DR04`):**  
+   * *Status:* `CONFIRMED BY FOUNDER`  
+   * *Detail:* Visitors see Home hero immediately (`/` maps to `FEAT-02-HOME`, the primary V1 implementation target). Mandatory onboarding modal gate (`FEAT-01-ONB`) is deferred; any future onboarding must be non-blocking and optional. Essential Home content must render in the initial HTML.
 4. **Contact Form Intake Backend (`DR-08`):**  
    * *Status:* `PENDING_DECISION`  
    * *Detail:* Public email `binarysequence.techart@gmail.com` is confirmed, but the intake backend mechanism (custom API endpoint, Formspree, Resend, or simple `mailto:`) remains unselected.

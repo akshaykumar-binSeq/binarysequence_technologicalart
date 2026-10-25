@@ -295,12 +295,12 @@ Before Phase 1 application code scaffolding begins, four decisions/actions must 
 1. **Host Tooling Path (`DR-02`):**  
    * *Status:* `BLOCKED (Environment)`  
    * *Action:* Expose Node.js and pnpm in the system PATH so terminal commands (`node -v`, `pnpm -v`) succeed.
-2. **Technology Stack Sign-Off (`DR-03` / `DEC-006`):**  
-   * *Status:* `PROPOSED / AWAITING_APPROVAL`  
-   * *Action:* Founder formal sign-off on Astro + TypeScript + CSS via Engineering Decision Record (`EDR-001`).
-3. **Launch Scope Sign-Off (`DR-04` / `DEC-005`):**  
-   * *Status:* `PROPOSED / AWAITING_APPROVAL`  
-   * *Action:* Founder formal sign-off on direct landing on Home hero for V1 launch (deferring or scoping Onboarding Gate `FEAT-01-ONB`).
+2. **Technology Stack Sign-Off (`DR-03` / `DEC-DR03`):**  
+   * *Status:* `CONFIRMED BY FOUNDER`  
+   * *Resolution:* Next.js App Router + TypeScript + Firebase approved as V1 technology baseline. Specific services, security rules, and deployment approach to be defined before implementation.
+3. **Launch Scope Sign-Off (`DR-04` / `DEC-DR04`):**  
+   * *Status:* `CONFIRMED BY FOUNDER`  
+   * *Resolution:* Direct landing on Home hero (`/` maps to `FEAT-02-HOME`, the primary V1 target). Mandatory onboarding gate (`FEAT-01-ONB`) deferred from V1 launch; any future onboarding must be non-blocking and optional. Essential Home content renders in initial HTML.
 4. **Contact Form Intake Backend (`DR-08`):**  
    * *Status:* `PENDING_DECISION`  
    * *Action:* Founder selection of intake backend mechanism (custom API, Formspree, Resend, or simple `mailto:`).

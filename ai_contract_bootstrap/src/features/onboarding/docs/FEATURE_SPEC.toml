@@ -3,7 +3,9 @@ feature_id = "FEAT-01-ONB"
 feature_name = "onboarding"
 feature_version = "1.0.0"
 implementation_phase = "01"
-status = "planned"
+status = "deferred"
+decision_ref = "DEC-DR04"
+note = "Deferred as blocking gate per DEC-DR04; any future onboarding must be non-blocking and optional"
 
 [architecture]
 layers = ["domain", "application", "infrastructure", "presentation"]

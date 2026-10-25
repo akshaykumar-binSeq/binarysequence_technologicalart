@@ -1,6 +1,7 @@
 [routing]
 framework = "Next.js App Router"
-status = "proposed_baseline"
+status = "confirmed_baseline"
+decision_ref = "DEC-DR03, DEC-DR04"
 route_files_import = "feature_root_index_only"
 not_found_boundary = "app_router_not_found"
 error_boundary = "app_router_error_boundary"

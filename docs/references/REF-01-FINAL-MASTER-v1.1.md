@@ -33,7 +33,7 @@
 | **CHG-08** | 3-Gen Evolution | Gen 1: Manifesto & Studio; Gen 2: Live Registry; Gen 3: Technological Art Lab. | Roadmap, feature scopes |
 | **CHG-10** | Execution Order | 9-step execution sequence. Website V1 is Step 3. | Project milestones |
 | **CHG-14/16**| Evidence Gates | Strict acceptance checklist for V1 launch; no milestone reported complete without empirical evidence. | Testing, QA, deployment |
-| **CHG-15** | MAT Rule | **Minimum Appropriate Technology:** Stack follows requirements, not hype. Must evaluate Astro + CSS first. | Stack selection (`DR-03` / `EDR-001`) |
+| **CHG-15** | MAT Rule | **Minimum Appropriate Technology:** Stack follows requirements, not hype. Next.js App Router + TypeScript + Firebase confirmed as approved V1 baseline (`DEC-DR03`). | Stack selection (`DR-03` resolved) |
 
 ---
 

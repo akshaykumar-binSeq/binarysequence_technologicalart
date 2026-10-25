@@ -145,8 +145,8 @@ verification_evidence = "Inbox access and delivery testing required before publi
 | **DEC-002** | System Verification Register | `CONFIRMED` | IA / Routing | Defer from V1. Omit from sitemap, routes, and footer. |
 | **DEC-003** | Sequence Scrubber Scope | `CONFIRMED` | Presentation / UX | Implement static, accessible 11-step sequence for V1; interactive scrubber deferred. |
 | **DEC-004** | Response SLA Language | `CONFIRMED` | Editorial / Governance | Remove fixed turnaround claims (e.g. 48h); state capacity-based review. |
-| **DEC-005** | Onboarding Gate Disposition | `PROPOSED` | Architecture / UX | Direct landing on Home hero; modal gate (`FEAT-01-ONB`) deferred or optional. |
-| **DEC-006** | Primary Framework (V1) | `PROPOSED` | Architecture / Tech Stack | Recommend Astro + TypeScript + CSS (Minimum Appropriate Technology). |
+| **DEC-005** | Onboarding Gate Disposition (`DEC-DR04`) | `CONFIRMED` | Architecture / UX | Direct landing on Home hero; `/` maps to `FEAT-02-HOME` (primary V1 target); modal gate (`FEAT-01-ONB`) deferred as blocking experience. |
+| **DEC-006** | Primary Framework & Persistence (`DEC-DR03`) | `CONFIRMED` | Architecture / Tech Stack | Next.js App Router + TypeScript + Firebase approved baseline for V1. |
 | **DEC-007** | Canonical Repo Directory | `CONFIRMED` | Workspace | Canonical root is `G:\binarysequence_techart`. |
 | **DEC-008** | Documentation Architecture | `PROPOSED` | Governance | Unified `docs/` tree eliminating `master_documents/` and `final_docs/`. |
 
@@ -316,7 +316,7 @@ To empirically test whether a newly started Antigravity session correctly discov
    - **Check 1 (Root Instruction Auto-Discovery):** The fresh agent must reference [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) as its root governance guide.
    - **Check 2 (Living Ledger Navigation):** The fresh agent must consult [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) to report the current phase and recent commit history.
    - **Check 3 (Hierarchy Grounding):** The fresh agent must consult [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) and relevant reference cards rather than searching randomly.
-   - **Check 4 (Decision Status Fidelity):** The fresh agent must explicitly identify `DR-03` / `DEC-006` (Astro vs. Next.js) as `PROPOSED / UNRESOLVED`, and must **not** assume Astro or Next.js has been selected.
+   - **Check 4 (Decision Status Fidelity):** The fresh agent must explicitly identify `DR-03` / `DEC-DR03` as `CONFIRMED` (Next.js + TypeScript + Firebase) and `DR-04` / `DEC-DR04` as `CONFIRMED` (Direct Home landing on `FEAT-02-HOME`; `FEAT-01-ONB` deferred).
    - **Check 5 (History Independence):** The fresh agent must not hallucinate or assume conversation history from previous sessions.
    - **Check 6 (Evidence-Based Gap Reporting):** The fresh agent must report any missing context or tool blockers (`DR-02`) instead of inventing assumptions.
 4. **Execution Limitation:** This test requires a user-initiated new chat session in the IDE UI. An active agent within an ongoing session cannot simulate a user-level IDE restart.

@@ -29,6 +29,7 @@
 ```
 
 * **Deferred:** `/system-verification-register` is explicitly excluded from V1 sitemap, routing, and footer (DEC-002).
+* **Direct Landing Baseline (DEC-DR04):** Route `/` maps directly to `FEAT-02-HOME` (primary V1 implementation target). Visitors see the Home hero immediately. Mandatory onboarding modal gate (`FEAT-01-ONB`) is deferred; any future onboarding must be optional, dismissible, and non-blocking. Essential Home content must render in the initial HTML.
 
 ---
 

@@ -35,4 +35,4 @@ The public website operates strictly under a **Two-Tier Discovery Architecture**
 
 * **Contact Email Resolution:** Replaced legacy draft references (`contact@binarysequence.art`) with verified operational address: `binarysequence.techart@gmail.com` (DEC-001).
 * **Response SLA Rule:** No rigid "48-hour response" guarantees. State: *"Inquiries are reviewed by the founder. Response times depend on current studio capacity."* (DEC-004).
-* **Direct Landing Baseline:** Hero lands directly on Home; Onboarding modal gate (`FEAT-01-ONB`) deferred or optional (DEC-005).
+* **Direct Landing Baseline (DEC-DR04):** Hero lands directly on Home (`FEAT-02-HOME`); mandatory onboarding modal gate (`FEAT-01-ONB`) deferred as blocking experience per confirmed founder decision `DEC-DR04` (`DR-04` resolved).

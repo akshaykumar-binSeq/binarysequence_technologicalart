@@ -10,15 +10,16 @@
 
 ## 1. Current Phase & Operational Status
 
-* **Current Phase:** Phase 0 (Discovery & Verification Complete) ➔ Phase 1 Preparation
-* **Active Working Boundary:** Documentation Architecture, AI Context Governance, and Git Baseline Verification
-* **Implementation Status:** No application code generated; framework selection pending founder decision (`DR-03` / `DEC-006`).
+* **Current Phase:** Phase 0 (Discovery & Verification Complete) ➔ Phase 1 Preparation (Architecture & Contracts Synchronized)
+* **Active Working Boundary:** Documentation Architecture, Machine Contracts, and Verified Founder Decisions
+* **Implementation Status:** Technology stack confirmed (`DEC-DR03`: Next.js App Router + TypeScript + Firebase). Direct Home landing confirmed (`DEC-DR04`: `/` maps to `FEAT-02-HOME` as primary V1 target; `FEAT-01-ONB` deferred). All contracts and documentation synchronized. Host shell PATH (`DR-02`) remains only pre-flight environment blocker before project scaffolding.
 * **Source Control State:**
   * Root commit: `a047c2d` (`chore: establish project documentation and contract baseline`)
   * Documentation commit: `3c15797` (`docs: record initial Git baseline`)
   * Governance commit: `c512bac` (`docs(governance): establish persistent context and change propagation protocol`)
   * References commit: `9cc9ec1` (`docs(governance): codify parent-to-target retrieval, long-prompt protocol, and AI references`)
   * Refinements commit: `b5e0661` (`docs(governance): refine long-task tracking protocol and add fresh-session test procedure`)
+  * Sensory contract commit: `6190139` (`docs(sensory): integrate layout science, color psychology, and content reveal contract`)
   * Working Tree: Clean
 
 ---
@@ -31,8 +32,8 @@
 | **DEC-002** | IA / Routing | `CONFIRMED` | System Verification Register deferred from V1 launch; omit from navigation. | [Final Master v1.1](file:///G:/binarysequence_techart/Binary_Sequence_Technological_Art_Final_Master_v1.1.md) |
 | **DEC-003** | Presentation / UX | `CONFIRMED` | Implement static accessible 11-step sequence for V1; scrubber deferred. | [Final Master v1.1](file:///G:/binarysequence_techart/Binary_Sequence_Technological_Art_Final_Master_v1.1.md) |
 | **DEC-004** | Editorial / Governance | `CONFIRMED` | Remove fixed turnaround claims (e.g. 48h); state capacity-based review. | [Content Spec v1.1](file:///G:/binarysequence_techart/audience_facing_content_specification_v1_1.md) |
-| **DEC-005** | Architecture / UX | `PROPOSED` | Direct landing on Home hero; modal onboarding gate (`FEAT-01-ONB`) deferred. | [Requirements & Discrepancies](file:///G:/binarysequence_techart/docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md) |
-| **DEC-006** | Architecture / Stack | `PROPOSED` | Recommend Astro + TypeScript + CSS (Minimum Appropriate Technology). | [Bootstrap Assessment](file:///G:/binarysequence_techart/docs/discovery/BOOTSTRAP_ASSESSMENT.md) |
+| **DEC-005** | Architecture / Scope (`DEC-DR04`) | `CONFIRMED` | Direct landing on Home hero (`/` maps to `FEAT-02-HOME`); modal onboarding gate (`FEAT-01-ONB`) deferred. | [Confirmed Founder Decisions](file:///G:/binarysequence_techart/docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md) |
+| **DEC-006** | Architecture / Stack (`DEC-DR03`) | `CONFIRMED` | Next.js App Router + TypeScript + Firebase approved baseline for V1. | [Confirmed Founder Decisions](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) |
 | **DEC-007** | Workspace Root | `CONFIRMED` | Sole canonical repository root is `G:\binarysequence_techart\`. | [Canonical Workspace Report](file:///G:/binarysequence_techart/docs/discovery/CANONICAL_WORKSPACE_AND_GIT_BASELINE_REPORT.md) |
 | **DEC-008** | Documentation Arch | `PROPOSED` | Unified `docs/` hierarchy eliminating `master_documents/` and `final_docs/`. | [Documentation Protocol](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) |
 
@@ -89,17 +90,27 @@
 
 ## 5. Active Task Log & Handoff Summary
 
-* **Active Phase:** Phase 3.5: Layout Science, Color Psychology & Content Reveal Contract Integration.
-* **Task Objective:** Integrated the canonical sensory, perceptual, and content architecture contract into the primary Level 3 layout contract, AI reference card `REF-03`, shared component contracts, and master documentation reference.
-* **Change Classification:** `COMMON` + `ENHANCEMENT`
-* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0, `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`.
+* **Active Phase:** Phase 3.6: Confirmed Founder Decisions Synchronization (`DEC-DR03` & `DEC-DR04`).
+* **Task Objective:** Synchronized all project contracts, machine TOML specifications, readiness checklists, and architectural references with the confirmed founder decisions: Next.js App Router + TypeScript + Firebase approved baseline (`DEC-DR03`), and Direct Home landing on `FEAT-02-HOME` with `FEAT-01-ONB` deferred as a blocking gate (`DEC-DR04`).
+* **Change Classification:** `ARCHITECTURE` + `SCOPE` + `FOUNDER_DECISION`
+* **Authoritative Documents Referenced:** Level 1 Master v1.1, Level 2 Content Spec v1.1, Level 3 IA v2.0, Level 4 DDD Guidelines, `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`.
 * **Files Updated:**
-  * [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Integrated Gestalt principles §11.1, neural processing ergonomics §11.2, color psychology §19.1, progressive disclosure & non-disruptive overlay hierarchy §30.1, pre-implementation protocol).
-  * [`docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) (Propagated Gestalt laws, color psychology, and overlay hierarchy).
-  * [`docs/specifications/common_shared/COMMON_SHARED_DESIGN_INTERACTION_AND_MOTION_CONTRACT.md`](file:///G:/binarysequence_techart/docs/specifications/common_shared/COMMON_SHARED_DESIGN_INTERACTION_AND_MOTION_CONTRACT.md) (Synchronized Gestalt spacing tokens, neural color ergonomics, and progressive disclosure rules).
-  * [`src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.md`](file:///G:/binarysequence_techart/src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.md) (Synchronized with shared sub-specification).
-  * [`src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.toml`](file:///G:/binarysequence_techart/src/core/docs/COMMON_SHARED_DESIGN_INTERACTION_CONTRACT.toml) (Added `[gestalt]` and `[overlay_hierarchy]` machine tokens).
-  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) (Updated catalog entries for Layout Contract, REF-03, and Common Shared specifications).
+  * [`docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md`](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) (Marked `DR-03` and `DR-04` as COMPLETE / CONFIRMED).
+  * [`docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md`](file:///G:/binarysequence_techart/docs/discovery/REQUIREMENTS_AND_DISCREPANCIES.md) (Resolved `DISC-005` via `DEC-DR04` and `DISC-006` via `DEC-DR03`).
+  * [`ai_contract_bootstrap/docs/DISCREPANCY_REGISTER.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/DISCREPANCY_REGISTER.md) (Resolved `DISC-005`, `DISC-006`, and `DISC-007`).
+  * [`ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.toml) & [`ARCHITECTURE_INDEX.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/docs/ARCHITECTURE_INDEX.md) (Confirmed baseline: Next.js + TS + Firebase; `FEAT-02-HOME` primary V1 target; `FEAT-01-ONB` deferred).
+  * [`ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.toml) & [`APP_SHELL_ROUTING.md`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/app/docs/APP_SHELL_ROUTING.md) (Status confirmed baseline; route `/` mapped to `FEAT-02-HOME`).
+  * [`docs/specifications/core_app/CORE_APP_SHELL_LAYOUT_AND_ROUTING_CONTRACT.md`](file:///G:/binarysequence_techart/docs/specifications/core_app/CORE_APP_SHELL_LAYOUT_AND_ROUTING_CONTRACT.md) & [`src/app/docs/APP_SHELL_LAYOUT_ROUTING_CONTRACT.md`](file:///G:/binarysequence_techart/src/app/docs/APP_SHELL_LAYOUT_ROUTING_CONTRACT.md) (Reconciled with `DEC-DR03` and `DEC-DR04`).
+  * [`binary_sequence_screen_layout_ia_motion_loading_contract_final.md`](file:///G:/binarysequence_techart/binary_sequence_screen_layout_ia_motion_loading_contract_final.md) (Section 36 updated to DEFERRED; Section 37 updated to PRIMARY V1 TARGET).
+  * [`Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`](file:///G:/binarysequence_techart/Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md) (Updated Section 1, 8, 9, 14 with governance notices for `DEC-DR03` and `DEC-DR04`).
+  * [`src/features/onboarding/docs/FEATURE_SPEC.md`](file:///G:/binarysequence_techart/src/features/onboarding/docs/FEATURE_SPEC.md) & [`FEATURE_SPEC.toml`](file:///G:/binarysequence_techart/ai_contract_bootstrap/src/features/onboarding/docs/FEATURE_SPEC.toml) (Updated status to deferred per `DEC-DR04`).
+  * [`src/features/home/docs/FEATURE_SPEC.md`](file:///G:/binarysequence_techart/src/features/home/docs/FEATURE_SPEC.md) & [`FEATURE_SPEC.toml`](file:///G:/binarysequence_techart/src/features/home/docs/FEATURE_SPEC.toml) (Updated status to primary V1 target with direct landing).
+  * [`docs/references/REF-01-FINAL-MASTER-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-01-FINAL-MASTER-v1.1.md) (Updated `CHG-15` row with `DEC-DR03`).
+  * [`docs/references/REF-02-CONTENT-SPEC-v1.1.md`](file:///G:/binarysequence_techart/docs/references/REF-02-CONTENT-SPEC-v1.1.md) (Updated direct landing rule with `DEC-DR04`).
+  * [`docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md`](file:///G:/binarysequence_techart/docs/references/REF-03-IA-AND-LAYOUT-CONTRACT.md) (Added direct landing baseline rule).
+  * [`docs/references/REF-04-DDD-ARCHITECTURE.md`](file:///G:/binarysequence_techart/docs/references/REF-04-DDD-ARCHITECTURE.md) (Updated V1 execution priority to `FEAT-02-HOME`).
+  * [`docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md`](file:///G:/binarysequence_techart/docs/discovery/DOCUMENTATION_SYSTEM_AND_AI_PROTOCOL.md) (Updated active decisions inventory and fresh-session check criteria).
+  * [`docs/DOCUMENT_REFERENCE.md`](file:///G:/binarysequence_techart/docs/DOCUMENT_REFERENCE.md) & [`docs/OPERATIONAL_MASTER_BLUEPRINT.md`](file:///G:/binarysequence_techart/docs/OPERATIONAL_MASTER_BLUEPRINT.md) (Synchronized decisions and readiness status).
   * [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) (Updated in place).
-* **Verification Evidence:** All cross-document links verified; git diff audited (zero application code modified); token alignment verified.
-* **Next Recommended Action:** Founder resolution of pre-implementation readiness items: shell PATH configuration (`DR-02`), technology stack selection (`DR-03` / `EDR-001`), and launch scope sign-off (`DR-04`).
+* **Verification Evidence:** All 16 modified files link-checked (0 broken links); git diff verified (zero application code modified); contract and machine TOML properties validated.
+* **Next Recommended Action:** Define specific Firebase services, configuration, security rules, and deployment approach; resolve environment PATH (`DR-02`); scaffold Next.js App Router project structure.

@@ -58,6 +58,8 @@ Features advance through eight sequential verification gates:
 7. **Sprint 7: Verification:** Contract tests, boundary linting, token compliance.
 8. **Sprint 8: Documentation:** Living documentation synchronization and changelog.
 
+* **V1 Execution Priority (DEC-DR04):** Phase 01 / Sprint 01 (Onboarding) is deferred as a blocking gate. Implementation begins directly with **Phase 02 / Sprint 02: Home Feature (`FEAT-02-HOME`)** as the primary V1 implementation target, built on Next.js App Router, TypeScript, and Firebase (`DEC-DR03`).
+
 ---
 
 ## 4. Engineering Constitution & SOLID Summary

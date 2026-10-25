@@ -4,7 +4,9 @@
 **Feature Name:** `home`  
 **Public Route:** `/`  
 **Tier:** Tier 1 Commercial Practice  
-**Status:** Planned Contract  
+**Status:** **Primary V1 Implementation Target (`DEC-DR04`)**  
+**Landing Baseline:** Direct landing on `/`; visitors see Home hero immediately without gate obstruction (`DEC-DR04`).  
+**Technology Baseline:** Next.js App Router + TypeScript + Firebase (`DEC-DR03`).  
 
 ---
 

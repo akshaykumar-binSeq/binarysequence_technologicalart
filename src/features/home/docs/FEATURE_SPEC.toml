@@ -4,7 +4,9 @@ feature_name = "home"
 feature_version = "1.0.0"
 public_route = "/"
 tier = "tier_1_commercial"
-status = "planned"
+status = "primary_v1_target"
+decision_ref = "DEC-DR03, DEC-DR04"
+direct_landing = true
 
 [architecture]
 layers = ["domain", "application", "infrastructure", "presentation"]
