@@ -817,3 +817,216 @@ Do not begin Phase 02 merely because Phase 01 files exist. Begin it after the ag
 Use DDD where it clarifies domain meaning, feature boundaries, and change ownership. Use the Shared Kernel only for genuinely shared concepts. Keep cross-feature communication explicit. Keep public content aligned with the approved information architecture. Measure performance instead of promising it. Document what exists, what is planned, and what remains uncertain.
 
 The intended outcome is a website whose engineering is disciplined and whose experience remains calm, direct, accessible, and human.
+
+---
+
+## 16. Engineering Constitution: SOLID, Clean Separation, and Reusable Components
+
+### 16.1 Governing Philosophy and Ten Mandates
+
+When designing, modifying, or reviewing software across the studio's projects, engineers and AI coding agents must follow two governing axioms:
+
+> **Complexity should be absorbed by architecture, not transferred to the user.**  
+> **Reuse should reduce complexity and maintenance—not relocate complexity into a shared abstraction.**
+
+The objective is not to maximize the count of layers, interfaces, abstractions, packages, or base classes, but to protect business rules from unnecessary infrastructure churn, maintain clean separation of responsibilities, reuse proven capabilities appropriately, and ensure future modifications do not trigger cascading breaks in unrelated subsystems.
+
+The ten mandatory engineering objectives are:
+1. **Domain-Driven Design (DDD):** Model the actual business domain rather than merely organizing directories.
+2. **SOLID Principles:** Applied pragmatically according to actual responsibilities and change patterns.
+3. **Clean Separation of Concerns:** Strict layer separation across Domain, Application, Infrastructure, and Presentation.
+4. **Dependency Inversion:** Explicit abstractions at architectural boundaries; high-level policy never depends on low-level detail.
+5. **High Cohesion and Controlled Coupling:** Modules change together for coherent reasons; cross-feature coupling is tightly governed.
+6. **Reusable Common Components:** Extracted only when supported by concrete evidence of repeated use and stable contracts.
+7. **Consistent Shared Foundations:** Centralized semantic tokens and shared interaction primitives.
+8. **Testability & Maintainability:** Business behavior testable in total isolation from UI and database runtimes.
+9. **Explicit Architectural Contracts:** Strict schemas and gateways governing layer interactions and bounded context boundaries.
+10. **Evidence-Based Abstraction:** Concrete operational need precedes abstraction; speculative generalization is prohibited.
+
+---
+
+### 16.2 SOLID Principles in Concrete Practice
+
+SOLID must be demonstrated through code structure, dependency direction, and test verification—not merely asserted:
+
+* **S — Single Responsibility Principle (SRP):**  
+  A module, class, function, or component must have one coherent responsibility and one primary reason to change.
+  - A repository handles persistence operations, not UI rendering.
+  - A widget renders a visual presentation responsibility, not an entire business workflow.
+  - A use case coordinates a single meaningful application transaction or user action.
+  - A mapper translates between explicit data representations across boundaries.
+  - A storage adapter manages media uploads, not the overarching domain lifecycle.
+  *Boundary Rule:* Do not split cohesive code into micro-classes for every individual statement; split when doing so establishes a meaningful boundary, enhances testability, or isolates change propagation.
+
+* **O — Open/Closed Principle (OCP):**  
+  Design extension points where genuine variability exists without editing stable core logic.
+  - Provide repository interfaces capable of supporting multiple legitimate persistence adapters.
+  - Use strategy patterns for distinct, evolving business or pricing policies.
+  - Support reusable UI components via explicit slots, composable children, and typed configuration objects.
+  *Boundary Rule:* Prohibit speculative plugin frameworks or multi-level inheritance hierarchies created for hypothetical changes. Prefer direct composition and explicit contracts.
+
+* **L — Liskov Substitution Principle (LSP):**  
+  Subtypes and implementations must strictly honor the behavioral contracts, invariants, error specifications, and guarantees of their abstractions.
+  - A test mock or secondary storage adapter must adhere to the exact promise and failure semantics of the production contract.
+  - Prohibit inheritance hierarchies where child classes break or override the semantic guarantees of the base class.
+
+* **I — Interface Segregation Principle (ISP):**  
+  Keep interfaces focused on the specific capabilities consumers actually require.
+  - Avoid monolithic, "god" repository or service interfaces that force consumers to depend on operations they never invoke.
+  - Favor narrow, role-oriented contracts (e.g. read-only query interfaces segregated from mutation commands).
+  *Boundary Rule:* Do not fragment a small, cohesive interface into dozens of single-method interfaces that add friction without decoupling benefits.
+
+* **D — Dependency Inversion Principle (DIP):**  
+  High-level business policy must never depend directly on low-level technical implementation details.
+  - High-level use cases and domain models depend on abstractions (ports).
+  - Low-level infrastructure adapters implement those abstractions.
+  - Concrete dependencies are wired at the composition root (e.g. app entry point or test harness).
+  *Prohibited Patterns:* Direct database SDK calls in domain models; framework/browser imports (`window`, `localStorage`, `next/*`, `react`) in the domain layer; service locators used to bypass explicit constructor injection; hidden global singletons making tests order-dependent.
+
+---
+
+### 16.3 Common Components, Widgets, and Reusable Capabilities
+
+#### 16.3.1 Reuse Criteria
+Inspect existing capabilities before authoring new ones. If an existing component satisfies the requirement, reuse or extend it. However, **reuse must reduce overall maintenance burden**. If sharing a component forces complex conditional branches and boolean flags, keep the implementations independent.
+
+#### 16.3.2 Separation of Shared UI from Shared Business Logic
+A shared widget may render a consistent interaction pattern across multiple screens, but the underlying business rules must remain within their respective feature boundaries:
+* A shared confirmation dialog renders the prompt; the specific business operation confirmed remains inside the feature's application use case.
+* A shared loading skeleton renders placeholder geometry; the feature manages its own data loading lifecycle and fallback state.
+* A shared form input renders validation styling; domain-specific business validation rules remain in the feature's domain model.
+* A shared data table renders rows; authorization, data filtering, and entity mutations remain strictly owned by the originating feature context.
+* **Prohibition:** Never use a shared UI component as a back door for cross-feature domain logic.
+
+#### 16.3.3 The 10-Step Evidence-Based Extraction Process
+When extracting reusable capabilities, execute through these 10 steps:
+1. Identify the recurring requirement in real project work.
+2. Inspect existing implementations across features.
+3. Determine whether implementations share genuine behavior, rather than superficial visual resemblance.
+4. Define the stable common contract (inputs, outputs, events, accessibility requirements).
+5. Identify legitimate variations and design extension points.
+6. Separate shared presentation behavior from feature-specific domain rules.
+7. Author or extend the smallest suitable abstraction.
+8. Test the shared component across variants, loading states, empty states, error states, and keyboard/screen-reader accessibility.
+9. Migrate consumers incrementally with verified regression checks.
+10. Verify that the abstraction reduces total duplication without introducing unwanted coupling.
+
+#### 16.3.4 Composition Over Complex Configuration
+* Prefer composing reusable components from smaller, focused elements rather than authoring monolithic components governed by dozens of boolean switches.
+* Prohibit exposing private internal implementation details as public component APIs.
+
+#### 16.3.5 Centralized Semantic Design System
+Centralize presentation foundations in semantic design tokens:
+* Color roles (surface, primary text, subtle text, border, accent, focus ring).
+* Spatial scales (8pt grid tokens: 4px, 8px, 16px, 24px, 32px, 48px, 64px, 96px).
+* Typography primitives (fluid scale formulas, line heights, font families).
+* Motion and physics parameters (easing curves, duration limits, reduced-motion overrides).
+* Breakpoints (360px Mobile Portrait, 568px Landscape, 768px Tablet, 1280px Desktop, 1536px Ultra-Wide).
+* *Rule:* Always use semantic design tokens rather than scattering hardcoded hex literals or ad-hoc pixel values across components.
+
+#### 16.3.6 Feature Isolation in Component Libraries
+A generic component library (`src/core/` or `shared/`) must **never** import internal modules or domain logic from individual features:
+`src/core/ui → src/features/<feature>/domain` is strictly prohibited. Generic components receive data, callbacks, and configuration via typed props.
+
+---
+
+### 16.4 Shared Engineering Capabilities & Sequence Core Platform Rules
+
+In accordance with Master Strategy v1.1 Change 02 and Change 03:
+1. **Private Evolving Platform:** Sequence Core is a private, evolving repository of reusable engineering foundations and operational capabilities—not a mandatory universal framework or all-at-once dependency.
+2. **Admission Rule:** A capability enters Sequence Core **only when repeated use in real products demonstrates a measurable, clearly evidenced benefit**. "Potentially reusable" is never sufficient admission criteria.
+3. **Seven Capability Layers:**
+   * *1. Engineering Foundations:* Conventions, architecture templates, test patterns, documentation, quality checks.
+   * *2. Identity and Access:* Authentication adapters, authorization patterns, permission schemas.
+   * *3. Data Infrastructure:* Database conventions, migration patterns, data authority definitions, backups.
+   * *4. Integration:* API conventions, webhook processing, idempotency patterns, external adapters.
+   * *5. Application Experience:* Design tokens, reusable UI components, accessibility patterns.
+   * *6. Delivery:* Build pipelines, CI/CD templates, environment configuration, release automation.
+   * *7. Operations:* Logging, monitoring, alerting, incident handling, runbooks.
+4. **Domain Independence Invariant:** Each product's domain model and business rules must remain independently governed. Never force distinct products to share a single unified domain model or fixed database stack.
+
+---
+
+### 16.5 Data Ownership, Validation, and Error Handling
+
+#### 16.5.1 Authoritative Data Ownership
+Every business entity and data attribute must have a single authoritative owner context. Cross-context updates must occur via explicit application commands, domain events, or public gateway DTOs.
+Explicitly distinguish:
+* Domain entities and value objects (pure domain invariants).
+* Application command and query models (use-case payloads).
+* Persistence models (database schemas).
+* API / Gateway DTOs (external network payloads).
+* Presentation viewmodels (UI rendering state).
+* *Rule:* Never use a single universal data model across all layers merely to reduce file count. Map explicitly at boundaries where isolation is protected.
+
+#### 16.5.2 Multi-Tier Validation Boundaries
+Enforce validation at the correct architectural tier:
+* *Presentation Tier:* Immediate user feedback, form field masking, client-side syntax checks.
+* *Application Tier:* Use-case preconditions, authorization rules, command payload validation.
+* *Domain Tier:* Business invariants, state transition validity, entity lifecycle rules.
+* *Infrastructure Tier:* Database constraints, foreign keys, network transport contracts.
+* *Invariant:* Client-side presentation validation must never be treated as the sole enforcement of business invariants or security checks.
+
+#### 16.5.3 Resilient Error Handling
+* Distinguish expected business failures (e.g. invalid submission, duplicate resource) from unexpected infrastructure faults (e.g. network timeout, disk failure) and defect assertions.
+* Translate low-level technical exceptions into typed domain/application outcomes at infrastructure boundaries.
+* Never expose raw database stack traces, internal paths, or credentials to end users.
+* Never silently swallow exceptions without logging or controlled fallback states.
+
+---
+
+### 16.6 Testability as an Architectural Requirement
+
+Architecture that cannot be tested without launching the complete end-to-end application runtime is structurally defective:
+* **Domain Unit Tests:** Verify pure business invariants, calculation logic, and state transitions in memory with zero dependencies on frameworks, databases, or browsers.
+* **Application Use-Case Tests:** Verify workflow coordination, authorization gates, and domain event triggering using mock/in-memory port adapters.
+* **Contract Tests:** Validate public gateways, DTO serializations, and schema compliance against JSON schemas.
+* **Infrastructure Adapter Tests:** Verify database queries, external API clients, and storage adapters against contract specifications or local test containers.
+* **Component Presentation Tests:** Verify shared UI components across visual states (default, hover, active, focus, disabled), loading states, error fallbacks, and screen-reader accessibility tags.
+* *Rule:* Test behavioral outcomes and invariant contracts, not internal private implementation mechanics.
+
+---
+
+### 16.7 The 15 Architectural Quality Gates (ARCH-01 through ARCH-15)
+
+Prior to declaring any feature or implementation task complete, evaluate the implementation against the 15 Quality Gates. Record each gate as `PASS`, `FAIL`, `BLOCKED`, or `NOT_APPLICABLE` with concise empirical evidence:
+
+| Gate ID | Quality Gate | Passing Condition | Verification Method |
+| :--- | :--- | :--- | :--- |
+| **ARCH-01** | Requirement Traceability | Implementation is fully supported by authoritative Level 1–4 requirements; zero unauthorized scope. | Inspection against Master v1.1, Content Spec, IA v2.0, and Feature Specs. |
+| **ARCH-02** | Domain Integrity | Business invariants are strictly enforced within pure domain boundaries without framework leaks. | Static analysis and unit test inspection of `src/features/*/domain/`. |
+| **ARCH-03** | Separation of Concerns | Distinct boundaries maintained across Domain, Application, Infrastructure, and Presentation layers. | File tree inspection and layer boundary linting. |
+| **ARCH-04** | SOLID Compliance | S, O, L, I, and D principles are satisfied without introducing unnecessary speculative abstractions. | Code review of interfaces, classes, and component compositions. |
+| **ARCH-05** | Dependency Direction | Dependencies point strictly inward (`Presentation → Application → Domain`; `Infra → Ports`). | Import graph analysis; zero circular or forbidden outward dependencies. |
+| **ARCH-06** | Feature Isolation | Features communicate exclusively through public gateways (`index.ts`); zero internal imports. | Automated boundary check (`validate-feature-boundaries.mjs` B-01, B-03). |
+| **ARCH-07** | Reuse Audit | Existing components and capabilities were audited before introducing new abstractions. | Catalog inspection of `src/core/` and design token tables. |
+| **ARCH-08** | Abstraction Quality | New abstractions possess clear, single responsibilities with proven benefits over direct code. | Review for premature generalization, excessive wrappers, or dead abstractions. |
+| **ARCH-09** | Shared Component Safety | Generic components do not own feature-specific business rules or private domain entities. | Inspection of `src/core/` imports; zero cross-feature imports. |
+| **ARCH-10** | Data Ownership | Clear authoritative ownership for every entity; explicit mapping between layer models. | Schema inspection and persistence ownership audit. |
+| **ARCH-11** | Error Boundaries | Errors are translated at boundaries; graceful degraded states provided for all failure paths. | Inspection of error handlers, state machines, and UI fallback components. |
+| **ARCH-12** | Testability | Core business logic and use cases can be executed and verified independently in memory. | Test suite execution and coverage verification without full-app launch. |
+| **ARCH-13** | Regression Protection | Existing verified behavior, contracts, and test suites remain intact and passing. | Full test suite execution and git diff verification. |
+| **ARCH-14** | Documentation Alignment | Machine contracts (`*.toml`), schemas, reference cards, and session states match implementation. | Automated contract validation (`validate-specs.mjs`) and link audits. |
+| **ARCH-15** | Verification Evidence | All compliance claims are supported by concrete terminal outputs, test runs, or diffs. | Terminal execution logs and reproducible verification output. |
+
+---
+
+### 16.8 Architectural Anti-Patterns to Avoid
+
+The following anti-patterns are strictly prohibited unless supported by an approved Engineering Decision Record (`EDR`):
+1. **Business logic in UI widgets:** Domain calculations, state transitions, or validation logic placed inside presentation components.
+2. **Direct persistence calls from UI:** Database SDK queries or API network calls made directly from presentation templates without use-case orchestration.
+3. **Framework leaks in domain:** Imports of UI frameworks (`react`, `astro`), browser globals (`window`, `localStorage`), or database drivers inside `domain/`.
+4. **Monolithic "god" classes:** Single services or components managing multiple unrelated use cases, state trees, or lifecycles.
+5. **Universal repositories:** Single repository interfaces containing dozens of unrelated queries across multiple bounded contexts.
+6. **Speculative base classes:** Generic abstract base classes authored to avoid a few repeated lines without a genuine polymorphic boundary.
+7. **Single-use interfaces without boundary benefit:** Authoring an interface for an internal class that has only one implementation and provides no decoupling or testing value.
+8. **Forwarding wrapper classes:** Classes that merely forward every method invocation to another class without adding validation, translation, or policy.
+9. **Cross-feature internal imports:** Importing private files from another feature rather than using its public gateway (`index.ts`).
+10. **Domain logic in shared UI components:** Embedding feature-specific workflows or business rules inside reusable widgets.
+11. **Global mutable state shortcuts:** Global stores used to bypass explicit parameter passing or dependency injection.
+12. **Circular dependencies:** Circular references between modules, packages, or architectural layers.
+13. **Premature Sequence Core extraction:** Moving a capability into Sequence Core before repeated production use has proven its contract and benefit.
+14. **Overly generic components:** Authoring a single mega-widget with dozens of optional boolean flags to handle disparate UI needs.
+15. **Unnecessary layer overhead:** Forcing a trivial static display change through complex enterprise layers when no business invariants or domain boundaries exist.
+

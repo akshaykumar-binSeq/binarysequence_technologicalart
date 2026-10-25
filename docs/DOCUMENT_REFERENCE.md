@@ -290,13 +290,14 @@ Every important document across the repository is detailed below with its comple
 * **Relative Path:** `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
 * **Precedence Level:** Level 4 — Architectural Methodology & Boundaries
 * **Purpose:** Architectural standard establishing feature-first modularity informed by Domain-Driven Design (DDD), 4-layer clean architecture, shared kernel boundaries, and an 8-sprint feature lifecycle.
-* **Governing Topics:** 4 clean architecture layers (`domain/`, `application/`, `infrastructure/`, `presentation/`), strict module boundaries (zero cross-feature imports, public gateways only via `index.ts`), shared kernel discipline, 11 proposed bounded contexts, 8-sprint feature progression gates.
+* **Governing Topics:** 4 clean architecture layers (`domain/`, `application/`, `infrastructure/`, `presentation/`), strict module boundaries (zero cross-feature imports, public gateways only via `index.ts`), shared kernel discipline, 11 proposed bounded contexts, 8-sprint feature progression gates, Section 16 Engineering Constitution (SOLID principles, 10-step component reuse, Sequence Core rules, data ownership/validation/error boundaries, 15 Quality Gates ARCH-01 through ARCH-15).
 * **Upstream Documents:** Governed by Level 1 Master v1.1, Level 2 Content Spec v1.1, and Level 3 IA v2.0.
 * **Downstream Documents:** Informs Level 5 machine contracts (`CORE_GATEWAY_CONTRACTS.toml`, `FEATURE_SPEC.toml`) and directory layout in `src/`.
 * **Status:** `Approved` / Architectural Framework (Target architecture; does not imply code exists)
 * **Key Invariants / Directives:**
   * Strict Public Gateway Boundary: Features never import internal files of other features; all cross-feature communication occurs via public gateways.
   * Dependency Inversion: Domain layer has zero external dependencies; Application layer orchestrates; Infrastructure implements ports; Presentation handles view logic.
+  * Engineering Constitution: SOLID compliance, evidence-based component reuse without cross-feature domain leakage, and mandatory ARCH-01 through ARCH-15 quality gate evaluations.
 
 ---
 
