@@ -16,6 +16,7 @@
 * **Source Control State:**
   * Root commit: `a047c2d` (`chore: establish project documentation and contract baseline`)
   * Documentation commit: `3c15797` (`docs: record initial Git baseline`)
+  * Governance commit: `c512bac` (`docs(governance): establish persistent context and change propagation protocol`)
   * Working Tree: Clean
 
 ---
