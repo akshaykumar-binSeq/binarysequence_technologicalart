@@ -117,6 +117,7 @@ G:\binarysequence_techart\
 │
 ├── docs/                                        # Living Project Documentation
 │   ├── DOCUMENT_REFERENCE.md                    # This document (Master navigation guide)
+│   ├── OPERATIONAL_MASTER_BLUEPRINT.md          # Synthesized master blueprint & development flow
 │   ├── ACTIVE_SESSION_STATE.md                  # Living ledger of phase, tasks, commits & handoffs
 │   │
 │   ├── discovery/                               # Phase 0 Audit & Assessment Reports (Historical)
@@ -389,7 +390,20 @@ Every important document across the repository is detailed below with its comple
 
 ### 4.6 Discovery Reports & Ledgers (`docs/discovery/` & `docs/`)
 
-#### 18. `docs/ACTIVE_SESSION_STATE.md`
+#### 18. `docs/OPERATIONAL_MASTER_BLUEPRINT.md`
+* **Relative Path:** `docs/OPERATIONAL_MASTER_BLUEPRINT.md`
+* **Precedence Level:** Operational Governance / Permanent Master Blueprint
+* **Purpose:** Synthesized master blueprint, engineering constitution, and permanent development lifecycle across all phases.
+* **Governing Topics:** Five foundational axioms, 6-level precedence hierarchy, dual Markdown/TOML model, 13-step AI development lifecycle (Mermaid diagram), Engineering Constitution (SOLID, DDD, component reuse, Sequence Core rules, ARCH-01 to ARCH-15 quality gates, anti-patterns), pre-flight readiness status.
+* **Upstream Documents:** Governed by Master v1.1, Content Spec v1.1, IA v2.0, Layout Contract Final, DDD Guidelines v1.0, `GEMINI.md`.
+* **Downstream Documents:** Directs all ongoing and future AI development sessions across the studio.
+* **Status:** `Approved` / Master Blueprint
+* **Key Invariants / Directives:**
+  * Permanent binding commitment across all sessions.
+  * Zero operations outside `G:\binarysequence_techart\`.
+  * Mandatory evaluation of 15 Architectural Quality Gates (ARCH-01 through ARCH-15).
+
+#### 19. `docs/ACTIVE_SESSION_STATE.md`
 * **Relative Path:** `docs/ACTIVE_SESSION_STATE.md`
 * **Precedence Level:** Operational Governance / Living Session Ledger
 * **Purpose:** Living ledger tracking current project phase, active tasks, core decisions, commit history, tooling status, and handoff notes across AI sessions.
@@ -768,6 +782,7 @@ Use this index to quickly locate specific project information:
 | **Active Phase, Recent Commits & Handoff Notes** | Living Session State Ledger | [`docs/ACTIVE_SESSION_STATE.md`](file:///G:/binarysequence_techart/docs/ACTIVE_SESSION_STATE.md) |
 | **Pre-Implementation Readiness Blockers** | Development Readiness Checklist | [`docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md`](file:///G:/binarysequence_techart/docs/discovery/DEVELOPMENT_READINESS_CHECKLIST.md) |
 | **Precedence Hierarchy & Full Asset Matrix** | Source of Truth Index | [`docs/discovery/SOURCE_OF_TRUTH_INDEX.md`](file:///G:/binarysequence_techart/docs/discovery/SOURCE_OF_TRUTH_INDEX.md) |
+| **Operational Master Blueprint & Dev Flow** | Operational Master Blueprint | [`docs/OPERATIONAL_MASTER_BLUEPRINT.md`](file:///G:/binarysequence_techart/docs/OPERATIONAL_MASTER_BLUEPRINT.md) |
 | **AI Operating Rules, Protocols & Boundaries** | Root AI Governance Protocol | [`GEMINI.md`](file:///G:/binarysequence_techart/GEMINI.md) |
 | **Machine Routing Table & Shell Slots** | App Shell Routing Contract | `src/app/docs/APP_SHELL_LAYOUT_ROUTING_CONTRACT.toml` |
 | **Home Screen States & ViewModel Contracts** | Home Feature Spec | `src/features/home/docs/FEATURE_SPEC.toml` |
