@@ -203,6 +203,49 @@ To prevent context saturation and eliminate hallucinations, AI agents must **nev
 4. **Boundary Isolation:** Code within `src/features/<feature>/` must never import internal paths of another feature. Cross-feature integration must happen solely through public gateways exported from feature root `index.ts`.
 5. **Evidence-Based Completion:** No task may be reported as complete without terminal evidence (passing tests, clean linting, reproducible build output, or verified file contents).
 
+### 4.3 Mandatory Change Classification Protocol
+
+Whenever a change, requirement, clarification, or enhancement is introduced, it must be formally classified before file edits begin:
+
+* **`COMMON`:** Applies across multiple features or changes a shared capability, token, or convention.
+* **`FEATURE-SPECIFIC`:** Restricted to a single feature and leaves common contracts intact.
+* **`COMMON + FEATURE-SPECIFIC`:** Changes a common rule and mandates feature-level adaptations.
+* **`CROSS-CUTTING`:** Affects architecture, security, privacy, accessibility, data integrity, or deployment across the system.
+* **`CLARIFICATION`:** Clarifies founder intent without altering approved requirements.
+* **`CORRECTION`:** Fixes inconsistent documentation or code defects.
+* **`PROPOSAL`:** A recommendation awaiting founder sign-off before adoption.
+* **`UNRESOLVED`:** An open question requiring external data or founder decision.
+
+### 4.4 Common-to-Feature Dependency Analysis
+
+For every `COMMON` or `COMMON + FEATURE-SPECIFIC` change:
+1. Identify the common source of truth.
+2. Search for existing common definitions before adding new ones.
+3. Identify all features that inherit, implement, or depend on the capability.
+4. Read dependent feature specifications.
+5. Determine whether each dependent feature: complies, needs spec update, needs implementation update, needs test extensions, requires documented exception, or is unaffected (supported by evidence).
+6. Update common sources and affected feature specs within authorized scope.
+7. Maintain explicit references from subordinate specs back to the common source.
+8. Check for duplicated or conflicting definitions.
+9. Verify resulting implementation and tests conform to approved common rules.
+
+### 4.5 No-Unnecessary-Documents Rule
+
+* **Default Action:** Update existing authoritative documents in place.
+* **Creation Threshold:** A new document is permitted only when it represents a genuinely distinct domain boundary, independent contract, or formal deliverable that cannot be cleanly integrated into an existing file.
+* **Justification Required:** The author must document why existing documents are insufficient, the document's authority tier, and inbound/outbound references.
+
+### 4.6 7-Phase Execution Workflow
+
+Substantive engineering tasks execute through 7 phases:
+* **Phase A — Inspect:** Read root instructions (`GEMINI.md`), session state (`docs/ACTIVE_SESSION_STATE.md`), and authoritative documents.
+* **Phase B — Analyze:** Classify change, analyze dependencies, and detect conflicts.
+* **Phase C — Plan:** Present exact file edits, acceptance criteria, and verification steps.
+* **Phase D — Approval:** Request approval for architectural changes, new shared contracts, or scope expansions.
+* **Phase E — Execute:** Apply authorized edits carefully.
+* **Phase F — Verify:** Execute terminal verification (tests, lint, hash checks, diff reviews).
+* **Phase G — Handoff:** Update `docs/ACTIVE_SESSION_STATE.md` in place.
+
 ---
 
 ## 5. Handoff to Phase 1: Documentation System & Architecture Setup

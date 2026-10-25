@@ -29,9 +29,10 @@ Authority in this project is not determined by filename or version number alone,
                                     │ Dictates
                                     ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│ LEVEL 3: INFORMATION ARCHITECTURE & STRUCTURAL WIREFRAMES              │
+│ LEVEL 3: INFORMATION ARCHITECTURE, VIEWPORT & SENSORY CONTRACTS        │
 │ - Binary_Sequence_Information_Architecture_v2.0.md                     │
 │   (Supersedes Binary_Sequence_Information_Architecture_v1.0.md)        │
+│ - binary_sequence_screen_layout_ia_motion_loading_contract_final.md    │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │ Informs
                                     ▼
@@ -165,9 +166,24 @@ Authority in this project is not determined by filename or version number alone,
 
 ---
 
+#### 8. `binary_sequence_screen_layout_ia_motion_loading_contract_final.md`
+- **Location:** `G:\binarysequence_techart\binary_sequence_screen_layout_ia_motion_loading_contract_final.md`
+- **Size / Timestamp:** 50,378 bytes | 2026-10-25 07:29:43
+- **Purpose:** Canonical Global Design, Viewport, Layout, Interaction, Motion & System State Contract across all public views and responsive viewports.
+- **Authority:** **Approved Canonical Baseline (Level 3 Viewport & Sensory Contract).** Binding on all UI engineering.
+- **Key Directives:**
+  - Viewport breakpoints: Mobile Portrait (360–428px), Landscape Mobile (568–844px), Tablet (768–1024px), Desktop (1280–1440px), Widescreen/Ultra-Wide (1536–2560px+).
+  - Two-Tier Information Architecture composition (Tier 1 Commercial vs. Tier 2 Exploratory).
+  - 8pt spacing system, fluid typography, dark-surface ergonomics, dynamic contrast.
+  - Hardware-composited motion (opacity/transform only), natural physics easing, reduced-motion compliance.
+  - Latency thresholds, loading states, empty/degraded states, 8-state component lifecycle.
+- **Proposed Role:** Canonical global layout and motion specification in `docs/specifications/SCREEN_LAYOUT_IA_MOTION_CONTRACT.md`.
+
+---
+
 ### 2.4 Architectural and Methodological Guidelines
 
-#### 8. `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
+#### 9. `Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
 - **Location:** `G:\binarysequence_techart\Binary_Sequence_DDD_Architectural_Methodological_Guidelines_v1.0.md`
 - **Size / Timestamp:** 40,006 bytes | 2026-10-25 04:11:07
 - **Purpose:** Architectural guideline detailing feature-first modularity informed by Domain-Driven Design (DDD), clean architecture layering, shared kernel discipline, and a repeatable 8-sprint feature lifecycle.
@@ -184,7 +200,7 @@ Authority in this project is not determined by filename or version number alone,
 
 ### 2.5 Bootstrap Package Assets
 
-#### 9. `Binary_Sequence_AI_Development_Contract_System_v1.0_bootstrap.zip` & `ai_contract_bootstrap/`
+#### 10. `Binary_Sequence_AI_Development_Contract_System_v1.0_bootstrap.zip` & `ai_contract_bootstrap/`
 - **Location:** `G:\binarysequence_techart\Binary_Sequence_AI_Development_Contract_System_v1.0_bootstrap.zip` (unpacked in `G:\binarysequence_techart\ai_contract_bootstrap\`)
 - **Size / Timestamp:** 22,959 bytes | 2026-10-25 05:03:12
 - **Purpose:** Proposed pilot contracts, JSON schemas, and validation scripts designed to enforce machine-verifiable development constraints for AI agents.

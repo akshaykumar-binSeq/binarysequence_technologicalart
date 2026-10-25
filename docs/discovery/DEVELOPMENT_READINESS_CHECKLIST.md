@@ -20,7 +20,7 @@ No code generation or feature implementation should take place while blocking it
 
 | Item ID | Category | Requirement / Decision | Current Status | Blocker / Reason | Dependencies | Completion Evidence Required |
 |---|---|---|---|---|---|---|
-| **DR-01** | **Workspace** | Canonical Workspace Directory Alignment | **Ready for Confirmation** | Files are in `G:\binarysequence_techart`; active workspace is `G:\binarysequence_technologicalart`. | Phase 0 Discovery | User confirmation to populate `G:\binarysequence_technologicalart` as canonical repo. |
+| **DR-01** | **Workspace** | Canonical Workspace Directory Alignment | **COMPLETE** | None. Canonical root confirmed as `G:\binarysequence_techart`. | Phase 0 Discovery | Confirmed on disk; former directory `G:\binarysequence_technologicalart` discarded. |
 | **DR-02** | **Tooling** | Host Node.js & Package Manager Runtime Path | **Blocked (Environment)** | `node`, `npm`, `pnpm` are not exposed in the active shell PATH inside the sandbox. | User PATH / NVM setup | Successful terminal execution of `node -v` and `pnpm -v` (or `npm -v`) in workspace. |
 | **DR-03** | **Architecture** | Technology Stack Selection (Astro vs. Next.js) | **Pending Founder Decision** | Bootstrap proposes Next.js + Firebase; Master v1.1 mandates Minimum Appropriate Technology rule evaluating Astro + CSS. | Master v1.1 Change 15 | Formal decision recorded in an Engineering Decision Record (EDR-001). |
 | **DR-04** | **Scope** | V1 Launch Scope: Direct Landing vs. Onboarding Gate | **Pending Founder Decision** | Content Spec v1.1 specifies direct Home hero landing; Bootstrap has modal Onboarding Gate (`FEAT-01-ONB`). | IA v2.0 & Content Spec | Written approval of direct-landing baseline with Onboarding deferred or optional. |
@@ -29,7 +29,7 @@ No code generation or feature implementation should take place while blocking it
 | **DR-07** | **Validation** | Contract Validation Tooling Overhaul | **Proposed (Pending Tooling)** | Bootstrap validation scripts require `@iarna/toml`, hardcode single features, and use fragile regex. | DR-02, DR-03 | Generic, runnable test scripts verifying schemas and boundaries without crashes. |
 | **DR-08** | **Infrastructure** | Contact Form Destination & Protocol | **Pending Decision** | Email `binarysequence.techart@gmail.com` confirmed, but backend intake mechanism (API, Formspree, Resend, mailto) is unconfigured. | IA v2.0 Section 11.6 | Documented form handling mechanism and verified inbox delivery. |
 | **DR-09** | **Content** | Legal & Governance Route Content | **Pending Authoring** | Routes `/privacy` and `/service-boundaries` exist in sitemap, but specific legal copy is unwritten. | Content Spec v1.1 | Drafted and approved markdown copy for Privacy Notice and Service Boundaries. |
-| **DR-10** | **Source Control** | Git Repository Initialization | **Pending Phase 1** | Workspace has no `.git` repository initialized. | DR-01 | `git init` executed, `.gitignore` created, initial commit of canonical docs recorded. |
+| **DR-10** | **Source Control** | Git Repository Initialization | **COMPLETE** | None. Repository initialized on branch `main`. | DR-01 | Baseline commit `a047c2d` and documentation commit `3c15797` verified. |
 
 ---
 
